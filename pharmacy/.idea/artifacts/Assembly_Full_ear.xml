@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="Assembly-Full:ear">
+    <output-path>$PROJECT_DIR$/Assembly-Full/target</output-path>
+    <root id="archive" name="Assembly-Full-1.0-SNAPSHOT.ear">
+      <element id="artifact" artifact-name="Assembly-Full:ear exploded" />
+    </root>
+  </artifact>
+</component>
