@@ -58,6 +58,10 @@
 
     <bean id="myUserDetailsService" 
           class="com.pharmacy.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao" />
+    </bean>
+    <bean id="userDao" class="com.pharmacy.persistence.impl.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
     <!-- Файл с настройками безопасности -->

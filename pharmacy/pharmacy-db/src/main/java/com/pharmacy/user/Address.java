@@ -22,7 +22,6 @@ public class Address extends BaseUUID {
     private String city;
     @Column(length = 10)
     private String postCode;
-    private String country;
 
     public String getCompany() {
         return company;
@@ -56,14 +55,6 @@ public class Address extends BaseUUID {
         this.postCode = postCode;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -72,7 +63,6 @@ public class Address extends BaseUUID {
         result.append(" address: ").append(address);
         result.append(" City: ").append(city);
         result.append(" PostCode: ").append(postCode);
-        result.append(" Country: ").append(country);
         result.append("}");
         return result.toString();
     }

@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
  *
  * @author Alexandr
  */
-@Service
 public class UserServiceImpl implements UserService, UserDetailsService {
      
     @Autowired
@@ -31,8 +30,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public void save(com.pharmacy.user.User user) {
-        
-        userDao.save(user);
+        getUserDao().save(user);
+    }
+
+    /**
+     * @return the userDao
+     */
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    /**
+     * @param userDao the userDao to set
+     */
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
 }

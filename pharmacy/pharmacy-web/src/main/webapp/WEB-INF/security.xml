@@ -13,8 +13,8 @@
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
         <form-login 
-            login-page="/login" 
-            default-target-url="/welcome"
+            login-page="/login.html" 
+            default-target-url="/welcome.html"
             authentication-failure-url="/login?error" 
             username-parameter="username"
             password-parameter="password" />

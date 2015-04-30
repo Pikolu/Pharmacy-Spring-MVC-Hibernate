@@ -20,7 +20,8 @@
                 </div>
                 <div class="right">
                     <h2>Returning Customer</h2>
-                    <form action="#" method="post" enctype="multipart/form-data" id="login">
+                    <c:url value="/login.html" var="login"></c:url>
+                    <form action="${login}" method="post" id="login">
                         <div class="content">
                             <p>I am a returning customer</p>
                             <b class="padd-form">E-Mail Address:</b>

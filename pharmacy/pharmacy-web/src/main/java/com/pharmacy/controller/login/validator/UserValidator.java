@@ -52,9 +52,6 @@ public class UserValidator implements Validator {
         if (address.getCity() == null || address.getCity().isEmpty()) {
             errors.rejectValue("address.city", "labelRegistrationNoCity");
         }
-        if (address.getCountry() == null || address.getCountry().isEmpty()) {
-            errors.rejectValue("address.country", "labelRegistrationNoCountry");
-        }
         if (address.getPostCode() == null || address.getPostCode().isEmpty()) {
             errors.rejectValue("address.postCode", "labelRegistrationNoPostCode");
         }

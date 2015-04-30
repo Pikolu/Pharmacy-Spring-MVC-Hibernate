@@ -7,6 +7,7 @@ package com.pharmacy.controller.registration;
 import com.pharmacy.controller.login.validator.UserValidator;
 import com.pharmacy.service.api.UserService;
 import com.pharmacy.user.User;
+import javax.inject.Inject;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class RegistrationController {
     private static final String REGISTRATION = "registration";
     @Autowired
     private UserValidator validator;
-    @Autowired
+    @Inject
     private UserService userService;
     private ModelAndView modelAndView;
 
@@ -36,14 +37,14 @@ public class RegistrationController {
         if (result.hasErrors()) {
             if (modelAndView == null) {
                 modelAndView = new ModelAndView("redirect:registration.html", "command", new User());
-            } else {
-                userService.save(user);
             }
             modelAndView.getModel().putAll(result.getModel());
             return modelAndView;
+        } else {
+            userService.save(user); 
         }
 
-        return new ModelAndView("redirect:welcome.hmtl", "command", user);
+        return new ModelAndView("redirect:welcome.html", "command", user);
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)

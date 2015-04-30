@@ -8,6 +8,7 @@
     <head>
         <title><jsp:invoke fragment="title"/></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <script src="<c:url value="/resources/js/jquery-1.11.2.min.js" />" type="text/javascript"></script>
         <!--<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>-->

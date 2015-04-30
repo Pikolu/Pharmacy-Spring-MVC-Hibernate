@@ -107,18 +107,6 @@
                                     <form:errors path="address.postCode" cssClass="error" />
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <span class="required">*</span> 
-                                    Country:
-                                </td>
-                                <td>
-                                    <select name="address.country">
-                                        <option value=""> --- Please Select --- </option>
-                                    </select>
-                                    <form:errors path="address.country" cssClass="error" />
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

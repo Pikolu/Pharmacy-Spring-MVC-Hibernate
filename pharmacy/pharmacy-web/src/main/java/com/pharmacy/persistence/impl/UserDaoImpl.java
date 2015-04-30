@@ -21,15 +21,28 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
     public void save(User user) {
-        Session currentSession = sessionFactory.openSession();
+        Session currentSession = getSessionFactory().openSession();
         Transaction tx2 = currentSession.beginTransaction();
         currentSession.merge(user);
         tx2.commit();
         currentSession.close();
+    }
+
+    /**
+     * @return the sessionFactory
+     */
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    /**
+     * @param sessionFactory the sessionFactory to set
+     */
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 }
