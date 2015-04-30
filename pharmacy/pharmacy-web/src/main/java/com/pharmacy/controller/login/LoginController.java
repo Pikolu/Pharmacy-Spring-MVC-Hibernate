@@ -27,20 +27,20 @@ public class LoginController {
     @Inject
     private UserService userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login(@ModelAttribute("command") @Valid User user, BindingResult result) {
-//        if (result.hasErrors()) {
-////            if (modelAndView == null) {
-////                modelAndView = new ModelAndView("redirect:registration.html", "command", new User());
-////            }
-////            modelAndView.getModel().putAll(result.getModel());
-////            return modelAndView;
-//        } else {
-////            userService.save(user); 
-//        }
-
-        return new ModelAndView("redirect:index.html", "command", user);
-    }
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public ModelAndView login(@ModelAttribute("command") @Valid User user, BindingResult result) {
+////        if (result.hasErrors()) {
+//////            if (modelAndView == null) {
+//////                modelAndView = new ModelAndView("redirect:registration.html", "command", new User());
+//////            }
+//////            modelAndView.getModel().putAll(result.getModel());
+//////            return modelAndView;
+////        } else {
+//////            userService.save(user); 
+////        }
+//
+//        return new ModelAndView("redirect:index.html", "command", user);
+//    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public @ResponseBody
