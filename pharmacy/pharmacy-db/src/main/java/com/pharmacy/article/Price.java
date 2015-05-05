@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
  * @author Alexandr
  */
 @Entity
-public class Price extends BaseUUID {
+public class Price extends BaseUUID implements Comparable<Price> {
 
     private float suggestedRetailPrice;
     private String extraShippingSuffix;
@@ -98,6 +98,15 @@ public class Price extends BaseUUID {
     @Override
     public String toString() {
         return "Price{" + "suggestedRetailPrice=" + suggestedRetailPrice + ", extraShippingSuffix=" + extraShippingSuffix + ", discount=" + discount + ", price=" + price + ", pharmacy=" + pharmacy + '}';
+    }
+
+    @Override
+    public int compareTo(Price o) {
+        int i = 0;
+        if (this.discount > o.getDiscount()) {
+            i = this.compareTo(this);
+        }
+        return i;
     }
 
     

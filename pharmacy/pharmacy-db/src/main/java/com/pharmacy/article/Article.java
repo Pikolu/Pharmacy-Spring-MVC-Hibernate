@@ -14,12 +14,19 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
  * @author Alexandr
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Article.findBestDicount", query = "SELECT a FROM Article a "
+            + "LEFT JOIN a.prices p "
+            + "WHERE p.discount = (SELECT MAX(pr.discount) FROM Article ar LEFT JOIN ar.prices pr)")
+})
 public class Article extends BaseUUID {
 
     private int articelNumber;
