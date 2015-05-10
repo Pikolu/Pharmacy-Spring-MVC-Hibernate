@@ -13,8 +13,8 @@ import java.util.List;
  * @author Alexandr
  */
 public interface ArticleDao {
-    
-    public void save(Article article);
-    
+        
     public List<Article> loadBestDiscountedArticles();
+    
+    public Article save(Article article);
 }

@@ -1,5 +1,6 @@
 package com.pharmacy.users.service;
 
+import com.pharmacy.persistence.api.UserDao;
 import com.pharmacy.service.api.UserService;
 import com.pharmacy.user.UserRole;
 import java.util.ArrayList;
@@ -14,15 +15,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.pharmacy.users.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 
-@Resource
+@Service
 public class MyUserDetailsService implements UserDetailsService, UserService {
 
     @Autowired

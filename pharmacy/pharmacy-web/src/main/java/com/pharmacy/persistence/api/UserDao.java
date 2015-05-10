@@ -12,6 +12,8 @@ import com.pharmacy.user.User;
  * @author Alexandr
  */
 public interface UserDao {
+    
+    public User findUserByEmail(String username);
 
-    public void save(User user);
+    public User save(User user);
 }
