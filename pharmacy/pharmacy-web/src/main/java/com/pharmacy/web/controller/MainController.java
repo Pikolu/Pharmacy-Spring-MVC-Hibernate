@@ -48,12 +48,6 @@ public class MainController {
         return modelAndView;
 
     }
-    
-    public int getBestDiscount(List<Price> prices) {
-        int result = 0;
-        Collections.sort(prices);
-        return result;
-    }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() {

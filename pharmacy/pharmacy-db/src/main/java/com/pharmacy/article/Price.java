@@ -6,6 +6,7 @@
 package com.pharmacy.article;
 
 import com.pharmacy.base.BaseUUID;
+import java.util.Comparator;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -15,7 +16,7 @@ import javax.persistence.OneToOne;
  * @author Alexandr
  */
 @Entity
-public class Price extends BaseUUID implements Comparable<Price> {
+public class Price extends BaseUUID implements Comparator<Price> {
 
     private float suggestedRetailPrice;
     private String extraShippingSuffix;
@@ -101,12 +102,8 @@ public class Price extends BaseUUID implements Comparable<Price> {
     }
 
     @Override
-    public int compareTo(Price o) {
-        int i = 0;
-        if (this.discount > o.getDiscount()) {
-            i = this.compareTo(this);
-        }
-        return i;
+    public int compare(Price o1, Price o2) {
+        return (o1.getDiscount() > o2.getDiscount() ? -1 : ( o1.getDiscount() == o2.getDiscount() ? 0 : 1));
     }
 
     

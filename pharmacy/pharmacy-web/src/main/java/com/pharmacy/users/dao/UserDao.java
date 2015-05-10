@@ -1,9 +1,11 @@
 package com.pharmacy.users.dao;
 
-import com.pharmacy.users.model.User;
+import com.pharmacy.user.User;
 
 public interface UserDao {
 
-	User findByUserName(String username);
+    public User findUserByEmail(String username);
+
+    public void save(User user);
 
 }

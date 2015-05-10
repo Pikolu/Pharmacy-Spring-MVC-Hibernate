@@ -28,7 +28,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Assembly-Full" target="1.7" />
       <module name="pharmacy-db" target="1.7" />
+      <module name="pharmacy-web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

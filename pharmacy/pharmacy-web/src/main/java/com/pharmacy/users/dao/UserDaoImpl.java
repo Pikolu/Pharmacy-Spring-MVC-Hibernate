@@ -1,39 +1,89 @@
 package com.pharmacy.users.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.pharmacy.user.User;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.FlushModeType;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import org.hibernate.SessionFactory;
-
-import com.pharmacy.users.model.User;
-
+@Repository
 public class UserDaoImpl implements UserDao {
 
-	private SessionFactory sessionFactory;
+    @PersistenceContext(unitName = "PharmacyUnit")
+    private EntityManager entityManager;
 
-	@SuppressWarnings("unchecked")
-        @Override
-	public User findByUserName(String username) {
+    private EntityManagerFactory entityManagerFactory;
+    
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public User findUserByEmail(String email) {
+        User user = null;
+//        Session session = getSessionFactory().openSession();
+        TypedQuery<User> query = getEntityManager().createNamedQuery("User.findUserByEmail", User.class);
+        query.setParameter("email", email);
+        try {
+            user = query.getSingleResult();
+        } catch (Exception e) {
+            //do nothing
+        }
 
-		List<User> users = new ArrayList<User>();
+        return user;
+    }
 
-		users = getSessionFactory().getCurrentSession().createQuery("from User where username=?")
-				.setParameter(0, username).list();
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void save(User user) {
+        
+//        Session session = getSessionFactory().openSession();
+//        EntityTransaction tx = getEntityManager().getTransaction();
+//        tx.begin();
+        getEntityManager().merge(user);
+        getEntityManager().flush();
+//        tx.commit();
+//        session.flush();
+    }
 
-		if (users.size() > 0) {
-			return users.get(0);
-		} else {
-			return null;
-		}
+//    public SessionFactory getSessionFactory() {
+//        return sessionFactory;
+//    }
+//
+//    public void setSessionFactory(SessionFactory sessionFactory) {
+//        this.sessionFactory = sessionFactory;
+//    }
 
-	}
+    /**
+     * @return the entityManager
+     */
+    public EntityManager getEntityManager() {
+        if (entityManager == null) {
+            entityManager = entityManagerFactory.createEntityManager();
+        }
+        return entityManager;
+    }
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
+    /**
+     * @param entityManager the entityManager to set
+     */
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+    /**
+     * @return the entityManagerFactory
+     */
+    public EntityManagerFactory getEntityManagerFactory() {
+        return entityManagerFactory;
+    }
 
+    /**
+     * @param entityManagerFactory the entityManagerFactory to set
+     */
+    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+        this.entityManagerFactory = entityManagerFactory;
+    }
 }

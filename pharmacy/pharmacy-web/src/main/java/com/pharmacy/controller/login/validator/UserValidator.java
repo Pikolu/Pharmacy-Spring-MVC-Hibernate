@@ -39,16 +39,6 @@ public class UserValidator implements Validator {
         } else if (!isValidEmailAddress(user.getEmail())) {
             errors.rejectValue("email", "invalid.user.email");
         }
-//        Address address = user.getAddress();
-//        if (address.getAddress() == null || address.getAddress().isEmpty()) {
-//            errors.rejectValue("address.address", "labelRegistrationNoAddress");
-//        }
-//        if (address.getCity() == null || address.getCity().isEmpty()) {
-//            errors.rejectValue("address.city", "labelRegistrationNoCity");
-//        }
-//        if (address.getPostCode() == null || address.getPostCode().isEmpty()) {
-//            errors.rejectValue("address.postCode", "labelRegistrationNoPostCode");
-//        }
         if (user.getPassword() == null || user.getPassword().isEmpty()) {
             errors.rejectValue("password", "empty.user.password");
         } else if (user.getPasswordConfirm() == null || user.getPasswordConfirm().isEmpty()) {
