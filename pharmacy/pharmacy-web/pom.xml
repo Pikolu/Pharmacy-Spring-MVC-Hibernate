@@ -27,63 +27,34 @@
 
     <properties>
         <jdk.version>1.7</jdk.version>
-        <!-- Spring -->
-        <org.springframework.version>4.0.5.RELEASE</org.springframework.version>
-        <org.springframework.security.version>3.2.4.RELEASE</org.springframework.security.version>
-        <servletapi.version>2.5</servletapi.version>
-
-        <!-- persistence -->
-        <hibernate.version>4.3.5.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.30</mysql-connector-java.version>
-
-        <!-- logging -->
-        <org.slf4j.version>1.7.6</org.slf4j.version>
-        <logback.version>1.1.1</logback.version>
-
-        <!-- various -->
-        <hibernate-validator.version>5.1.1.Final</hibernate-validator.version>
-
-        <!-- util -->
-        <guava.version>17.0</guava.version>
-        <commons-lang3.version>3.3.2</commons-lang3.version>
-
-        <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.11</junit.version>
-        <mockito.version>1.9.5</mockito.version>
-
-        <httpcore.version>4.3.2</httpcore.version>
-        <httpclient.version>4.3.3</httpclient.version>
-
-        <rest-assured.version>2.3.1</rest-assured.version>
-
-        <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
-        <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.8</cargo-maven2-plugin.version>
-        <!-- <maven-war-plugin.version>2.4</maven-war-plugin.version> -->
+        <spring.version>3.2.8.RELEASE</spring.version>
+        <spring.security.version>3.2.3.RELEASE</spring.security.version>
         <jstl.version>1.2</jstl.version>
-
+        <mysql.connector.version>5.1.30</mysql.connector.version>
+        <logback.version>1.1.2</logback.version>
+        <slf4j.version>1.7.6</slf4j.version>
+        <hibernate.version>4.2.11.Final</hibernate.version>
+        <dbcp.version>1.4</dbcp.version>
+        <servletapi.version>2.5</servletapi.version>
     </properties>
 
     <dependencies>
-<!--
-        database pool 
+
+        <!--database pool--> 
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>${dbcp.version}</version>
         </dependency>
 
-        Hibernate ORM 
+        <!--Hibernate ORM--> 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
 
-         Spring 3 dependencies 
+        <!-- Spring 3 dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -96,28 +67,28 @@
             </exclusions>
         </dependency>
 
-         Spring MVC 
+        <!-- Spring MVC -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-         Spring + aspects 
+        <!-- Spring + aspects -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-         ORM integration, e.g Hibernate 
+        <!-- ORM integration, e.g Hibernate -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-         Spring Security 
+        <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
@@ -130,28 +101,28 @@
             <version>${spring.security.version}</version>
         </dependency>
 
-         Spring Security JSP Taglib 
+        <!-- Spring Security JSP Taglib -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
 
-         jstl for jsp page 
+        <!-- jstl for jsp page -->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
 
-         MySql Driver 
+        <!-- MySql Driver -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
         </dependency>
 
-         logging, slf4j 
+        <!-- logging, slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -196,155 +167,6 @@
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.1-901.jdbc4</version>
-        </dependency>-->
-        
-        
-        <!-- Spring -->
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>${servletapi.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <!--Spring Security--> 
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>4.0.0.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>4.0.0.RELEASE</version>
-        </dependency>
-
-        <!--Spring Security JSP Taglib--> 
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
-            <version>4.0.0.RELEASE</version>
-        </dependency>
-
-        <!--jstl for jsp page--> 
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- persistence -->
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.18.1-GA</version>
-        </dependency>
-                
-        <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.1-901.jdbc4</version>
-        </dependency>
-
-        <!-- validation -->
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-
-        <!-- utils -->
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-
-        <!-- test scoped -->
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>pharmacy-db</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

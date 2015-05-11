@@ -12,20 +12,17 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="sessionFactory" value="dataSource" />
+        </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
-      </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-security.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-database.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml</file>
-        </fileset>
       </configuration>
     </facet>
   </component>
@@ -77,10 +74,10 @@
     <orderEntry type="module" module-name="pharmacy-db" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:4.3.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging-annotations:1.2.0.Beta1" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Final" level="project" />
-    <orderEntry type="library" name="Maven: unknown.binary:hibernate-jpa-2.1-api-1.0.0.Final:SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: postgresql:postgresql:9.1-901.jdbc4" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.web:javax.servlet.jsp.jstl:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet.jsp.jstl:jstl-api:1.2" level="project" />

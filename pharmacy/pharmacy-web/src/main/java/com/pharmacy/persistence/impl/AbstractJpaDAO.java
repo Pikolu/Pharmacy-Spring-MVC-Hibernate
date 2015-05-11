@@ -1,19 +1,21 @@
 package com.pharmacy.persistence.impl;
 
-import java.io.Serializable;
+import com.pharmacy.base.BaseUUID;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
+import org.hibernate.Transaction;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-public abstract class AbstractJpaDAO<T extends Serializable> {
+public abstract class AbstractJpaDAO<T extends BaseUUID> {
 
     private Class<T> clazz;
 
-    @PersistenceContext
-    private EntityManager entityManager;
-    
-    AbstractJpaDAO(final Class<T> clazzToSet)  {
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    AbstractJpaDAO(final Class<T> clazzToSet) {
         this.clazz = clazzToSet;
     }
 
@@ -22,23 +24,38 @@ public abstract class AbstractJpaDAO<T extends Serializable> {
     }
 
     public T findOne(final long id) {
-        return getEntityManager().find(clazz, id);
+        Session session = sessionFactory.openSession();
+        return (T) session.load(clazz, id);
     }
-    
+
     public List<T> findAll() {
-        return getEntityManager().createQuery("from " + clazz.getName()).getResultList();
+        Session session = sessionFactory.openSession();
+        return session.createQuery("from " + clazz.getName()).list();
     }
 
     public void create(final T entity) {
-        getEntityManager().persist(entity);
+        Session session = sessionFactory.openSession();
+        Transaction tx2 = session.beginTransaction();
+        session.persist(entity);
+        tx2.commit();
+        session.close();
     }
 
     public T save(final T entity) {
-        return getEntityManager().merge(entity);
+        Session session = sessionFactory.openSession();
+        Transaction tx2 = session.beginTransaction();
+        T result = (T) session.merge(entity);
+        tx2.commit();
+        session.close();
+        return result;
     }
 
     public void delete(final T entity) {
-        getEntityManager().remove(entity);
+        Session session = sessionFactory.openSession();
+        Transaction tx2 = session.beginTransaction();
+        session.delete(entity);
+        tx2.commit();
+        session.close();
     }
 
     public void deleteById(final long entityId) {
@@ -46,18 +63,11 @@ public abstract class AbstractJpaDAO<T extends Serializable> {
         delete(entity);
     }
 
-    /**
-     * @return the entityManager
-     */
-    public EntityManager getEntityManager() {
-        return entityManager;
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 
-    /**
-     * @param entityManager the entityManager to set
-     */
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
-
 }

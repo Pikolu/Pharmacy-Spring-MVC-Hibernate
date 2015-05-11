@@ -9,6 +9,8 @@ import com.pharmacy.article.Article;
 import com.pharmacy.persistence.api.ArticleDao;
 import java.util.List;
 import javax.persistence.TypedQuery;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,8 +29,9 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Article> loadBestDiscountedArticles() {
-        TypedQuery<Article> query = getEntityManager().createNamedQuery("Article.findBestDicount", Article.class);
-        List<Article> articles = query.getResultList();
+        Session session = getSessionFactory().openSession();
+        Query query = session.getNamedQuery("Article.findBestDicount");
+        List<Article> articles = query.list();
         return articles;
 
     }
