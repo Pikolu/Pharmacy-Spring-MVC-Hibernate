@@ -17,5 +17,6 @@
     <mapping class="com.pharmacy.user.User" />
     <mapping class="com.pharmacy.wishlist.Wishlist" />
     <mapping class="com.pharmacy.user.UserRole" />
+    <mapping class="com.pharmacy.user.Account" />
   </session-factory>
 </hibernate-configuration>

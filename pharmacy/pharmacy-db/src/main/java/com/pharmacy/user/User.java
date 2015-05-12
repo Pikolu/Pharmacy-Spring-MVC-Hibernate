@@ -6,8 +6,6 @@ package com.pharmacy.user;
 
 import com.pharmacy.base.BaseUUID;
 import com.pharmacy.wishlist.Wishlist;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.*;
 
@@ -15,28 +13,22 @@ import javax.persistence.*;
  * @author Alexandr
  */
 @Entity
-@Table(name = "employee")
-@NamedQueries({
-    @NamedQuery(name = "User.findUserByEmail", query = "SELECT u FROM User u WHERE u.email = :email")})
+@Table(name = "enduser")
 public class User extends BaseUUID {
 
     @Column(length = 32)
     private String firstName;
     @Column(length = 32)
     private String lastName;
-    private String email;
     @Column(length = 32)
     private String phone;
-    private String password;
-    @Transient
-    private String passwordConfirm;
     private boolean newslatter = false;
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
     @OneToOne(cascade = CascadeType.ALL)
     private Wishlist wishlist;
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<UserRole> userRole = new HashSet<>(0);
+    @OneToOne(cascade = CascadeType.ALL)
+    private Account account;
 
     /**
      * @return the firstName
@@ -67,20 +59,6 @@ public class User extends BaseUUID {
     }
 
     /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
      * @return the phone
      */
     public String getPhone() {
@@ -92,37 +70,6 @@ public class User extends BaseUUID {
      */
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    /**
-     * @return the password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * @param password the password to set
-     */
-    public void setPassword(String password) {
-        this.password = password;
-//        if (password != null && !password.isEmpty()) {
-//            this.password = DigestUtils.sha512Hex(password);
-//        }
-    }
-
-    /**
-     * @return the passwordConfirm
-     */
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    /**
-     * @param passwordConfirm the passwordConfirm to set
-     */
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
     }
 
     /**
@@ -168,21 +115,19 @@ public class User extends BaseUUID {
     }
 
     /**
-     * @return the userRole
+     * @return the account
      */
-    public Set<UserRole> getUserRole() {
-        return userRole;
+    public Account getAccount() {
+        if (account == null) {
+            account = new Account();
+        }
+        return account;
     }
 
     /**
-     * @param userRole the userRole to set
+     * @param account the account to set
      */
-    public void setUserRole(Set<UserRole> userRole) {
-        this.userRole = userRole;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phone=" + phone + ", password=" + password + ", passwordConfirm=" + passwordConfirm + ", newslatter=" + newslatter + ", address=" + address + ", wishlist=" + wishlist + ", userRole=" + userRole + '}';
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

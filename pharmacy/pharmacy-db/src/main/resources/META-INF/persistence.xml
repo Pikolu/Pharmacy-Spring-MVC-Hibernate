@@ -13,6 +13,7 @@
         <class>com.pharmacy.user.User</class>
         <class>com.pharmacy.wishlist.Wishlist</class>
         <class>com.pharmacy.user.UserRole</class>
+        <class>com.pharmacy.user.com.pharmacy.user.Account</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="eclipselink.persistence-context.flush-mode" value="commit" />

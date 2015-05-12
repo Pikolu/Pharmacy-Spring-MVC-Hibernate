@@ -4,10 +4,12 @@
  */
 package com.pharmacy.controller.login.validator;
 
-import com.pharmacy.user.Address;
+import com.pharmacy.user.Account;
 import com.pharmacy.user.User;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -18,6 +20,8 @@ import org.springframework.validation.Validator;
  */
 @Service
 public class UserValidator implements Validator {
+    
+    Logger LOG = LoggerFactory.getLogger(UserValidator.class);
 
     private static final String EMAIL_PATTERN
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -25,7 +29,7 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        LOG.trace("Enter validate: target={}, errors={}", target, errors);
         User user = (User) target;
 
         if (user.getFirstName() == null || user.getFirstName().isEmpty()) {
@@ -34,19 +38,20 @@ public class UserValidator implements Validator {
         if (user.getLastName() == null || user.getLastName().isEmpty()) {
             errors.rejectValue("lastName", "empty.user.lastname");
         }
-        if (user.getEmail() == null || user.getEmail().isEmpty()) {
-            errors.rejectValue("email", "empty.user.email");
-        } else if (!isValidEmailAddress(user.getEmail())) {
-            errors.rejectValue("email", "invalid.user.email");
+        Account account = user.getAccount();
+        if (account.getEmail() == null || account.getEmail().isEmpty()) {
+            errors.rejectValue("account.email", "empty.user.email");
+        } else if (!isValidEmailAddress(account.getEmail())) {
+            errors.rejectValue("account.email", "invalid.user.email");
         }
-        if (user.getPassword() == null || user.getPassword().isEmpty()) {
-            errors.rejectValue("password", "empty.user.password");
-        } else if (user.getPasswordConfirm() == null || user.getPasswordConfirm().isEmpty()) {
-            errors.rejectValue("passwordConfirm", "empty.user.passwordRepeat");
-        } else if (!(user.getPassword().equals(user.getPasswordConfirm()))) {
-            errors.rejectValue("password", "notmatch.user.password");
+        if (account.getPassword() == null || account.getPassword().isEmpty()) {
+            errors.rejectValue("account.password", "empty.user.password");
+        } else if (account.getPasswordConfirm() == null || account.getPasswordConfirm().isEmpty()) {
+            errors.rejectValue("account.passwordConfirm", "empty.user.passwordRepeat");
+        } else if (!(account.getPassword().equals(account.getPasswordConfirm()))) {
+            errors.rejectValue("account.password", "notmatch.user.password");
         }
-//        logger.debug("exit");
+        LOG.debug("exit");
     }
 
     private boolean isValidEmailAddress(String email) {

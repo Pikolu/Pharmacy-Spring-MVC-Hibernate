@@ -14,11 +14,12 @@ public class UserDaoImpl extends AbstractJpaDAO<User> implements UserDao {
     }
 
     @Override
-    public User findUserByEmail(String username) {
+    public User findUserByEmail(String email) {
         User user = null;
         try {
             Session session = getSessionFactory().openSession();
             Query query = session.getNamedQuery("User.findUserByEmail");
+            query.setParameter("email", email);
             user = (User) query.uniqueResult();
 //            TypedQuery<User> query = getEntityManager().createNamedQuery("User.findUserByEmail", User.class);
 //            query.getSingleResult();

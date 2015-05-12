@@ -23,13 +23,10 @@ body {
     background: url("../images/body-bg.jpg") repeat scroll 0 0 transparent;
     color: #8C8C8C;
     font-family: "Times New Roman",Times,serif;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 18px;
     margin: 0;
     padding: 0;
-}
-td, th, input, textarea, select, a {
-    font-size: 12px;
 }
 .mt {
     margin-top: 5px;
@@ -853,7 +850,7 @@ h2 {
     font-weight: bold;
 }
 .error {
-    color: #FF0000;
+    color: #E52234;
     display: block;
 }
 .help {
@@ -2781,6 +2778,7 @@ ul {
 .login-content .left h2 {
     color: #E52234;
     margin-bottom: 3px;
+    font-size: 20px;
 }
 .login-content .right h2 {
     margin-bottom: 3px;

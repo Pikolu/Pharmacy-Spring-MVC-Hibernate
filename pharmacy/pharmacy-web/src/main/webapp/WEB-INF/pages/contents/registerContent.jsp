@@ -16,14 +16,14 @@
             .
             </p>
             <c:url value="/registration.html" var="registration"></c:url>
-            <form:form action="${registration}" method="post" id="register">
-                <h2>Your Personal Details</h2>
+                <form:form action="${registration}" method="post" id="register">
+                <h2>Ihre persönliche Daten</h2>
                 <div class="content">
                     <table class="form">
                         <tbody><tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    First Name:
+                                    Vorname:
                                 </td>
                                 <td>
                                     <form:input cssClass="q1" path="firstName"/>
@@ -33,7 +33,7 @@
                             <tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    Last Name:
+                                    Nachname:
                                 </td>
                                 <td>
                                     <form:input cssClass="q1" path="lastName"/>
@@ -46,111 +46,43 @@
                                     E-Mail:
                                 </td>
                                 <td>
-                                    <input class="q1" name="email" value="" type="text">
-                                    <form:errors path="email" cssClass="error" />
+                                    <input class="q1" name="account.email" value="" type="text">
+                                    <form:errors path="account.email" cssClass="error" />
                                 </td>
                             </tr>
-<!--                            <tr>
-                                <td>Telephone:</td>
-                                <td>
-                                    <input class="q1" name="phone" value="" type="text">
-                                </td>
-                            </tr>-->
                         </tbody>
                     </table>
                 </div>
-                <!--<h2>Your Address</h2>-->
-<!--                <div class="content">
-                    <table class="form">
-                        <tbody>
-                            <tr>
-                                <td>Company:</td>
-                                <td>
-                                    <form:input cssClass="q1" path="address.company"/>
-                                </td>
-                            </tr>
-                            <tr style="display: none;">
-                                <td>Business Type:</td>
-                                <td> 
-                                    <input name="customer_group_id" value="1" id="customer_group_id1" checked="checked" type="radio">
-                                    <label for="customer_group_id1">Default</label>
-                                    <br>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="required">*</span> 
-                                    Address:
-                                </td>
-                                <td>
-                                    <input class="q1" name="address.address" value="" type="text" />
-                                    <form:errors path="address.address" cssClass="error" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="required">*</span> 
-                                    City:
-                                </td>
-                                <td>
-                                    <input class="q1" name="address.city" value="" type="text">
-                                    <form:errors path="address.city" cssClass="error" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span id="postcode-required" class="required">*</span> 
-                                    Post Code:
-                                </td>
-                                <td>
-                                    <input class="q1" name="address.postCode" value="" type="text">
-                                    <form:errors path="address.postCode" cssClass="error" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>-->
-                <h2>Your Password</h2>
+                
+                <h2>Ihr Passwort</h2>
                 <div class="content">
                     <table class="form">
                         <tbody>
                             <tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    Password:
+                                    Passwort:
                                 </td>
                                 <td>
-                                    <input class="q1" name="password" value="" type="password">
+                                    <input class="q1" name="account.password" value="" type="password">
+                                    <form:errors path="account.password" cssClass="error" />
+
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    Password Confirm:
+                                    Passwort wiederholen
                                 </td>
                                 <td>
-                                    <input class="q1" name="passwordConfirm" value="" type="password">
+                                    <input class="q1" name="account.passwordConfirm" value="" type="password">
+                                    <form:errors path="account.passwordConfirm" cssClass="error" />
+
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-<!--                <h2>Newsletter</h2>
-                <div class="content">
-                    <table class="form">
-                        <tbody>
-                            <tr>
-                                <td>Subscribe:</td>
-                                <td> 
-                                    <input name="newsletter" value="1" type="radio">
-                                    Yes 
-                                    <input name="newsletter" value="0" checked="checked" type="radio">
-                                    No 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>-->
                 <div class="buttons">
                     <div class="right">
                         Mit meiner Anmeldung akzeptiere ich die 

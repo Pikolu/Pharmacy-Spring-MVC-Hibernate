@@ -50,11 +50,11 @@
         </property>
     </bean>
 
-    <bean id="userDao" class="com.pharmacy.persistence.impl.UserDaoImpl">
+    <bean id="accountDao" class="com.pharmacy.persistence.impl.AccountDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="myUserDetailsService" class="com.pharmacy.users.service.MyUserDetailsService">
-        <property name="userDao" ref="userDao"/>
+        <property name="accountDao" ref="accountDao"/>
     </bean>
 </beans>

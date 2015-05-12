@@ -5,7 +5,7 @@
 
 <t:genericpage>
     <jsp:attribute name="title">
-        Medikamente Preisvergleich - Medikamente günstig für alle | medizin-finder.de
+        Willkommen bei medizin-finder.de: Einloggen
     </jsp:attribute>
     <jsp:attribute name="header">
         <%@include file="includes/header.jsp" %>

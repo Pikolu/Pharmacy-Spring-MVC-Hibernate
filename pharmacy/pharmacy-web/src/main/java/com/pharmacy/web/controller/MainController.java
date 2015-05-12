@@ -81,11 +81,11 @@ public class MainController {
 
         String error;
         if (exception instanceof BadCredentialsException) {
-            error = "Invalid username and password!";
+            error = "Ihre E-Mail oder Ihr Passwort ist falsch.";
         } else if (exception instanceof LockedException) {
             error = exception.getMessage();
         } else {
-            error = "Invalid username and password!";
+            error = "Ihre E-Mail oder Ihr Passwort ist falsch.";
         }
 
         return error;
