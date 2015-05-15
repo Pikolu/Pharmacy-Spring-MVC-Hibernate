@@ -6,6 +6,7 @@
 package com.pharmacy.service.impl;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.exception.ServiceException;
 import com.pharmacy.persistence.api.ArticleDao;
 import com.pharmacy.service.api.ArticleService;
 import java.util.List;
@@ -26,13 +27,13 @@ public class ArticleServiceImpl implements ArticleService {
     
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void save(Article article) {
+    public void save(Article article) throws ServiceException {
         articleDao.save(article);
     }
     
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public List<Article> loadBestDiscountedArticles() {
+    public List<Article> loadBestDiscountedArticles() throws ServiceException{
         List<Article> articles = articleDao.loadBestDiscountedArticles();
         return articles;
     }

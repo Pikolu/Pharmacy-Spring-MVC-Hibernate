@@ -6,6 +6,7 @@
 package com.pharmacy.persistence.api;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.exception.PersistenceException;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface ArticleDao {
         
-    public List<Article> loadBestDiscountedArticles();
+    public List<Article> loadBestDiscountedArticles() throws PersistenceException;
     
-    public Article save(Article article);
+    public Article save(Article article) throws PersistenceException;
 }

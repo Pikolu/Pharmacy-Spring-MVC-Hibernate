@@ -27,7 +27,7 @@
                         <div class="content">
                             <p>I am a returning customer</p>
                             <b class="padd-form">E-Mail Adresse:</b>
-                            <input class="q1 margen-bottom" name="email" value="" type="text">
+                            <input class="q1 margen-bottom" name="username" value="" type="text">
                             <b class="padd-form">Password:</b>
                             <input class="q1 margen-bottom" name="password" value="" type="password">
                             <br>

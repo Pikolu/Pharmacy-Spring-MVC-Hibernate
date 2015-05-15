@@ -6,6 +6,7 @@
 package com.pharmacy.persistence.impl;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.persistence.api.ArticleDao;
 import java.util.List;
 import javax.persistence.TypedQuery;
@@ -28,7 +29,7 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public List<Article> loadBestDiscountedArticles() {
+    public List<Article> loadBestDiscountedArticles() throws PersistenceException {
         Session session = getSessionFactory().openSession();
         Query query = session.getNamedQuery("Article.findBestDicount");
         List<Article> articles = query.list();

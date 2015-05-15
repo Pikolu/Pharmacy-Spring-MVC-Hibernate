@@ -7,7 +7,10 @@
 
     <!-- enable use-expressions -->
     <http auto-config="true" use-expressions="true">
+        
+        <intercept-url pattern="/**" requires-channel="https" />    
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/produkte**" />
 
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
@@ -19,8 +22,10 @@
             password-parameter="password" />
         <logout logout-success-url="/login?logout" />
         <!-- enable csrf protection -->
-        <csrf />
+        <!--<csrf />-->
     </http>
+
+    
 
     <authentication-manager>
         

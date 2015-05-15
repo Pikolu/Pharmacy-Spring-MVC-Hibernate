@@ -15,8 +15,13 @@
  */
 package com.pharmacy.persistence.impl;
 
+import com.pharmacy.exception.PersistenceException;
+import com.pharmacy.exception.type.ExceptionType;
 import com.pharmacy.persistence.api.AccountDao;
 import com.pharmacy.user.Account;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -31,8 +36,18 @@ public class AccountDaoImpl extends AbstractJpaDAO<Account> implements AccountDa
     }
 
     @Override
-    public Account findAccountByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Account findAccountByEmail(String email) throws PersistenceException {
+        Account account = null;
+        Session session = getSessionFactory().openSession();
+        Query query = session.getNamedQuery("Account.findAccountByEmail");
+        try {
+            query.setParameter("email", email);
+            account = (Account) query.uniqueResult();
+        } catch (HibernateException e) {
+            throw new PersistenceException(ExceptionType.LOGIN_0001, e);
+            
+        }
+        return account;
     }
-    
+
 }

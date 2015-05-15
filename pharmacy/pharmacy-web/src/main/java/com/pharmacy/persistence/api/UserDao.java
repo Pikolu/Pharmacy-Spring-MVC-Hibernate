@@ -5,6 +5,7 @@
  */
 package com.pharmacy.persistence.api;
 
+import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.user.User;
 
 /**
@@ -13,7 +14,7 @@ import com.pharmacy.user.User;
  */
 public interface UserDao {
     
-    public User findUserByEmail(String username);
+    public User findUserByEmail(String username) throws PersistenceException;
 
-    public User save(User user);
+    public User save(User user) throws PersistenceException;
 }

@@ -14,7 +14,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
-import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *

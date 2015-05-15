@@ -15,6 +15,7 @@
  */
 package com.pharmacy.service.api;
 
+import com.pharmacy.exception.ServiceException;
 import com.pharmacy.user.Account;
 
 /**
@@ -23,5 +24,5 @@ import com.pharmacy.user.Account;
  */
 public interface AccountService {
 
-    public Account findAccountByEmail(String email);
+    public Account findAccountByEmail(String email) throws ServiceException;
 }

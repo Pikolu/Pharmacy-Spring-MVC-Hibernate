@@ -6,6 +6,7 @@ import com.pharmacy.article.Price;
 import com.pharmacy.article.helper.ArticleHelper;
 import com.pharmacy.evaluation.Evaluation;
 import com.pharmacy.evaluation.helper.EvaluationHelper;
+import com.pharmacy.exception.ServiceException;
 import com.pharmacy.payment.PaymentType;
 import com.pharmacy.service.api.ArticleService;
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -29,22 +32,28 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
+
     @Inject
     private ArticleService articleService;
 
     @RequestMapping(value = {"/", "/index", "/welcome**"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
+        ModelAndView modelAndView = null;
+        try {
+            modelAndView = new ModelAndView("index");
+            List<Article> articles = articleService.loadBestDiscountedArticles();
+            modelAndView.addObject("articles", articles);
+            List<Pharmacy> pharmacies = getSomePharmacies();
+            modelAndView.addObject("pharmacies", pharmacies);
+            modelAndView.addObject("evaluationHelper", new EvaluationHelper());
+            modelAndView.addObject("articleHelper", new ArticleHelper());
+            modelAndView.addObject("evaluations", getSomeEvaluations());
 
-        ModelAndView modelAndView = new ModelAndView("index");
-        List<Article> articles = articleService.loadBestDiscountedArticles();
-        modelAndView.addObject("articles", articles);
-        List<Pharmacy> pharmacies = getSomePharmacies();
-        modelAndView.addObject("pharmacies", pharmacies);
-        modelAndView.addObject("evaluationHelper", new EvaluationHelper());
-        modelAndView.addObject("articleHelper", new ArticleHelper());
-        modelAndView.addObject("evaluations", getSomeEvaluations());
+        } catch (ServiceException ex) {
+            ex.writeLog(LOG);
+        }
         return modelAndView;
-
     }
 
     @RequestMapping(value = "/admin**", method = RequestMethod.GET)

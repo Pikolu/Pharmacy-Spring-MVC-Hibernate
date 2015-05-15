@@ -10,5 +10,6 @@
     <module>Assembly-Full</module>
     <module>pharmacy-web</module>
     <module>pharmacy-db</module>
+    <module>pharmacy-core</module>
   </modules>
 </project>

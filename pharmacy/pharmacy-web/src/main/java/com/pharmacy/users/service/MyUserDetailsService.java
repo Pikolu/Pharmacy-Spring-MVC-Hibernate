@@ -1,26 +1,26 @@
 package com.pharmacy.users.service;
 
+import com.pharmacy.exception.PersistenceException;
+import com.pharmacy.exception.ServiceException;
 import com.pharmacy.persistence.api.AccountDao;
 import com.pharmacy.persistence.api.UserDao;
 import com.pharmacy.service.api.UserService;
 import com.pharmacy.user.Account;
 import com.pharmacy.user.UserRole;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -37,6 +37,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class MyUserDetailsService implements UserDetailsService, UserService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(MyUserDetailsService.class);
+
     @Autowired
     private AccountDao accountDao;
     @Autowired
@@ -45,11 +47,16 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
-        Account account = getAccountDao().findAccountByEmail(email);
-        List<GrantedAuthority> authorities = buildUserAuthority(account.getUserRole());
-
-        return buildUserForAuthentication(account, authorities);
-
+        User user = null;
+        try {
+            Account account = getAccountDao().findAccountByEmail(email);
+            List<GrantedAuthority> authorities = buildUserAuthority(account.getUserRole());
+            user = buildUserForAuthentication(account, authorities);
+        } catch (PersistenceException ex) {
+            ex.writeLog(null);
+            throw new UsernameNotFoundException(ex.getExceptionType().getResourceKey(), ex);
+        }
+        return user;
     }
 
     private User buildUserForAuthentication(Account account, List<GrantedAuthority> authorities) {
@@ -72,17 +79,22 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void save(com.pharmacy.user.User user) {
-        Account account = user.getAccount();
-        Set<UserRole> userRoles = new HashSet<>();
-        UserRole userRole = new UserRole();
-        userRole.setRoleName("ROLE_USER");
-        userRole.setUser(user);
-        userRole.setUserRoleId(1);
-        userRoles.add(userRole);
-        account.setUserRole(userRoles);
-        userDao.save(user);
-        sendEmail(user.getAccount().getEmail());
+    public void save(com.pharmacy.user.User user) throws ServiceException {
+        try {
+            Account account = user.getAccount();
+            Set<UserRole> userRoles = new HashSet<>();
+            UserRole userRole = new UserRole();
+            userRole.setRoleName("ROLE_USER");
+            userRole.setUser(user);
+            userRole.setUserRoleId(1);
+            userRoles.add(userRole);
+            account.setUserRole(userRoles);
+            userDao.save(user);
+            sendEmail(user.getAccount().getEmail());
+        } catch (PersistenceException ex) {
+            ex.writeLog(LOG);
+            throw ex;
+        }
     }
 
     private void sendEmail(String email) {

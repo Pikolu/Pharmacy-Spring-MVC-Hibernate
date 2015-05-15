@@ -1,5 +1,6 @@
 package com.pharmacy.persistence.impl;
 
+import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.persistence.api.UserDao;
 import com.pharmacy.user.User;
 import org.hibernate.Query;
@@ -14,7 +15,7 @@ public class UserDaoImpl extends AbstractJpaDAO<User> implements UserDao {
     }
 
     @Override
-    public User findUserByEmail(String email) {
+    public User findUserByEmail(String email) throws PersistenceException {
         User user = null;
         try {
             Session session = getSessionFactory().openSession();

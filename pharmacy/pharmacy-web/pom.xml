@@ -32,7 +32,6 @@
         <jstl.version>1.2</jstl.version>
         <mysql.connector.version>5.1.30</mysql.connector.version>
         <logback.version>1.1.2</logback.version>
-        <slf4j.version>1.7.6</slf4j.version>
         <hibernate.version>4.2.11.Final</hibernate.version>
         <dbcp.version>1.4</dbcp.version>
         <servletapi.version>2.5</servletapi.version>
@@ -122,25 +121,6 @@
             <version>${mysql.connector.version}</version>
         </dependency>
 
-        <!-- logging, slf4j -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -169,10 +149,34 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>pharmacy-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
+        </dependency>
+        
+        <!-- logging, slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.3</version>
         </dependency>
     </dependencies>
 

@@ -5,8 +5,11 @@
 package com.pharmacy.controller.registration;
 
 import com.pharmacy.controller.login.validator.UserValidator;
+import com.pharmacy.exception.ServiceException;
 import com.pharmacy.service.api.UserService;
 import com.pharmacy.user.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class RegistrationController {
+    
+    private static final Logger LOG = LoggerFactory.getLogger(RegistrationController.class);
 
     private static final String REGISTRATION = "registration";
     @Autowired
@@ -31,17 +36,20 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView registration(@ModelAttribute("command") User user, BindingResult result) {
-        validator.validate(user, result);
-        if (result.hasErrors()) {
-            if (modelAndView == null) {
-                modelAndView = new ModelAndView("redirect:registration.html", "command", new User());
+        try {
+            validator.validate(user, result);
+            if (result.hasErrors()) {
+                if (modelAndView == null) {
+                    modelAndView = new ModelAndView("redirect:registration.html", "command", new User());
+                }
+                modelAndView.getModel().putAll(result.getModel());
+                return modelAndView;
+            } else {
+                userService.save(user);
             }
-            modelAndView.getModel().putAll(result.getModel());
-            return modelAndView;
-        } else {
-            userService.save(user); 
+        } catch (ServiceException ex) {
+            ex.writeLog(LOG);
         }
-
         return new ModelAndView("redirect:welcome.html", "command", user);
     }
 

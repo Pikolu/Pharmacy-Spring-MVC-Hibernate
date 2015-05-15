@@ -6,6 +6,7 @@
 package com.pharmacy.service.api;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.exception.ServiceException;
 import java.util.List;
 
 /**
@@ -14,8 +15,8 @@ import java.util.List;
  */
 public interface ArticleService {
     
-    public void save(Article article);
+    public void save(Article article) throws ServiceException;
     
-    public List<Article> loadBestDiscountedArticles();
+    public List<Article> loadBestDiscountedArticles() throws ServiceException;
     
 }

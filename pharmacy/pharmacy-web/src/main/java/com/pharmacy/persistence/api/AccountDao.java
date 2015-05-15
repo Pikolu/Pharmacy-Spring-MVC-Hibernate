@@ -15,6 +15,7 @@
  */
 package com.pharmacy.persistence.api;
 
+import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.user.Account;
 
 /**
@@ -23,5 +24,5 @@ import com.pharmacy.user.Account;
  */
 public interface AccountDao {
     
-    public Account findAccountByEmail(String email);
+    public Account findAccountByEmail(String email) throws PersistenceException;
 }

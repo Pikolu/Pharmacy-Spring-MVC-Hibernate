@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pharmacy.service.api;
-
-import com.pharmacy.exception.ServiceException;
-import com.pharmacy.user.User;
+package com.pharmacy.loglevel;
 
 /**
  *
  * @author Alexandr
  */
-public interface UserService {
+public enum LogLevel {
 
-    public void save(User user) throws ServiceException;
-    
+    FATAL,
+    ERROR,
+    WARN,
+    INFO,
+    DEBUG,
+    TRACE;
 }
