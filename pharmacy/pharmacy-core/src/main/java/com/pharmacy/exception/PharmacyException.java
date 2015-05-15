@@ -74,7 +74,7 @@ public class PharmacyException extends Exception {
     
     @Override
     public String toString() {
-        return "ASCBaseException{" + "exceptionType=" + exceptionType + ", description=" + exceptionType.getDescription() + "details=" + details + '}';
+        return "PharmacyException{" + "exceptionType=" + exceptionType + ", description=" + exceptionType.getDescription() + "details=" + details + '}';
     }
     
     @Override
@@ -87,7 +87,7 @@ public class PharmacyException extends Exception {
             message.append("ExceptionType: ").append(this.exceptionType).append(" | ");
             message.append("Description: ").append(this.exceptionType.getDescription()).append(" | ");
             message.append("Message: ").append(super.getCause().getMessage()).append(" | ");
-            LOG.debug("add cause message to ascbaseexption");
+            LOG.debug("add cause message to PharmacyException");
         } else {
             LOG.debug("no cause or cause is empty");
         }
