@@ -852,6 +852,7 @@ h2 {
 .error {
     color: #E52234;
     display: block;
+    font-size: 12px;
 }
 .help {
     color: #999999;

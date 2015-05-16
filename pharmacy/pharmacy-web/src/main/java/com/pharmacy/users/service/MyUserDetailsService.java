@@ -148,4 +148,16 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
         this.accountDao = accountDao;
     }
 
+    @Override
+    public Account findAccoutByEmail(String email) throws ServiceException {
+        Account account;
+        try {
+            account = accountDao.findAccountByEmail(email);
+        } catch (PersistenceException e) {
+            e.writeLog(LOG);
+            throw e;
+        }
+        return account;
+    }
+
 }

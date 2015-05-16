@@ -6,6 +6,7 @@
 package com.pharmacy.service.api;
 
 import com.pharmacy.exception.ServiceException;
+import com.pharmacy.user.Account;
 import com.pharmacy.user.User;
 
 /**
@@ -15,5 +16,7 @@ import com.pharmacy.user.User;
 public interface UserService {
 
     public void save(User user) throws ServiceException;
+
+    public Account findAccoutByEmail(String email) throws ServiceException;
     
 }

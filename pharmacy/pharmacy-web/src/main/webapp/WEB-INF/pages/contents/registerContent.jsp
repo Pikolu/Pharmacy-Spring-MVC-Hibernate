@@ -4,26 +4,30 @@
     Author     : Alexandr
 --%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div id="container">
     <div id="content">
-        <h1>Jetzt bei medizin-finder.de anmelden</h1>
+        <h1>
+            <s:message code="label.loginNow" />
+        </h1>
         <div class="box-container">
             <p>
-                Sie haben sich schon angemeldet? 
-            <c:url value="/login.html" var="login"></c:url>
-            <a href="${login}">Einloggen</a>
-            .
+                <s:message code="label.alreadyRegistration" /> 
+                <c:url value="/login.html" var="login"></c:url>
+                <a href="${login}">
+                    <s:message code="label.alreadyRegistrationLogin" />.
+                </a>
             </p>
             <c:url value="/registration.html" var="registration"></c:url>
                 <form:form action="${registration}" method="post" id="register">
-                <h2>Ihre persönliche Daten</h2>
+                <h2><s:message code="label.yourPersonData" /></h2>
                 <div class="content">
                     <table class="form">
                         <tbody><tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    Vorname:
+                                    <s:message code="label.firstname" />:
                                 </td>
                                 <td>
                                     <form:input cssClass="q1" path="firstName"/>
@@ -33,7 +37,7 @@
                             <tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    Nachname:
+                                    <s:message code="label.lastname" />:
                                 </td>
                                 <td>
                                     <form:input cssClass="q1" path="lastName"/>
@@ -43,7 +47,7 @@
                             <tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    E-Mail:
+                                    <s:message code="label.email" />:
                                 </td>
                                 <td>
                                     <input class="q1" name="account.email" value="" type="text">
@@ -53,15 +57,15 @@
                         </tbody>
                     </table>
                 </div>
-                
-                <h2>Ihr Passwort</h2>
+
+                <h2> <s:message code="label.yourPassword" /></h2>
                 <div class="content">
                     <table class="form">
                         <tbody>
                             <tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    Passwort:
+                                     <s:message code="label.password" />:
                                 </td>
                                 <td>
                                     <input class="q1" name="account.password" value="" type="password">
@@ -72,7 +76,7 @@
                             <tr>
                                 <td>
                                     <span class="required">*</span> 
-                                    Passwort wiederholen
+                                    <s:message code="label.passwordRepeat" />:
                                 </td>
                                 <td>
                                     <input class="q1" name="account.passwordConfirm" value="" type="password">
@@ -85,13 +89,14 @@
                 </div>
                 <div class="buttons">
                     <div class="right">
-                        Mit meiner Anmeldung akzeptiere ich die 
-                        <a class="colorbox cboxElement" href="#" alt="Privacy Policy">
-                            <b>medizin-finder.de AGB</b>
+                        <s:message code="label.acceptGeneralTerms" />
+                        <a class="colorbox cboxElement" href="#" alt="General Terms">
+                            <b><s:message code="label.MFGeneralTerms" /></b>
                         </a> 
-                        <input name="agree" value="1" type="checkbox">
+                        <input name="acceptedGeneralTerms" value="1" type="checkbox">
+                        <form:errors path="acceptedGeneralTerms" cssClass="error" />
                         <a onclick="$('#register').submit();" class="button">
-                            <span>Continue</span>
+                            <span><s:message code="label.next" /></span>
                         </a>
                     </div>
                 </div>

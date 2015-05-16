@@ -29,6 +29,7 @@ public class User extends BaseUUID {
     private Wishlist wishlist;
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
+    private boolean acceptedGeneralTerms;
 
     /**
      * @return the firstName
@@ -129,5 +130,19 @@ public class User extends BaseUUID {
      */
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    /**
+     * @return the acceptedGeneralTerms
+     */
+    public boolean isAcceptedGeneralTerms() {
+        return acceptedGeneralTerms;
+    }
+
+    /**
+     * @param acceptedGeneralTerms the acceptedGeneralTerms to set
+     */
+    public void setAcceptedGeneralTerms(boolean acceptedGeneralTerms) {
+        this.acceptedGeneralTerms = acceptedGeneralTerms;
     }
 }
