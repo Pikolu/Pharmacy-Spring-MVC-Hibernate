@@ -56,7 +56,7 @@ public class Account extends BaseUUID {
      * @param password the password to set
      */
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password;//DigestUtils.sha256Hex(password);
     }
 
     /**
@@ -70,7 +70,7 @@ public class Account extends BaseUUID {
      * @param passwordConfirm the passwordConfirm to set
      */
     public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
+        this.passwordConfirm = passwordConfirm;//DigestUtils.sha256Hex(passwordConfirm);;
     }
 
     /**

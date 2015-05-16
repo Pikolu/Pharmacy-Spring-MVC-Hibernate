@@ -1,8 +1,10 @@
 package com.pharmacy.persistence.impl;
 
 import com.pharmacy.exception.PersistenceException;
+import com.pharmacy.exception.type.ExceptionType;
 import com.pharmacy.persistence.api.UserDao;
 import com.pharmacy.user.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -22,10 +24,8 @@ public class UserDaoImpl extends AbstractJpaDAO<User> implements UserDao {
             Query query = session.getNamedQuery("User.findUserByEmail");
             query.setParameter("email", email);
             user = (User) query.uniqueResult();
-//            TypedQuery<User> query = getEntityManager().createNamedQuery("User.findUserByEmail", User.class);
-//            query.getSingleResult();
-        } catch (Exception e) {
-            //do nothing
+        } catch (HibernateException e) {
+            throw new PersistenceException(ExceptionType.LOGIN_0005, e);
         }
         return user;
     }

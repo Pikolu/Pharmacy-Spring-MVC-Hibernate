@@ -619,7 +619,7 @@ h2 {
     border: 1px solid #000;
     position: relative;
     float: left;
-    margin: 40px 140px auto;
+    margin: -50px 100px auto;
 }
 .search-bg {
     -moz-border-bottom-colors: none;

@@ -6,15 +6,26 @@ package com.pharmacy.user;
 
 import com.pharmacy.base.BaseUUID;
 import com.pharmacy.wishlist.Wishlist;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * @author Alexandr
  */
 @Entity
 @Table(name = "enduser")
-public class User extends BaseUUID {
+@NamedQueries({
+    @NamedQuery(name = "User.findUserByEmail", query = "SELECT u FROM User u LEFT JOIN u.account a WHERE a.email = :email")
+})
+public class User extends BaseUUID implements UserDetails {
 
     @Column(length = 32)
     private String firstName;
@@ -144,5 +155,46 @@ public class User extends BaseUUID {
      */
     public void setAcceptedGeneralTerms(boolean acceptedGeneralTerms) {
         this.acceptedGeneralTerms = acceptedGeneralTerms;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> setAuths = new HashSet<>();
+        // Build user's authorities
+        for (UserRole userRole : this.getAccount().getUserRole()) {
+            setAuths.add(new SimpleGrantedAuthority(userRole.getRoleName()));
+        }
+        List<GrantedAuthority> result = new ArrayList<>(setAuths);
+        return result;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.getAccount().getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.getAccount().getEmail();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

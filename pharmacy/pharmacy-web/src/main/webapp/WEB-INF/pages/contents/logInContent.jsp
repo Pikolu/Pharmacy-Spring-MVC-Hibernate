@@ -22,10 +22,13 @@
                     </div>
                 </div>
                 <div class="right">
-                    <h2>Returning Customer</h2>
+                    <!--<h2>Returning Customer</h2>-->
                     <form id="login" name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
                         <div class="content">
-                            <p>I am a returning customer</p>
+                            <!--<p>I am a returning customer</p>-->
+                            <c:if test="${not empty error}">
+                                <div class="error">${error}</div>
+                            </c:if>
                             <b class="padd-form">E-Mail Adresse:</b>
                             <input class="q1 margen-bottom" name="username" value="" type="text">
                             <b class="padd-form">Password:</b>

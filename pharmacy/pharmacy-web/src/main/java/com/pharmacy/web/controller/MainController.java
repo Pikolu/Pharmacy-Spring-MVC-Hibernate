@@ -6,7 +6,9 @@ import com.pharmacy.article.Price;
 import com.pharmacy.article.helper.ArticleHelper;
 import com.pharmacy.evaluation.Evaluation;
 import com.pharmacy.evaluation.helper.EvaluationHelper;
+import com.pharmacy.exception.ControllerException;
 import com.pharmacy.exception.ServiceException;
+import com.pharmacy.exception.type.ExceptionType;
 import com.pharmacy.payment.PaymentType;
 import com.pharmacy.service.api.ArticleService;
 import java.util.ArrayList;
@@ -18,8 +20,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -73,31 +73,31 @@ public class MainController {
             @RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
         ModelAndView model = new ModelAndView();
         if (error != null) {
-            model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
+            try {
+                getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION");
+            } catch (ControllerException ex) {
+                model.addObject("error", ex.getExceptionType().getResourceKey());
+                ex.writeLog(LOG);
+            }
         }
         if (logout != null) {
+            model.setViewName("index");
             model.addObject("msg", "You've been logged out successfully.");
+        } else {
+            model.setViewName("login");
         }
-        model.setViewName("login");
         return model;
 
     }
 
     // customize the error message
-    private String getErrorMessage(HttpServletRequest request, String key) {
-
+    private void getErrorMessage(HttpServletRequest request, String key) throws ControllerException {
         Exception exception = (Exception) request.getSession().getAttribute(key);
-
-        String error;
-        if (exception instanceof BadCredentialsException) {
-            error = "Ihre E-Mail oder Ihr Passwort ist falsch.";
-        } else if (exception instanceof LockedException) {
-            error = exception.getMessage();
+        if (exception != null) {
+            throw new ControllerException(ExceptionType.LOGIN_0002, exception);
         } else {
-            error = "Ihre E-Mail oder Ihr Passwort ist falsch.";
+            throw new ControllerException(ExceptionType.LOGIN_0003);
         }
-
-        return error;
     }
 
     // for 403 access denied page

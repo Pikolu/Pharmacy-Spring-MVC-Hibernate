@@ -1,4 +1,3 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="row-1bg">
@@ -22,10 +21,14 @@
                                 }
                             </script>
 
+
+
+
                             <c:if test="${pageContext.request.userPrincipal.name != null}">
                                 <c:url value="/account" var="account"></c:url>
-
-                                    <a href="${account}">${pageContext.request.userPrincipal.name}</a>
+                                <!--name="user" value=""-->
+                                <c:set var="user" value="${pageContext.request.userPrincipal.principal}"/>
+                                <a href="${account}">${user.firstName}, ${user.lastName}</a>
                                 | <a href="javascript:formSubmit()">Ausloggen</a>
                             </c:if>
                         </div>
@@ -49,6 +52,24 @@
             <div class="header-container">
                 <div class="right-header">
                     <div class="header-top1">
+                        <div class="" id="cart"><div class="heading">
+                                <b>Einkaufszettel:</b>
+                                <a>	
+                                    <span class="sc-button"></span>
+
+
+                                    <span id="cart-total">0 Artikel(n) - <strong>$0.00</strong></span>
+
+                                    <span class="clear"></span>
+                                </a>
+                            </div>
+                            <div class="content">
+
+                                <div class="empty">Your shopping cart is empty!</div>
+                            </div>
+                                
+                        </div>
+
                         <div class="clear"></div>
                     </div>
                 </div>
@@ -59,7 +80,7 @@
                     </a>
                 </div>
                 <c:url value="/produkte.html" var="produkte"></c:url>
-                <form:form action="${produkte}" method="GET" id="searchForm">
+                    <form:form action="${produkte}" method="GET" id="searchForm">
                     <div id="search">
                         <div class="button-search"></div>
                         <span class="search-bg">

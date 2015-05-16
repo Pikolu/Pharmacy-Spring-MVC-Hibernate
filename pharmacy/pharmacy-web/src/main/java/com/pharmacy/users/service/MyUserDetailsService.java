@@ -2,14 +2,14 @@ package com.pharmacy.users.service;
 
 import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.exception.ServiceException;
+import com.pharmacy.exception.type.ExceptionType;
 import com.pharmacy.persistence.api.AccountDao;
 import com.pharmacy.persistence.api.UserDao;
 import com.pharmacy.service.api.UserService;
 import com.pharmacy.user.Account;
+import com.pharmacy.user.User;
 import com.pharmacy.user.UserRole;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import javax.mail.Message;
@@ -22,9 +22,6 @@ import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -49,32 +46,18 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
         User user = null;
         try {
-            Account account = getAccountDao().findAccountByEmail(email);
-            List<GrantedAuthority> authorities = buildUserAuthority(account.getUserRole());
-            user = buildUserForAuthentication(account, authorities);
+            user = getUserDao().findUserByEmail(email);
+            if (user == null) {
+                throw new ServiceException(ExceptionType.LOGIN_0004);
+            }
         } catch (PersistenceException ex) {
-            ex.writeLog(null);
+            ex.writeLog(LOG);
+            throw new UsernameNotFoundException(ex.getExceptionType().getResourceKey(), ex);
+        } catch (ServiceException ex) {
+            ex.writeLog(LOG);
             throw new UsernameNotFoundException(ex.getExceptionType().getResourceKey(), ex);
         }
         return user;
-    }
-
-    private User buildUserForAuthentication(Account account, List<GrantedAuthority> authorities) {
-        return new User(account.getEmail(), account.getPassword(), true, true, true, true, authorities);
-    }
-
-    private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {
-
-        Set<GrantedAuthority> setAuths = new HashSet<>();
-
-        // Build user's authorities
-        for (UserRole userRole : userRoles) {
-            setAuths.add(new SimpleGrantedAuthority(userRole.getRoleName()));
-        }
-
-        List<GrantedAuthority> Result = new ArrayList<>(setAuths);
-
-        return Result;
     }
 
     @Override
@@ -89,8 +72,8 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
             userRole.setUserRoleId(1);
             userRoles.add(userRole);
             account.setUserRole(userRoles);
-            userDao.save(user);
-            sendEmail(user.getAccount().getEmail());
+            getUserDao().save(user);
+//            sendEmail(user.getAccount().getEmail());
         } catch (PersistenceException ex) {
             ex.writeLog(LOG);
             throw ex;
@@ -158,6 +141,20 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
             throw e;
         }
         return account;
+    }
+
+    /**
+     * @return the userDao
+     */
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    /**
+     * @param userDao the userDao to set
+     */
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
 }
