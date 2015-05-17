@@ -50,29 +50,29 @@
         </div>
         <div id="header">
             <div class="header-container">
-                <div class="right-header">
-                    <div class="header-top1">
-                        <div class="" id="cart"><div class="heading">
-                                <b>Einkaufszettel:</b>
-                                <a>	
-                                    <span class="sc-button"></span>
-
-
-                                    <span id="cart-total">0 Artikel(n) - <strong>$0.00</strong></span>
-
-                                    <span class="clear"></span>
-                                </a>
-                            </div>
-                            <div class="content">
-
-                                <div class="empty">Your shopping cart is empty!</div>
-                            </div>
-                                
-                        </div>
-
-                        <div class="clear"></div>
-                    </div>
-                </div>
+                <!--                <div class="right-header">
+                                    <div class="header-top1">
+                                        <div class="" id="cart"><div class="heading">
+                                                <b>Einkaufszettel:</b>
+                                                <a>	
+                                                    <span class="sc-button"></span>
+                
+                
+                                                    <span id="cart-total">0 Artikel(n) - <strong>$0.00</strong></span>
+                
+                                                    <span class="clear"></span>
+                                                </a>
+                                            </div>
+                                            <div class="content">
+                
+                                                <div class="empty">Your shopping cart is empty!</div>
+                                            </div>
+                                                
+                                        </div>
+                
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>-->
                 <div id="logo">
                     <c:url value="/index.html" var="index"></c:url>
                     <a href="${index}">
@@ -88,6 +88,18 @@
                         </span>
                     </div>
                 </form:form>
+                <div class="" id="cart"><div class="heading">
+                        <b>Einkaufszettel:</b>
+                        <a>	
+                            <span class="sc-button"></span>
+                            <span id="cart-total">0 Artikel(n) - <strong>$0.00</strong></span>
+                            <span class="clear"></span>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <div class="empty">Your shopping cart is empty!</div>
+                    </div>
+                </div>
                 <div class="clear"></div>
             </div>
             <script type="text/javascript">

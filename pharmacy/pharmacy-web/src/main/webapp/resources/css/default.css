@@ -322,7 +322,8 @@ h2 {
 }
 #header #cart .heading {
     float: right;
-    padding-bottom: 17px;
+    padding-bottom: 13px;
+    width: 125px;
 }
 .cart-position {
     float: right;
@@ -335,18 +336,20 @@ h2 {
 }
 #cart {
     background: url("../images/cart-bg.png") no-repeat scroll 0 0 transparent;
-    float: right;
-    padding-left: 49px;
+    padding-left: 56px;
     position: relative;
+    margin-top: 40px;
+    border: 1px solid black;
+    float: left;
 }
 #header #cart .heading .sc-button {
     background: url("../images/shop-cart-button.png") no-repeat scroll 0 0 transparent;
-    display: inline-block;
-    float: right;
     height: 4px;
-    margin: 9px 0 0 37px;
-    padding: 0;
     width: 7px;
+    float: right;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px 5px 0px 0px;
 }
 #header #cart .heading span.cart-icon {
     background: url("../images/cart-icon.png") no-repeat scroll 0 0 transparent;
@@ -619,7 +622,7 @@ h2 {
     border: 1px solid #000;
     position: relative;
     float: left;
-    margin: -50px 100px auto;
+    margin: 40px 2px 0 40px;
 }
 .search-bg {
     -moz-border-bottom-colors: none;
@@ -655,7 +658,7 @@ h2 {
     width: 46px;
 }
 #header #search .input {
-/*    background: url("../images/trans.png") repeat scroll 0 0 transparent;*/
+    /*    background: url("../images/trans.png") repeat scroll 0 0 transparent;*/
     border: medium none;
     color: #898989;
     font-family: Arial,Helvetica,sans-serif;
@@ -4074,8 +4077,8 @@ input#sub_category, input#description {
 }
 
 .ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
 }
