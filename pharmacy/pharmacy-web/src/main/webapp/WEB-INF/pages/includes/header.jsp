@@ -8,22 +8,15 @@
                     <c:when test="${pageContext.request.userPrincipal.name != null}">
                         <div id="welcome">
                             Hallo!
-
                             <c:url value="/j_spring_security_logout" var="logoutUrl" />
-
                             <form action="${logoutUrl}" method="post" id="logoutForm">
-                                <input type="hidden" name="${_csrf.parameterName}"
-                                       value="${_csrf.token}" />
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>
                             <script>
                                 function formSubmit() {
                                     document.getElementById("logoutForm").submit();
                                 }
                             </script>
-
-
-
-
                             <c:if test="${pageContext.request.userPrincipal.name != null}">
                                 <c:url value="/account" var="account"></c:url>
                                 <!--name="user" value=""-->
@@ -50,29 +43,6 @@
         </div>
         <div id="header">
             <div class="header-container">
-                <!--                <div class="right-header">
-                                    <div class="header-top1">
-                                        <div class="" id="cart"><div class="heading">
-                                                <b>Einkaufszettel:</b>
-                                                <a>	
-                                                    <span class="sc-button"></span>
-                
-                
-                                                    <span id="cart-total">0 Artikel(n) - <strong>$0.00</strong></span>
-                
-                                                    <span class="clear"></span>
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                
-                                                <div class="empty">Your shopping cart is empty!</div>
-                                            </div>
-                                                
-                                        </div>
-                
-                                        <div class="clear"></div>
-                                    </div>
-                                </div>-->
                 <div id="logo">
                     <c:url value="/index.html" var="index"></c:url>
                     <a href="${index}">
@@ -88,24 +58,39 @@
                         </span>
                     </div>
                 </form:form>
-                <div class="" id="cart"><div class="heading">
-                        <b>Einkaufszettel:</b>
-                        <a>	
-                            <span class="sc-button"></span>
-                            <span id="cart-total">0 Artikel(n) - <strong>$0.00</strong></span>
-                            <span class="clear"></span>
-                        </a>
+                <!--<div class="cart-inner">-->
+                    <div class="" id="cart">
+                        <div class="heading">
+                            <b>Einkaufszettel:</b>
+                            <a>	
+                                <span class="sc-button" onclick="openCart()"></span>
+                                <span id="cart-total" onclick="openCart()">0 Artikel(n) - <strong>€ 0.00</strong></span>
+                                <span class="clear"></span>
+                            </a>
+                        </div>
+                        <div class="content">
+                            <div class="empty">Your shopping cart is empty!</div>
+                        </div>
                     </div>
-                    <div class="content">
-                        <div class="empty">Your shopping cart is empty!</div>
-                    </div>
-                </div>
+                <!--</div>-->
                 <div class="clear"></div>
             </div>
             <script type="text/javascript">
                 $(".button-search").click(function () {
                     jQuery('#searchForm').submit();
                 });
+
+                function openCart() {
+                    var cart = jQuery('#cart');
+                    if (cart.hasClass('active')) {
+                        cart.removeClass('active');
+                    } else {
+                        cart.addClass('active');
+                        jQuery('#cart').mouseleave(function () {
+                            jQuery('#cart').removeClass('active');
+                        });
+                    }
+                }
             </script>
         </div>
     </div>

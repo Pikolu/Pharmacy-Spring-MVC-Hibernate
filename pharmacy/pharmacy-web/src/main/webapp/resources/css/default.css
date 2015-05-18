@@ -338,9 +338,8 @@ h2 {
     background: url("../images/cart-bg.png") no-repeat scroll 0 0 transparent;
     padding-left: 56px;
     position: relative;
-    margin-top: 40px;
-    border: 1px solid black;
-    float: left;
+    margin-top: 45px;
+    float: right;
 }
 #header #cart .heading .sc-button {
     background: url("../images/shop-cart-button.png") no-repeat scroll 0 0 transparent;
@@ -391,7 +390,7 @@ h2 {
     padding: 8px 0;
     position: absolute;
     right: -12px;
-    top: 55px;
+    top: 50px;
     transition: all 0.5s ease-in-out 0s;
     width: 220px;
     z-index: 99999;
