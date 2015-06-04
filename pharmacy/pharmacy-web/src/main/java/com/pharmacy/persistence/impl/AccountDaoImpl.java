@@ -38,15 +38,15 @@ public class AccountDaoImpl extends AbstractJpaDAO<Account> implements AccountDa
     @Override
     public Account findAccountByEmail(String email) throws PersistenceException {
         Account account = null;
-        Session session = getSessionFactory().openSession();
-        Query query = session.getNamedQuery("Account.findAccountByEmail");
-        try {
-            query.setParameter("email", email);
-            account = (Account) query.uniqueResult();
-        } catch (HibernateException e) {
-            throw new PersistenceException(ExceptionType.LOGIN_0001, e);
-            
-        }
+//        Session session = getSessionFactory().openSession();
+//        Query query = session.getNamedQuery("Account.findAccountByEmail");
+//        try {
+//            query.setParameter("email", email);
+//            account = (Account) query.uniqueResult();
+//        } catch (HibernateException e) {
+//            throw new PersistenceException(ExceptionType.LOGIN_0001, e);
+//            
+//        }
         return account;
     }
 

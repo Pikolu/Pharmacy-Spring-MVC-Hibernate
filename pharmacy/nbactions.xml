@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+    <action>
+        <actionName>CUSTOM-fast build with DB</actionName>
+        <displayName>fast build with DB</displayName>
+        <goals>
+            <goal>clean</goal>
+            <goal>install</goal>
+            <goal>-T</goal>
+            <goal>4</goal>
+        </goals>
+        <properties>
+            <skipTests>true</skipTests>
+        </properties>
+        <activatedProfiles>
+            <activatedProfile>create-dbrs</activatedProfile>
+            <activatedProfile>full-postgre</activatedProfile>
+        </activatedProfiles>
+    </action>
+</actions>

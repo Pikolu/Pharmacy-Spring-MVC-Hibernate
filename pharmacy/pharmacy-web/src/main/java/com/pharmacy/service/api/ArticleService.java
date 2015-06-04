@@ -18,5 +18,7 @@ public interface ArticleService {
     public void save(Article article) throws ServiceException;
     
     public List<Article> loadBestDiscountedArticles() throws ServiceException;
+
+    public List<Article> findArticlesByParameter(String parameter) throws ServiceException;
     
 }

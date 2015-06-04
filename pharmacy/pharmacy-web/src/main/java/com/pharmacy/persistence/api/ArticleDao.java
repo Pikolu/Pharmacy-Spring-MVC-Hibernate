@@ -18,4 +18,6 @@ public interface ArticleDao {
     public List<Article> loadBestDiscountedArticles() throws PersistenceException;
     
     public Article save(Article article) throws PersistenceException;
+    
+    public List<Article> findArticlesByParameter(String parameter) throws PersistenceException;
 }

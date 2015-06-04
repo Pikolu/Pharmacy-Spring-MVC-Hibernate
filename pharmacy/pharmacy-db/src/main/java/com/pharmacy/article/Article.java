@@ -25,14 +25,19 @@ import javax.persistence.OneToMany;
 @NamedQueries({
     @NamedQuery(name = "Article.findBestDicount", query = "SELECT a FROM Article a "
             + "LEFT JOIN a.prices p "
-            + "WHERE p.discount = (SELECT MAX(pr.discount) FROM Article ar LEFT JOIN ar.prices pr)"),
-    @NamedQuery(name = "Article.findArticleByName", query = "SELECT a FROM Article a WHERE a.title = :title")
+            + "ORDER BY p.discount DESC"),
+    @NamedQuery(name = "Article.findArticleByName", query = "SELECT a FROM Article a WHERE a.title = :title"),
+    @NamedQuery(name = "Article.findArticleByArticleNumbe", query = "SELECT a FROM Article a WHERE a.articelNumber = :articelNumber"),
+    @NamedQuery(name = "Article.findArticleByParameter", query = "SELECT a FROM Article a "
+            + "WHERE a.title LIKE :parameter "
+            + "AND a.descriptionShort LIKE :parameter "
+            + "AND a.descriptionLong LIKE :parameter"),
 })
 public class Article extends BaseUUID {
 
+    @Column(unique = true)
     private int articelNumber;
     private String categoryName;
-    @Column(unique = true)
     private String title;
     private String descriptionShort;
     @Column(length = 50000)

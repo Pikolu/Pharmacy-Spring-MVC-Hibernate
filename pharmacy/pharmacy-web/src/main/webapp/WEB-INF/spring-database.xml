@@ -11,21 +11,21 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!-- Настраивает управление транзакциями с помощью аннотации @Transactional -->
+<!--     Настраивает управление транзакциями с помощью аннотации @Transactional 
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <!-- Менеджер транзакций -->
+     Менеджер транзакций 
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <!-- Настройки бина dataSource будем хранить в отдельном файле -->
+     Настройки бина dataSource будем хранить в отдельном файле 
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="/WEB-INF/jdbc.properties" />
 
-    <!-- Непосредственно бин dataSource -->
+     Непосредственно бин dataSource 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           p:driverClassName="${jdbc.driverClassName}"
@@ -33,7 +33,7 @@
           p:username="${jdbc.user}"
           p:password="${jdbc.pass}" />
 
-    <!-- Настройки фабрики сессий Хибернейта -->
+     Настройки фабрики сессий Хибернейта 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -45,16 +45,39 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.connection.charSet">UTF-8</prop>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 
     <bean id="userDao" class="com.pharmacy.persistence.impl.UserDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
     </bean>
 
     <bean id="myUserDetailsService" class="com.pharmacy.users.service.MyUserDetailsService">
         <property name="userDao" ref="userDao"/>
     </bean>
+    
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.user}"
+          p:password="${jdbc.pass}" />
+    
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="packagesToScan" value="com.pharmacy" />
+        <!--<property name="persistenceUnitName" value="PharmacyUnit" />-->
+        <property name="dataSource" ref="dataSource" />
+        <property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml"/>
+        <property name="persistenceProviderClass" value="org.hibernate.ejb.HibernatePersistence" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    
+    <bean id="propertyConfigurer"
+              class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+              p:location="/WEB-INF/jdbc.properties" />
 </beans>

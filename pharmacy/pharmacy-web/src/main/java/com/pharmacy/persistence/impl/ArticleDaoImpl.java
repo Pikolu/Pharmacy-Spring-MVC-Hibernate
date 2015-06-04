@@ -9,7 +9,6 @@ import com.pharmacy.article.Article;
 import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.persistence.api.ArticleDao;
 import java.util.List;
-import javax.persistence.TypedQuery;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -30,11 +29,21 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Article> loadBestDiscountedArticles() throws PersistenceException {
-        Session session = getSessionFactory().openSession();
-        Query query = session.getNamedQuery("Article.findBestDicount");
-        List<Article> articles = query.list();
-        return articles;
+//        Session session = getSessionFactory().openSession();
+//        Query query = session.getNamedQuery("Article.findBestDicount");
+//        query.setMaxResults(10);
+//        List<Article> articles = query.list();
+        return null;
+    }
 
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<Article> findArticlesByParameter(String parameter) throws PersistenceException {
+//        Session session = getSessionFactory().openSession();
+//        Query query = session.getNamedQuery("Article.findArticleByParameter");
+//        query.setParameter("parameter", "%" + parameter + "%");
+//        List<Article> articles = query.list();
+        return null;
     }
 
 }

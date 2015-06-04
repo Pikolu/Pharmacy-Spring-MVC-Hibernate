@@ -19,14 +19,14 @@ public class UserDaoImpl extends AbstractJpaDAO<User> implements UserDao {
     @Override
     public User findUserByEmail(String email) throws PersistenceException {
         User user = null;
-        try {
-            Session session = getSessionFactory().openSession();
-            Query query = session.getNamedQuery("User.findUserByEmail");
-            query.setParameter("email", email);
-            user = (User) query.uniqueResult();
-        } catch (HibernateException e) {
-            throw new PersistenceException(ExceptionType.LOGIN_0005, e);
-        }
+//        try {
+//            Session session = getSessionFactory().openSession();
+//            Query query = session.getNamedQuery("User.findUserByEmail");
+//            query.setParameter("email", email);
+//            user = (User) query.uniqueResult();
+//        } catch (HibernateException e) {
+//            throw new PersistenceException(ExceptionType.LOGIN_0005, e);
+//        }
         return user;
     }
 }

@@ -37,4 +37,12 @@ public class ArticleServiceImpl implements ArticleService {
         List<Article> articles = articleDao.loadBestDiscountedArticles();
         return articles;
     }
+
+    @Override
+    public List<Article> findArticlesByParameter(String parameter) throws ServiceException {
+        List<Article> articles = articleDao.findArticlesByParameter(parameter);
+        return articles;
+    }
+    
+    
 }

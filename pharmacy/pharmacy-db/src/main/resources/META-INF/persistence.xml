@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-    <!--  <persistence-unit name="PharmacyUnit" transaction-type="JTA">
+  <!--  <persistence-unit name="PharmacyUnit" transaction-type="JTA">
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
       <jta-data-source>jdbc/pharmacy</jta-data-source>
       <class>com.pharmacy.article.Article</class>
@@ -20,29 +20,28 @@
         <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
       </properties>
     </persistence-unit>-->
-    <persistence-unit name="PharmacyUnit" transaction-type="JTA">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>jdbc/pharmacy</jta-data-source>
-        <class>com.pharmacy.article.Article</class>
-        <class>com.pharmacy.article.Pharmacy</class>
-        <class>com.pharmacy.article.Price</class>
-        <class>com.pharmacy.category.Category</class>
-        <class>com.pharmacy.csv.CSVFormat</class>
-        <class>com.pharmacy.evaluation.Evaluation</class>
-        <class>com.pharmacy.user.Address</class>
-        <class>com.pharmacy.user.User</class>
-        <class>com.pharmacy.wishlist.Wishlist</class>
-        <class>com.pharmacy.user.UserRole</class>
-        <class>com.pharmacy.user.com.pharmacy.user.Account</class>
-        <properties>
-            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />
-            <property name="hibernate.ejb.cfgfile" value="hibernate.cfg.xml"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/pharmacy"/>
-            <property name="javax.persistence.jdbc.user" value="postgres"/>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.password" value="Admin123#"/>
-            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-        </properties>
-    </persistence-unit>
+  <persistence-unit name="PharmacyUnit" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>jdbc/pharmacy</jta-data-source>
+    <class>com.pharmacy.article.Article</class>
+    <class>com.pharmacy.article.Pharmacy</class>
+    <class>com.pharmacy.article.Price</class>
+    <class>com.pharmacy.category.Category</class>
+    <class>com.pharmacy.csv.CSVFormat</class>
+    <class>com.pharmacy.evaluation.Evaluation</class>
+    <class>com.pharmacy.user.Address</class>
+    <class>com.pharmacy.user.User</class>
+    <class>com.pharmacy.wishlist.Wishlist</class>
+    <class>com.pharmacy.user.UserRole</class>
+    <class>com.pharmacy.user.com.pharmacy.user.Account</class>
+    <properties>
+      <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
+      <property name="hibernate.ejb.cfgfile" value="hibernate.cfg.xml"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/pharmacy"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="Admin123#"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+    </properties>
+  </persistence-unit>
 </persistence>
