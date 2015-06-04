@@ -35,7 +35,8 @@
                             <input class="q1 margen-bottom" name="password" value="" type="password">
                             <br>
                             <div>
-                                <a class="link-login" href="#">Passwort vergessen?</a>
+                                <c:url value="/forgotpassword.html" var="forgotpassword"></c:url>
+                                <a class="link-login" href="${forgotpassword}">Passwort vergessen?</a>
                             </div>
                             <a onclick="$('#login').submit();" class="button"><span>Login</span></a>
 
@@ -47,12 +48,12 @@
             </div>
         </div>
     </div>
-    <script data-rocketoptimized="true" type="text/rocketscript"><!--
+<!--    <script data-rocketoptimized="true" type="text/rocketscript">
         $('#login input').keydown(function(e) {
         if (e.keyCode == 13) {
         $('#login').submit();
         }
         });
-        //--></script>
+        //</script>-->
 
 </div>

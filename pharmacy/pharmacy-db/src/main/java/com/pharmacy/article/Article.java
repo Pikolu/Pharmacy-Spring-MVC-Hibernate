@@ -25,7 +25,8 @@ import javax.persistence.OneToMany;
 @NamedQueries({
     @NamedQuery(name = "Article.findBestDicount", query = "SELECT a FROM Article a "
             + "LEFT JOIN a.prices p "
-            + "WHERE p.discount = (SELECT MAX(pr.discount) FROM Article ar LEFT JOIN ar.prices pr)")
+            + "WHERE p.discount = (SELECT MAX(pr.discount) FROM Article ar LEFT JOIN ar.prices pr)"),
+    @NamedQuery(name = "Article.findArticleByName", query = "SELECT a FROM Article a WHERE a.title = :title")
 })
 public class Article extends BaseUUID {
 

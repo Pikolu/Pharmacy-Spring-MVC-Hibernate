@@ -12,6 +12,7 @@ import com.pharmacy.payment.PaymentType;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -44,7 +45,7 @@ public class Pharmacy extends BaseUUID {
     private List<CSVFormat> csvFormat;
     private String logoURL;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="price_id")
+    @JoinColumn(name = "price_id")
     private Price price;
 
     /**
@@ -152,5 +153,5 @@ public class Pharmacy extends BaseUUID {
     public String toString() {
         return "Pharmacy{" + "name=" + name + ", evaluations=" + evaluations + ", paymentTypes=" + paymentTypes + ", shipping=" + shipping + ", csvFormat=" + csvFormat + ", logoURL=" + logoURL + ", price=" + price + '}';
     }
-    
+
 }

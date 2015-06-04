@@ -1,4 +1,5 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="row-1bg">
     <div class="row-1">
@@ -7,7 +8,7 @@
                 <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.name != null}">
                         <div id="welcome">
-                            Hallo!
+                            <s:message code="label.header.hello" /> 
                             <c:url value="/j_spring_security_logout" var="logoutUrl" />
                             <form action="${logoutUrl}" method="post" id="logoutForm">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -22,18 +23,24 @@
                                 <!--name="user" value=""-->
                                 <c:set var="user" value="${pageContext.request.userPrincipal.principal}"/>
                                 <a href="${account}">${user.firstName}, ${user.lastName}</a>
-                                | <a href="javascript:formSubmit()">Ausloggen</a>
+                                | <a href="javascript:formSubmit()">
+                                    <s:message code="label.header.logout" />
+                                </a>
                             </c:if>
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div id="welcome">
-                            Hallo!
+                            <s:message code="label.header.hello" />
                             <c:url value="/login" var="login"></c:url>
-                            <a href="${login}">Einloggen</a>
-                            oder
+                            <a href="${login}">
+                                <s:message code="label.header.login" />
+                            </a>
+                                <s:message code="label.header.or" />
                             <c:url value="/registration.html" var="registration"></c:url>
-                            <a href="${registration}">Registrieren!</a>
+                            <a href="${registration}">
+                                <s:message code="label.header.registration" />
+                            </a>
                         </div>
                     </c:otherwise>
                 </c:choose> 

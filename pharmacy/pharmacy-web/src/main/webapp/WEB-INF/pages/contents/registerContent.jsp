@@ -90,7 +90,9 @@
                 <div class="buttons">
                     <div class="right">
                         <s:message code="label.acceptGeneralTerms" />
-                        <a class="colorbox cboxElement" href="#" alt="General Terms">
+                        <c:url value="/help/policies/user-agreement.html" var="agreement"></c:url>
+                        <!--/help/policies/user-agreement-->
+                        <a class="colorbox cboxElement" href="${agreement}" alt="General Terms">
                             <b><s:message code="label.MFGeneralTerms" /></b>
                         </a> 
                         <input name="acceptedGeneralTerms" value="1" type="checkbox">
