@@ -16,12 +16,11 @@
 package com.pharmacy.persistence.impl;
 
 import com.pharmacy.exception.PersistenceException;
-import com.pharmacy.exception.type.ExceptionType;
 import com.pharmacy.persistence.api.AccountDao;
 import com.pharmacy.user.Account;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import javax.persistence.TypedQuery;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -30,6 +29,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class AccountDaoImpl extends AbstractJpaDAO<Account> implements AccountDao {
+    
+    private final static Logger LOG = LoggerFactory.getLogger(AccountDaoImpl.class);
 
     public AccountDaoImpl() {
         super(Account.class);
@@ -37,16 +38,11 @@ public class AccountDaoImpl extends AbstractJpaDAO<Account> implements AccountDa
 
     @Override
     public Account findAccountByEmail(String email) throws PersistenceException {
-        Account account = null;
-//        Session session = getSessionFactory().openSession();
-//        Query query = session.getNamedQuery("Account.findAccountByEmail");
-//        try {
-//            query.setParameter("email", email);
-//            account = (Account) query.uniqueResult();
-//        } catch (HibernateException e) {
-//            throw new PersistenceException(ExceptionType.LOGIN_0001, e);
-//            
-//        }
+        LOG.trace("Enter findAccountByEmail: email={}", email);
+        TypedQuery<Account> query = getEntityManager().createNamedQuery("Account.findAccountByEmail", Account.class);
+        query.setParameter("email", email);
+        Account account = query.getSingleResult();
+        LOG.trace("Exit findAccountByEmail: account={}", account);
         return account;
     }
 
