@@ -56,7 +56,7 @@ public class RegistrationController {
                 return modelAndView;
             } else {
                 userService.save(user);
-                authenticateUserAndSetSession(user.getAccount(), request);
+//                authenticateUserAndSetSession(user.getAccount(), request);
             }
         } catch (ServiceException ex) {
             ex.writeLog(LOG);

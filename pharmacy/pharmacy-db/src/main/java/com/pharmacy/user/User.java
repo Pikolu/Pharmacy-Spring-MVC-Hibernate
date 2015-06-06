@@ -161,9 +161,9 @@ public class User extends BaseUUID implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> setAuths = new HashSet<>();
         // Build user's authorities
-        for (UserRole userRole : this.getAccount().getUserRole()) {
-            setAuths.add(new SimpleGrantedAuthority(userRole.getRoleName()));
-        }
+//        for (UserRole userRole : this.getAccount().getUserRole()) {
+            setAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
+//        }
         List<GrantedAuthority> result = new ArrayList<>(setAuths);
         return result;
     }

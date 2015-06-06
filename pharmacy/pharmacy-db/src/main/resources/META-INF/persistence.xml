@@ -23,7 +23,7 @@
   <persistence-unit name="PharmacyUnit" transaction-type="JTA">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>jdbc/pharmacy</jta-data-source>
-    <class>com.pharmacy.article.Article</class>
+<!--    <class>com.pharmacy.article.Article</class>
     <class>com.pharmacy.article.Pharmacy</class>
     <class>com.pharmacy.article.Price</class>
     <class>com.pharmacy.category.Category</class>
@@ -33,7 +33,7 @@
     <class>com.pharmacy.user.User</class>
     <class>com.pharmacy.wishlist.Wishlist</class>
     <class>com.pharmacy.user.UserRole</class>
-    <class>com.pharmacy.user.com.pharmacy.user.Account</class>
+    <class>com.pharmacy.user.com.pharmacy.user.Account</class>-->
     <properties>
       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform"/>
       <property name="hibernate.ejb.cfgfile" value="hibernate.cfg.xml"/>

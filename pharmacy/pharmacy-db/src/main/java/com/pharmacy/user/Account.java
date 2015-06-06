@@ -6,13 +6,9 @@
 package com.pharmacy.user;
 
 import com.pharmacy.base.BaseUUID;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 /**
@@ -28,8 +24,6 @@ public class Account extends BaseUUID {
     private String password;
     @Transient
     private String passwordConfirm;
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<UserRole> userRole = new HashSet<>(0);
 
     /**
      * @return the email
@@ -73,19 +67,10 @@ public class Account extends BaseUUID {
         this.passwordConfirm = passwordConfirm;//DigestUtils.sha256Hex(passwordConfirm);;
     }
 
-    /**
-     * @return the userRole
-     */
-    public Set<UserRole> getUserRole() {
-        return userRole;
+    @Override
+    public String toString() {
+        return "Account{" + "email=" + email + ", password=" + "******" + ", passwordConfirm=" + "******" + '}';
     }
-
-    /**
-     * @param userRole the userRole to set
-     */
-    public void setUserRole(Set<UserRole> userRole) {
-        this.userRole = userRole;
-    }
-
-
+    
+    
 }

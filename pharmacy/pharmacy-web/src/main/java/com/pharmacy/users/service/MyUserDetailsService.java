@@ -42,7 +42,6 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
     private UserDao userDao;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
         User user = null;
         try {
@@ -61,7 +60,7 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void save(com.pharmacy.user.User user) throws ServiceException {
         try {
             Account account = user.getAccount();
@@ -71,7 +70,7 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
             userRole.setUser(user);
             userRole.setUserRoleId(1);
             userRoles.add(userRole);
-            account.setUserRole(userRoles);
+//            account.setUserRole(userRoles);
             getUserDao().save(user);
 //            sendEmail(user.getAccount().getEmail());
         } catch (PersistenceException ex) {
