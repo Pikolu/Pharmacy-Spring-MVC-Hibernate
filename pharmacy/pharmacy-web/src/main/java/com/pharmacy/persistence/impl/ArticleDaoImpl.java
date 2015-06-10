@@ -40,6 +40,7 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
     public List<Article> loadBestDiscountedArticles() throws PersistenceException {
         LOG.trace("Enter loadBestDiscountedArticles");
         TypedQuery<Article> query = getEntityManager().createNamedQuery("Article.findBestDicount", Article.class);
+        query.setMaxResults(15);
         List<Article> articles = query.getResultList();
         LOG.trace("Exit loadBestDiscountedArticles: articles={}", articles);
         return articles;

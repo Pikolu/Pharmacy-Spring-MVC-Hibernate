@@ -9,6 +9,7 @@ import com.pharmacy.base.BaseUUID;
 import com.pharmacy.csv.CSVFormat;
 import com.pharmacy.evaluation.Evaluation;
 import com.pharmacy.payment.PaymentType;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -18,6 +19,9 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -35,13 +39,16 @@ import javax.persistence.OneToOne;
 public class Pharmacy extends BaseUUID {
 
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "evaluation_id")
     private List<Evaluation> evaluations;
     @ElementCollection(targetClass = PaymentType.class)
     @Enumerated(EnumType.STRING)
+    @JoinColumn(name = "paymentType_id")
     private Collection<PaymentType> paymentTypes;
     private float shipping;
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "csvFormat_id")
     private List<CSVFormat> csvFormat;
     private String logoURL;
     @OneToOne(cascade = CascadeType.ALL)
@@ -149,9 +156,6 @@ public class Pharmacy extends BaseUUID {
         this.paymentTypes = paymentTypes;
     }
 
-    @Override
-    public String toString() {
-        return "Pharmacy{" + "name=" + name + ", evaluations=" + evaluations + ", paymentTypes=" + paymentTypes + ", shipping=" + shipping + ", csvFormat=" + csvFormat + ", logoURL=" + logoURL + ", price=" + price + '}';
-    }
+    
 
 }

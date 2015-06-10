@@ -18,6 +18,7 @@ package com.pharmacy.persistence.impl;
 import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.persistence.api.AccountDao;
 import com.pharmacy.user.Account;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +40,14 @@ public class AccountDaoImpl extends AbstractJpaDAO<Account> implements AccountDa
     @Override
     public Account findAccountByEmail(String email) throws PersistenceException {
         LOG.trace("Enter findAccountByEmail: email={}", email);
+        Account account = null;
         TypedQuery<Account> query = getEntityManager().createNamedQuery("Account.findAccountByEmail", Account.class);
         query.setParameter("email", email);
-        Account account = query.getSingleResult();
+        try {
+              account = query.getSingleResult();
+        } catch (NoResultException e) {
+            //TODO do nothing
+        }
         LOG.trace("Exit findAccountByEmail: account={}", account);
         return account;
     }

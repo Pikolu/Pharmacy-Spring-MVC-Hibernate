@@ -6,20 +6,14 @@
 package com.pharmacy.controller.index;
 
 import com.pharmacy.article.Article;
-import com.pharmacy.article.Pharmacy;
-import com.pharmacy.article.Price;
 import com.pharmacy.controller.abstraction.AbstractController;
-import com.pharmacy.evaluation.Evaluation;
 import com.pharmacy.exception.ServiceException;
-import com.pharmacy.payment.PaymentType;
 import com.pharmacy.service.api.ArticleService;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class IndexController extends AbstractController {
+    
+    private final static Logger LOG = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private ArticleService articleService;
@@ -42,16 +38,18 @@ public class IndexController extends AbstractController {
     @RequestMapping(value = "/produkte", method = RequestMethod.GET)
     public @ResponseBody
     ModelAndView search(@RequestParam String parameter, @RequestParam(required = false) String page) {
+        LOG.trace("Enter search: parameter={}, page={}", parameter, page);
         ModelAndView model = new ModelAndView("search");
 
         try {
             List<Article> articles = articleService.findArticlesByParameter(parameter);
-            setPage(page, model);
+            setPage(page, model, articles.size());
             model.addObject("articles", articles);
             model.addObject("parameter", parameter);
         } catch (ServiceException ex) {
-            ex.writeLog(null);
+            ex.writeLog(LOG);
         }
+        LOG.trace("Exit search: model={}", model);
         return model;
 
     }

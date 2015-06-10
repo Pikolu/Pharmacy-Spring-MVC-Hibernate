@@ -61,22 +61,14 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public void save(com.pharmacy.user.User user) throws ServiceException {
-        try {
-            Account account = user.getAccount();
-            Set<UserRole> userRoles = new HashSet<>();
-            UserRole userRole = new UserRole();
-            userRole.setRoleName("ROLE_USER");
-            userRole.setUser(user);
-            userRole.setUserRoleId(1);
-            userRoles.add(userRole);
-//            account.setUserRole(userRoles);
-            getUserDao().save(user);
-//            sendEmail(user.getAccount().getEmail());
-        } catch (PersistenceException ex) {
-            ex.writeLog(LOG);
-            throw ex;
-        }
+    @javax.transaction.Transactional(javax.transaction.Transactional.TxType.REQUIRED)
+    public User save(User user) throws ServiceException {
+        UserRole userRole = new UserRole();
+        userRole.setRoleName("ROLE_USER");
+        userRole.setUser(user);
+        userRole.setUserRoleId(1);
+        User savedUser = getUserDao().save(user);
+        return savedUser;
     }
 
     private void sendEmail(String email) {

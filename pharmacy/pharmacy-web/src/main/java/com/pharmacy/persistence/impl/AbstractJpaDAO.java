@@ -52,10 +52,13 @@ public abstract class AbstractJpaDAO<T extends BaseUUID> {
         LOG.trace("Exit create");
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+     @javax.transaction.Transactional(javax.transaction.Transactional.TxType.REQUIRED)
     public T save(final T entity) throws PersistenceException {
         LOG.trace("Enter save: entity={}", entity);
         entity.setLastUpdated(new Date());
         T result = entityManager.merge(entity);
+        entityManager.flush();
         LOG.trace("Exit save: result={}", result);
         return result;
     }

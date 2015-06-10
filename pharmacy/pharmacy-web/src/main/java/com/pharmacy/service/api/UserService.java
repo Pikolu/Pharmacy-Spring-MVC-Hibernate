@@ -15,7 +15,7 @@ import com.pharmacy.user.User;
  */
 public interface UserService {
 
-    public void save(User user) throws ServiceException;
+    public User save(User user) throws ServiceException;
 
     public Account findAccoutByEmail(String email) throws ServiceException;
     
