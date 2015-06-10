@@ -36,7 +36,7 @@ public abstract class AbstractController {
             int count = size / 25;
             if (count < 1) {
                 lastPage = 1;
-            } else if (currentPage <= 10) {
+            } else if (currentPage >= 10) {
                 lastPage = count;
             } else {
                 lastPage = 10;
@@ -52,6 +52,7 @@ public abstract class AbstractController {
         getFilterOptions().setCurrentPage(currentPage);
         getFilterOptions().setFirstPage(firstPage);
         getFilterOptions().setLastPage(lastPage);
+        
         model.addObject("currentPage", getFilterOptions().getCurrentPage());
         model.addObject("firstPage", getFilterOptions().getFirstPage());
         model.addObject("lastPage", getFilterOptions().getLastPage());

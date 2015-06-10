@@ -42,7 +42,7 @@ public class IndexController extends AbstractController {
         ModelAndView model = new ModelAndView("search");
 
         try {
-            List<Article> articles = articleService.findArticlesByParameter(parameter);
+            List<Article> articles = articleService.loadArticlesByParameter(parameter, getFilterOptions());
             setPage(page, model, articles.size());
             model.addObject("articles", articles);
             model.addObject("parameter", parameter);

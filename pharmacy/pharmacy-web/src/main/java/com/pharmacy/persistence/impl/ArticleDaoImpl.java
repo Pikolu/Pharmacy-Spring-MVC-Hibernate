@@ -7,6 +7,7 @@ package com.pharmacy.persistence.impl;
 
 import com.pharmacy.article.Article;
 import com.pharmacy.article.Article_;
+import com.pharmacy.controller.abstraction.FilterOptions;
 import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.persistence.api.ArticleDao;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDao {
-    
+
     private final static Logger LOG = LoggerFactory.getLogger(ArticleDaoImpl.class);
 
     public ArticleDaoImpl() {
@@ -50,7 +51,7 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Article> findArticlesByParameter(String parameter) throws PersistenceException {
         LOG.trace("Enter findArticlesByParameter: parameter={}", parameter);
-        ArrayList<Article> articles = new ArrayList<Article>();
+        ArrayList<Article> articles = new ArrayList<>();
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Article> query = builder.createQuery(Article.class);
         Root<Article> root = query.from(Article.class);
@@ -70,9 +71,39 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
         } else {
             articles.addAll(searchTitleArticles);
         }
-        
+
         LOG.trace("Exit findArticlesByParameter: articles size={}", articles.size());
         return articles;
     }
 
+    @Override
+    public List<Article> loadArticlesByParameter(String parameter, FilterOptions filterOptions) {
+        LOG.trace("Enter findArticlesByParameter: parameter={}", parameter);
+        ArrayList<Article> articles = new ArrayList<>();
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Article> query = builder.createQuery(Article.class);
+        Root<Article> root = query.from(Article.class);
+        Predicate predicate = builder.like(root.get(Article_.title), "%" + parameter + "%");
+        query.where(predicate);
+        query.select(root);
+        TypedQuery<Article> sqlQuery = getEntityManager().createQuery(query);
+        sqlQuery.setFirstResult((filterOptions.getCurrentPage() - 1) * filterOptions.getRecordsPerPage());
+        sqlQuery.setMaxResults((filterOptions.getLastPage() - 1) * filterOptions.getRecordsPerPage());
+        List<Article> searchTitleArticles = sqlQuery.getResultList();
+        if (searchTitleArticles.isEmpty()) {
+            Predicate predicate2 = builder.like(root.get(Article_.descriptionShort), "%" + parameter + "%");
+            query.where(builder.or(predicate, predicate2));
+            query.select(root);
+            sqlQuery = getEntityManager().createQuery(query);
+            sqlQuery.setFirstResult((filterOptions.getCurrentPage() - 1) * filterOptions.getRecordsPerPage());
+            sqlQuery.setMaxResults((filterOptions.getLastPage() - 1) * filterOptions.getRecordsPerPage());
+            List<Article> searchedDescriptionShortArticles = sqlQuery.getResultList();
+            articles.addAll(searchedDescriptionShortArticles);
+        } else {
+            articles.addAll(searchTitleArticles);
+        }
+
+        LOG.trace("Exit findArticlesByParameter: articles size={}", articles.size());
+        return articles;
+    }
 }
