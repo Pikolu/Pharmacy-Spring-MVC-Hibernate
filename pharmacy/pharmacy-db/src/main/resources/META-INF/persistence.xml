@@ -8,8 +8,7 @@
       <property name="javax.persistence.jdbc.password" value="Admin123#"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
-      <property name="javax.persistence.schema-generation.database.action" value="none"/>
-      <property name="eclipselink.target-server" value="SunAS9"/> 
+      <property name="eclipselink.target-server" value="SunAS9"/>
     </properties>
   </persistence-unit>
 </persistence>

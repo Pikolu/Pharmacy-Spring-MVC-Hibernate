@@ -1,6 +1,8 @@
 package com.pharmacy.persistence.impl;
 
+import com.pharmacy.article.Article_;
 import com.pharmacy.base.BaseUUID;
+import com.pharmacy.base.BaseUUID_;
 import com.pharmacy.exception.PersistenceException;
 import java.util.Date;
 
@@ -8,13 +10,17 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 public abstract class AbstractJpaDAO<T extends BaseUUID> {
-    
+
     private final static Logger LOG = LoggerFactory.getLogger(AbstractJpaDAO.class);
 
     private Class<T> clazz;
@@ -53,7 +59,7 @@ public abstract class AbstractJpaDAO<T extends BaseUUID> {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-     @javax.transaction.Transactional(javax.transaction.Transactional.TxType.REQUIRED)
+    @javax.transaction.Transactional(javax.transaction.Transactional.TxType.REQUIRED)
     public T save(final T entity) throws PersistenceException {
         LOG.trace("Enter save: entity={}", entity);
         entity.setLastUpdated(new Date());

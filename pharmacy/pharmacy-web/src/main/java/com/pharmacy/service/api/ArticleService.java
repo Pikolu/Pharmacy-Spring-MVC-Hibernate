@@ -6,6 +6,8 @@
 package com.pharmacy.service.api;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.controller.abstraction.DataWithCount;
+import com.pharmacy.controller.abstraction.FilterOptions;
 import com.pharmacy.exception.ServiceException;
 import java.util.List;
 
@@ -20,5 +22,9 @@ public interface ArticleService {
     public List<Article> loadBestDiscountedArticles() throws ServiceException;
 
     public List<Article> findArticlesByParameter(String parameter) throws ServiceException;
+    
+    public List<Article> findArticlesByParameter(String parameter, FilterOptions filterOptions) throws ServiceException;
+    
+    public DataWithCount<Article> loadTableContent(String parameter, FilterOptions filterOptions) throws ServiceException;
     
 }

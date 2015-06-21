@@ -14,6 +14,10 @@
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <link href="<c:url value="/resources/css/default.css" />" rel="stylesheet">
     </jsp:attribute>
+
+    <jsp:attribute name="title">
+        Suchergebnisse zu ${parameter}
+    </jsp:attribute>
     <jsp:attribute name="header">
         <%@include file="includes/header.jsp" %>
     </jsp:attribute>

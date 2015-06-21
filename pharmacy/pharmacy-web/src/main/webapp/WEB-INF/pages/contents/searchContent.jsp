@@ -32,19 +32,19 @@
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <table border="0" cellpadding="5" cellspacing="5" style="width: 100%">
+                            <table border="0" cellpadding="5" cellspacing="0" style="width: 100%">
                                 <c:forEach var="article" items="${articles}">
                                     <tr>
-                                        <td>
+                                        <td style="border-bottom: 1px solid #E5E5E5">
                                             <div style="float: left; width: 150px; height: 150px">
-                                                <img alt="${article.title}" src="${article.imageURL}" width="150" height="150" />
+                                                <img alt="${article.name}" src="${article.imageURL}" width="150" height="150" />
                                             </div>
 
                                             <div style="margin-left: 25px; float: left; width: 40%;">
-                                                <h:link outcome="/priceCheck/pricecheck">
-                                                    <h3>${article.title}</h3>
-                                                </h:link>
-                                                <h:outputText  id="deschription" value="${article.descriptionShort}" />
+                                                <h4>
+                                                    <c:url value="/produkte/${article.articelNumber}/${article.name}" var="check" />
+                                                    <a href="${check}" >${article.name}</a>
+                                                </h4>
                                                 <br/>
                                             </div>
                                         </td>
@@ -56,7 +56,7 @@
 
                             <%--For displaying Page numbers. 
                             The when condition does not display a link for the current page--%>
-                            <table border="0" cellpadding="5" cellspacing="5" style="width: 50%; margin: auto;">
+                            <table border="0" cellpadding="5" cellspacing="5" style="margin: auto;">
                                 <tr>
                                     <%--For displaying Previous link except for the 1st page --%>
                                     <c:if test="${currentPage != 1}">
@@ -65,7 +65,7 @@
                                                 <c:param name="page" value="${currentPage - 1}" />
                                                 <c:param name="parameter" value="${parameter}" />
                                             </c:url>
-                                            <a href="${produkte}">Zurück</a>
+                                            <a href="${produkte}" style="float: right;">Zurück</a>
                                         </td>
                                     </c:if>
                                     <c:forEach begin="${firstPage}" end="${lastPage}" var="i">
@@ -84,13 +84,15 @@
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>
-                                    <td>
-                                        <c:url value="/produkte" var="account">
-                                            <c:param name="page" value="${currentPage + 1}" />
-                                            <c:param name="parameter" value="${parameter}" />
-                                        </c:url>
-                                        <a href="${account}">Weiter</a>
-                                    </td>
+                                    <c:if test="${currentPage != lastPage}">
+                                        <td>
+                                            <c:url value="/produkte" var="account">
+                                                <c:param name="page" value="${currentPage + 1}" />
+                                                <c:param name="parameter" value="${parameter}" />
+                                            </c:url>
+                                            <a href="${account}" style="float: left;">Weiter</a>
+                                        </td>
+                                    </c:if>
                                 </tr>
                             </table>
                         </c:otherwise>

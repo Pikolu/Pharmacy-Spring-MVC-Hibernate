@@ -26,20 +26,19 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "Article.findBestDicount", query = "SELECT a FROM Article a "
             + "LEFT JOIN a.prices p "
             + "ORDER BY p.discount DESC"),
-    @NamedQuery(name = "Article.findArticleByName", query = "SELECT a FROM Article a WHERE a.title = :title"),
+    @NamedQuery(name = "Article.findArticleByName", query = "SELECT a FROM Article a WHERE a.name = :title"),
     @NamedQuery(name = "Article.findArticleByArticleNumbe", query = "SELECT a FROM Article a WHERE a.articelNumber = :articelNumber"),
     @NamedQuery(name = "Article.findArticleByParameter", query = "SELECT a FROM Article a "
-            + "WHERE a.title LIKE :parameter "
-            + "AND a.descriptionShort LIKE :parameter "
-            + "AND a.descriptionLong LIKE :parameter"),
+            + "WHERE a.name LIKE :parameter "
+            + "OR a.description LIKE :parameter "
+            + "OR a.descriptionLong LIKE :parameter"),
+    @NamedQuery(name = "coutArticleByParameter", query = "SELECT COUNT(a) FROM Article a WHERE a.name = :parameter OR a.description LIKE :parameter")
 })
 public class Article extends BaseUUID {
 
     @Column(unique = true)
     private int articelNumber;
     private String categoryName;
-    private String title;
-    private String descriptionShort;
     @Column(length = 50000)
     private String descriptionLong;
     @Enumerated(EnumType.STRING)
@@ -80,20 +79,6 @@ public class Article extends BaseUUID {
      */
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
-    }
-
-    /**
-     * @return the title
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * @param title the title to set
-     */
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     /**
@@ -167,20 +152,6 @@ public class Article extends BaseUUID {
     }
 
     /**
-     * @return the descriptionShort
-     */
-    public String getDescriptionShort() {
-        return descriptionShort;
-    }
-
-    /**
-     * @param descriptionShort the descriptionShort to set
-     */
-    public void setDescriptionShort(String descriptionShort) {
-        this.descriptionShort = descriptionShort;
-    }
-
-    /**
      * @return the descriptionLong
      */
     public String getDescriptionLong() {
@@ -213,7 +184,6 @@ public class Article extends BaseUUID {
 
     @Override
     public String toString() {
-        return "Article{" + "articelNumber=" + articelNumber + ", categoryName=" + categoryName + ", title=" + title + ", descriptionShort=" + descriptionShort + ", descriptionLong=" + descriptionLong + ", currency=" + currency + ", imageURL=" + imageURL + ", deepLink=" + deepLink + ", keyWords=" + keyWords + ", manufacturer=" + manufacturer + ", prices=" + prices + '}';
+        return "Article{" + "articelNumber=" + articelNumber + ", categoryName=" + categoryName + ", descriptionLong=" + descriptionLong + ", currency=" + currency + ", imageURL=" + imageURL + ", deepLink=" + deepLink + ", keyWords=" + keyWords + ", manufacturer=" + manufacturer + ", prices=" + prices + '}';
     }
-
 }

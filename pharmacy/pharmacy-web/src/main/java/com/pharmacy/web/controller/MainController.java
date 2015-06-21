@@ -146,7 +146,7 @@ public class MainController {
         Evaluation evaluation;
         for (int j = 1; j <= 5; j++) {
             evaluation = new Evaluation();
-            evaluation.setTitle("Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung akjsdhajksdha kjdak jdkajs dkajsd kajsnd kjand adjn alksjdn aksjdn kaljdn kajsnd kajnd kajsnd kajsnd kjbf lbgksdfsf nsdf s skjdf skjnfd fkj nsfkj nkjs ndfjks dnfksjfn skjdfgd" + j);
+            evaluation.setName("Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung akjsdhajksdha kjdak jdkajs dkajsd kajsnd kjand adjn alksjdn aksjdn kaljdn kajsnd kajnd kajsnd kajsnd kjbf lbgksdfsf nsdf s skjdf skjnfd fkj nsfkj nkjs ndfjks dnfksjfn skjdfgd" + j);
             evaluation.setDescription("Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung " + j);
             evaluation.setPoints((float) (j + 0.5));
             evaluations.add(evaluation);

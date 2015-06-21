@@ -1345,7 +1345,7 @@ a.button:hover span {
     overflow: auto;
     padding: 0;
     width: 100%;
-    min-height: 425px;
+    /*min-height: 425px;*/
 }
 .box-product.box-subcat {
     padding-top: 10px;

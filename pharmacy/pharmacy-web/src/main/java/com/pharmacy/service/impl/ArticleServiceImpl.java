@@ -6,6 +6,8 @@
 package com.pharmacy.service.impl;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.controller.abstraction.DataWithCount;
+import com.pharmacy.controller.abstraction.FilterOptions;
 import com.pharmacy.exception.ServiceException;
 import com.pharmacy.persistence.api.ArticleDao;
 import com.pharmacy.service.api.ArticleService;
@@ -43,6 +45,19 @@ public class ArticleServiceImpl implements ArticleService {
         List<Article> articles = articleDao.findArticlesByParameter(parameter);
         return articles;
     }
+
+    @Override
+    public List<Article> findArticlesByParameter(String parameter, FilterOptions filterOptions) throws ServiceException {
+        List<Article> articles = articleDao.findArticlesByParameter(parameter, filterOptions);
+        return articles;
+    }
+
+    @Override
+    public DataWithCount<Article> loadTableContent(String parameter, FilterOptions filterOptions) throws ServiceException {
+        DataWithCount<Article> articles = articleDao.loadTableContent(parameter, filterOptions);
+        return articles;
+    }
+    
     
     
 }

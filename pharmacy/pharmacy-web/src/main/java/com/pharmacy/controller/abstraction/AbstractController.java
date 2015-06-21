@@ -14,40 +14,36 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public abstract class AbstractController {
 
+    private static final int PAGE_COUNT = 10;
+
     private FilterOptions filterOptions;
 
-    public void setPage(String page, ModelAndView model, int size) {
-        model.addObject("noOfPages", 10);
-//        if (StringUtils.isBlank(page)) {
-//            model.addObject("currentPage", getFilterOptions().getCurrentPage());
-//            model.addObject("firstPage", getFilterOptions().getFirstPage());
-//            model.addObject("lastPage", getFilterOptions().getLastPage());
-//        } else {
+    public void setPage(String page, ModelAndView model, Long size) {
         int currentPage;
+        int firstPage;
+        int lastPage;
+        int count;
+
         if (page == null) {
-            currentPage = 0;
+            currentPage = 1;
         } else {
             currentPage = Integer.valueOf(page);
         }
-        int firstPage;
-        int lastPage;
-        if (currentPage < 1) {
-            firstPage = 1;
-            int count = size / 25;
-            if (count < 1) {
-                lastPage = 1;
-            } else if (currentPage <= 10) {
-                lastPage = count;
-            } else {
-                lastPage = 10;
 
-            }
-        } else if (currentPage < 6) {
+        if (page == null) {
             firstPage = 1;
-            lastPage = 10;
+            count = getPageCount(size);
+            lastPage = getLastPage(count, PAGE_COUNT);
         } else {
-            firstPage = currentPage - 5;
-            lastPage = currentPage + 4;
+            if (currentPage > 6) {
+                firstPage = currentPage - 4;
+                count = getPageCount(size);
+                lastPage = getLastPage(count, currentPage + 5);
+            } else {
+                firstPage = 1;
+                count = getPageCount(size);
+                lastPage = getLastPage(count, PAGE_COUNT);
+            }
         }
         getFilterOptions().setCurrentPage(currentPage);
         getFilterOptions().setFirstPage(firstPage);
@@ -55,7 +51,19 @@ public abstract class AbstractController {
         model.addObject("currentPage", getFilterOptions().getCurrentPage());
         model.addObject("firstPage", getFilterOptions().getFirstPage());
         model.addObject("lastPage", getFilterOptions().getLastPage());
-//        }
+    }
+
+    private int getLastPage(int count, int result) {
+        if (count <= result) {
+            return (count < 1) ? 1 : count;
+        } else {
+            return result;
+        }
+    }
+
+    private int getPageCount(Long size) {
+        int result = (int) (size / filterOptions.getRecordsPerPage());
+        return result;
     }
 
     /**

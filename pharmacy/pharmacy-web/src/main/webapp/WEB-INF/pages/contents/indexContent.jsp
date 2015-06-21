@@ -19,8 +19,8 @@
                         <li>
                             <img width="150" height="110" class="thumb" src="${article.imageURL}" data-bw="${article.imageURL}" />
                             <div style="margin-top:16px"></div>
-                            <h2 style="height: 75px">${article.title}</h2>
-                            <p style="height: 100px; vertical-align: bottom;">${article.descriptionShort}</p>
+                            <h2 style="height: 75px">${article.name}</h2>
+                            <p style="height: 100px; vertical-align: bottom;">${article.description}</p>
                             <div style="float: left; width: 60%">
                                 ab
                                 <c:set var="bestPrice" value="${articleHelper.getBestDiscount(article.prices)}" />
@@ -45,7 +45,7 @@
                                 <img width="150" height="110" class="big-image" src="${article.imageURL}" />
                                 <div style="overflow-y: scroll; height: 400px;">
                                     <div class="details_double">
-                                        <h2>${article.title}</h2>
+                                        <h2>${article.name}</h2>
                                         <p>${article.descriptionLong}</p>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                         <span style="float: left">&nbsp; | &nbsp;</span>
                         <div id="fixed_${evaluation.id}"></div>
                         
-                        <h2 class="ellipsis">${evaluation.title}</h2>
+                        <h2 class="ellipsis">${evaluation.name}</h2>
                         <div class="ellipsis" >${evaluation.description}</div>
                         <script type="text/javascript">
                             jQuery('#fixed_${evaluation.id}').raty({

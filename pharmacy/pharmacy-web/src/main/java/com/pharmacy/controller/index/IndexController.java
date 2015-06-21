@@ -7,6 +7,7 @@ package com.pharmacy.controller.index;
 
 import com.pharmacy.article.Article;
 import com.pharmacy.controller.abstraction.AbstractController;
+import com.pharmacy.controller.abstraction.DataWithCount;
 import com.pharmacy.exception.ServiceException;
 import com.pharmacy.service.api.ArticleService;
 import java.util.List;
@@ -40,11 +41,17 @@ public class IndexController extends AbstractController {
     ModelAndView search(@RequestParam String parameter, @RequestParam(required = false) String page) {
         LOG.trace("Enter search: parameter={}, page={}", parameter, page);
         ModelAndView model = new ModelAndView("search");
-
+        int currentpage;
         try {
-            List<Article> articles = articleService.findArticlesByParameter(parameter);
-            setPage(page, model, articles.size());
-            model.addObject("articles", articles);
+            if (page == null) {
+                currentpage = 1;
+            } else {
+                currentpage = Integer.valueOf(page);
+            }
+            getFilterOptions().setCurrentPage(currentpage);
+            DataWithCount<Article> articles = articleService.loadTableContent(parameter, getFilterOptions());
+            setPage(page, model, articles.getCount());
+            model.addObject("articles", articles.getResultList());
             model.addObject("parameter", parameter);
         } catch (ServiceException ex) {
             ex.writeLog(LOG);

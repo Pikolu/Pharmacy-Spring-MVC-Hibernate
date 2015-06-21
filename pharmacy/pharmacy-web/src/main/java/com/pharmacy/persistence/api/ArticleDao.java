@@ -6,6 +6,8 @@
 package com.pharmacy.persistence.api;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.controller.abstraction.DataWithCount;
+import com.pharmacy.controller.abstraction.FilterOptions;
 import com.pharmacy.exception.PersistenceException;
 import java.util.List;
 
@@ -20,4 +22,8 @@ public interface ArticleDao {
     public Article save(Article article) throws PersistenceException;
     
     public List<Article> findArticlesByParameter(String parameter) throws PersistenceException;
+
+    public List<Article> findArticlesByParameter(String parameter, FilterOptions filterOptions);
+    
+    public DataWithCount<Article> loadTableContent(String parameter, FilterOptions filterOptions) throws PersistenceException;
 }

@@ -25,6 +25,8 @@ public abstract class BaseUUID implements Serializable {
     @Id
     @Column(length = 36, name = "id")
     private String id;
+    public String name;
+    private String description;
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -111,5 +113,33 @@ public abstract class BaseUUID implements Serializable {
      */
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
