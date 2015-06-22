@@ -16,14 +16,15 @@ import java.util.List;
  * @author Alexandr
  */
 public interface ArticleDao {
-        
+
     public List<Article> loadBestDiscountedArticles() throws PersistenceException;
-    
+
     public Article save(Article article) throws PersistenceException;
-    
+
     public List<Article> findArticlesByParameter(String parameter) throws PersistenceException;
 
     public List<Article> findArticlesByParameter(String parameter, FilterOptions filterOptions);
-    
+
     public DataWithCount<Article> loadTableContent(String parameter, FilterOptions filterOptions) throws PersistenceException;
+
 }

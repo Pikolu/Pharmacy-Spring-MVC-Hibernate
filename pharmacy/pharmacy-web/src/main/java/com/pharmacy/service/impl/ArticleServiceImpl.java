@@ -47,17 +47,9 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> findArticlesByParameter(String parameter, FilterOptions filterOptions) throws ServiceException {
-        List<Article> articles = articleDao.findArticlesByParameter(parameter, filterOptions);
-        return articles;
-    }
-
-    @Override
     public DataWithCount<Article> loadTableContent(String parameter, FilterOptions filterOptions) throws ServiceException {
         DataWithCount<Article> articles = articleDao.loadTableContent(parameter, filterOptions);
         return articles;
-    }
-    
-    
+    } 
     
 }

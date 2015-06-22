@@ -56,25 +56,36 @@
 
                             <%--For displaying Page numbers. 
                             The when condition does not display a link for the current page--%>
+<<<<<<< HEAD
                             <table border="0" cellpadding="5" cellspacing="5" style="margin: auto;">
+=======
+                            <table border="0" cellpadding="5" cellspacing="5" style="width: 100%; margin: auto;">
+>>>>>>> fbaa97006defbebd6ef8396250363a344bf3cd29
                                 <tr>
                                     <%--For displaying Previous link except for the 1st page --%>
-                                    <c:if test="${currentPage != 1}">
-                                        <td>
+                                    <td>
+                                        <c:if test="${currentPage > 0}">
+
                                             <c:url value="/produkte" var="produkte">
                                                 <c:param name="page" value="${currentPage - 1}" />
                                                 <c:param name="parameter" value="${parameter}" />
                                             </c:url>
+<<<<<<< HEAD
                                             <a href="${produkte}" style="float: right;">Zurück</a>
                                         </td>
                                     </c:if>
+=======
+                                            <a href="${produkte}">Zurück</a>
+                                        </c:if>
+                                    </td>
+>>>>>>> fbaa97006defbebd6ef8396250363a344bf3cd29
                                     <c:forEach begin="${firstPage}" end="${lastPage}" var="i">
                                         <c:choose>
                                             <c:when test="${currentPage eq i}">
-                                                <td>${i}</td>
+                                                <td style="width: 10px;">${i}</td>
                                             </c:when>
                                             <c:otherwise>
-                                                <td>
+                                                <td style="width: 10px;">
                                                     <c:url value="/produkte" var="produkte">
                                                         <c:param name="page" value="${i}" />
                                                         <c:param name="parameter" value="${parameter}" />
@@ -84,15 +95,28 @@
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>
+<<<<<<< HEAD
                                     <c:if test="${currentPage != lastPage}">
                                         <td>
+=======
+                                    <td>
+                                        <c:if test="${currentPage == lastPage}">
+
+>>>>>>> fbaa97006defbebd6ef8396250363a344bf3cd29
                                             <c:url value="/produkte" var="account">
                                                 <c:param name="page" value="${currentPage + 1}" />
                                                 <c:param name="parameter" value="${parameter}" />
                                             </c:url>
+<<<<<<< HEAD
                                             <a href="${account}" style="float: left;">Weiter</a>
                                         </td>
                                     </c:if>
+=======
+                                            <a href="${account}">Weiter</a>
+                                        </c:if>
+
+                                    </td>
+>>>>>>> fbaa97006defbebd6ef8396250363a344bf3cd29
                                 </tr>
                             </table>
                         </c:otherwise>

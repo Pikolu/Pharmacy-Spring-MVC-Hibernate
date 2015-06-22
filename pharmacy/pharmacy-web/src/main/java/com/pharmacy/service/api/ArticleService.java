@@ -21,9 +21,7 @@ public interface ArticleService {
     
     public List<Article> loadBestDiscountedArticles() throws ServiceException;
 
-    public List<Article> findArticlesByParameter(String parameter) throws ServiceException;
-    
-    public List<Article> findArticlesByParameter(String parameter, FilterOptions filterOptions) throws ServiceException;
+    public List<Article> findArticlesByParameter(String parameter) throws ServiceException;    
     
     public DataWithCount<Article> loadTableContent(String parameter, FilterOptions filterOptions) throws ServiceException;
     

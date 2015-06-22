@@ -51,7 +51,7 @@ public class IndexController extends AbstractController {
             getFilterOptions().setCurrentPage(currentpage);
             DataWithCount<Article> articles = articleService.loadTableContent(parameter, getFilterOptions());
             setPage(page, model, articles.getCount());
-            model.addObject("articles", articles.getResultList());
+            model.addObject("articles", articles);
             model.addObject("parameter", parameter);
         } catch (ServiceException ex) {
             ex.writeLog(LOG);
