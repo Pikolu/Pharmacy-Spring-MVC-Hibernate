@@ -33,26 +33,40 @@
                         </c:when>
                         <c:otherwise>
                             <table border="0" cellpadding="5" cellspacing="0" style="width: 100%">
-                               
-                                 <c:forEach var="article" items="${articles}">
+
+                                <c:forEach var="article" items="${articles}">
                                     <tr>
                                         <td style="border-bottom: 1px solid #E5E5E5">
-                                            <div style="float: left; width: 150px; height: 150px">
-                                                <img alt="${article.name}" src="${article.imageURL}" width="150" height="150" />
-                                            </div>
 
-                                            <div style="margin-left: 25px; float: left; width: 40%;">
-                                                <h4>
-                                                    <c:url value="/produkte/$f{article.articelNumber}/${article.name}" var="check" />
-                                                    <a href="${check}" >${article.name}</a>
-                                                </h4>
-                                                <br/>
-                                            </div>
+                                            <table style="width: 100%">
+                                                <tr>
+                                                    <td style="width: 200px">
+                                                        <div style="float: left; width: 150px; height: 150px">
+                                                            <img alt="${article.name}" src="${article.imageURL}" width="150" height="150" />
+                                                        </div>
+                                                    </td>
+                                                    <td style="vertical-align: baseline;">
+                                                        <div style="margin-left: 25px; float: left;">
+                                                            <h4 style="margin: 0px;">
+                                                                <c:url value="/produkte/$f{article.articelNumber}/${article.name}" var="check" />
+                                                                <a href="${check}" >${article.name}</a>
+                                                            </h4>
+                                                            <br/>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width: 130px; vertical-align: baseline;">
+                                                        <div>ab ${articleHelper.getBestDiscount(article.prices).price} €</div>
+                                                    </td>
+                                                    <td style="width: 130px; text-align: right; padding-right: 20px;">
+                                                        <a href="#">Zum Preisvergleich</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                                
-                                
+
+
                             </table>
 
 
@@ -63,7 +77,7 @@
                                 <tr>
                                     <%--For displaying Previous link except for the 1st page --%>
                                     <td>
-                                        <c:if test="${currentPage > 0}">
+                                        <c:if test="${currentPage > 1}">
 
                                             <c:url value="/produkte" var="produkte">
                                                 <c:param name="page" value="${currentPage - 1}" />
@@ -89,7 +103,7 @@
                                         </c:choose>
                                     </c:forEach>
                                     <td>
-                                        <c:if test="${currentPage == lastPage}">
+                                        <c:if test="${currentPage < lastPage}">
                                             <c:url value="/produkte" var="account">
                                                 <c:param name="page" value="${currentPage + 1}" />
                                                 <c:param name="parameter" value="${parameter}" />

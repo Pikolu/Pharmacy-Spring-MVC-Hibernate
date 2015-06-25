@@ -6,6 +6,7 @@
 package com.pharmacy.controller.index;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.article.helper.ArticleHelper;
 import com.pharmacy.controller.abstraction.AbstractController;
 import com.pharmacy.controller.abstraction.DataWithCount;
 import com.pharmacy.exception.ServiceException;
@@ -53,6 +54,7 @@ public class IndexController extends AbstractController {
             setPage(page, model, articles.getCount());
             model.addObject("articles", articles.getResultList());
             model.addObject("parameter", parameter);
+            model.addObject("articleHelper", new ArticleHelper());
         } catch (ServiceException ex) {
             ex.writeLog(LOG);
         }
