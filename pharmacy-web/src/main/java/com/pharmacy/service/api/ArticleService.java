@@ -24,5 +24,7 @@ public interface ArticleService {
     public List<Article> findArticlesByParameter(String parameter) throws ServiceException;    
     
     public DataWithCount<Article> loadTableContent(String parameter, FilterOptions filterOptions) throws ServiceException;
+
+    public Article findArticleByArticelNumber(String articelNumber);
     
 }

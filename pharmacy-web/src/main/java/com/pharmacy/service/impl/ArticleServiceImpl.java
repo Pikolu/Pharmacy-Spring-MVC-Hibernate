@@ -51,5 +51,13 @@ public class ArticleServiceImpl implements ArticleService {
         DataWithCount<Article> articles = articleDao.loadTableContent(parameter, filterOptions);
         return articles;
     } 
+
+    @Override
+    public Article findArticleByArticelNumber(String articelNumber) {
+        Article article = articleDao.findArticleByArticelNumber(articelNumber);
+        return article;
+    }
+    
+    
     
 }

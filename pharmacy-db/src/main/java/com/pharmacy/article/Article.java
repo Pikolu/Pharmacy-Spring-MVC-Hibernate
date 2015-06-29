@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import org.eclipse.persistence.annotations.Index;
 
 /**
  * @author Alexandr
@@ -32,10 +33,12 @@ import javax.persistence.OneToMany;
             + "WHERE a.name LIKE :parameter "
             + "OR a.description LIKE :parameter "
             + "OR a.descriptionLong LIKE :parameter"),
-    @NamedQuery(name = "coutArticleByParameter", query = "SELECT COUNT(a) FROM Article a WHERE a.name = :parameter OR a.description LIKE :parameter")
+    @NamedQuery(name = "coutArticleByParameter", query = "SELECT COUNT(a) FROM Article a WHERE a.name = :parameter OR a.description LIKE :parameter"),
+    @NamedQuery(name = "findArticleByArticleNumber", query = "SELECT a FROM Article a WHERE a.articelNumber = :articelNumber")
 })
 public class Article extends BaseUUID {
 
+    @Index
     @Column(unique = true)
     private int articelNumber;
     private String categoryName;

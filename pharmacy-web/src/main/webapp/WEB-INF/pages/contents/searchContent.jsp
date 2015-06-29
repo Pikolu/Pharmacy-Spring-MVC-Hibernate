@@ -48,7 +48,7 @@
                                                     <td style="vertical-align: baseline;">
                                                         <div style="margin-left: 25px; float: left;">
                                                             <h4 style="margin: 0px;">
-                                                                <c:url value="/produkte/$f{article.articelNumber}/${article.name}" var="check" />
+                                                                <c:url value="/produkte/${article.articelNumber}/${article.name}" var="check" />
                                                                 <a href="${check}" >${article.name}</a>
                                                             </h4>
                                                             <br/>
@@ -58,7 +58,8 @@
                                                         <div>ab ${articleHelper.getBestDiscount(article.prices).price} €</div>
                                                     </td>
                                                     <td style="width: 130px; text-align: right; padding-right: 20px;">
-                                                        <a href="#">Zum Preisvergleich</a>
+                                                        <c:url value="/check/${article.articelNumber}/${article.name}" var="checkPrice" />
+                                                        <a href="${checkPrice}">Zum Preisvergleich</a>
                                                     </td>
                                                 </tr>
                                             </table>

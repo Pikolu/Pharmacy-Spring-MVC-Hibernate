@@ -27,4 +27,6 @@ public interface ArticleDao {
 
     public DataWithCount<Article> loadTableContent(String parameter, FilterOptions filterOptions) throws PersistenceException;
 
+    public Article findArticleByArticelNumber(String articelNumber);
+
 }

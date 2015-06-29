@@ -7,7 +7,6 @@ package com.pharmacy.persistence.impl;
 
 import com.pharmacy.article.Article;
 import com.pharmacy.article.Article_;
-import com.pharmacy.base.BaseUUID_;
 import com.pharmacy.controller.abstraction.DataWithCount;
 import com.pharmacy.controller.abstraction.FilterOptions;
 import com.pharmacy.exception.PersistenceException;
@@ -15,6 +14,7 @@ import com.pharmacy.persistence.api.ArticleDao;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -123,5 +123,20 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
         long result = ((Number)(query.getSingleResult())).longValue();
         return result;
     }
+
+    @Override
+    public Article findArticleByArticelNumber(String articelNumber) {
+        Article article = null;
+        TypedQuery<Article> query = getEntityManager().createNamedQuery("findArticleByArticleNumber", Article.class);
+        query.setParameter("articelNumber", Integer.valueOf(articelNumber));
+        try {
+            article = query.getSingleResult();
+        } catch (NoResultException e) {
+            //do nothing
+        }
+        return article;
+    }
+    
+    
 
 }

@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.eclipse.persistence.annotations.Index;
 
 /*
  * To change this template, choose Tools | Templates
@@ -25,7 +26,9 @@ public abstract class BaseUUID implements Serializable {
     @Id
     @Column(length = 36, name = "id")
     private String id;
-    public String name;
+    @Index
+    private String name;
+    @Index
     private String description;
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
