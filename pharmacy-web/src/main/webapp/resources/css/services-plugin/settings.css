@@ -345,8 +345,8 @@ website:   	http://www.themepunch.com
     width:30px;
     height:45px;
     position:absolute;
-    left:301px;
-    top:385px;
+    left:0px;
+    top:195px;
     z-index:100;
     margin-left:-29px;
     cursor:pointer;
@@ -373,8 +373,8 @@ website:   	http://www.themepunch.com
     width:30px;
     height:45px;
     position:absolute;
-    right:301px;
-    top:385px;
+    right:0px;
+    top:195px;
     z-index:100;	
     margin-right:-30px;
     cursor:pointer;
@@ -430,6 +430,7 @@ website:   	http://www.themepunch.com
 .hover-blog-link-sign{
     background:url("#{resource['images/assets/button:link.png']}") no-repeat;
     width:50px;
+    height: 510px;
     height:50px;	
     position:absolute;
     cursor:pointer;

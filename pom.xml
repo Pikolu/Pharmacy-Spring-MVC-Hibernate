@@ -12,16 +12,4 @@
         <module>pharmacy-db</module>
         <module>pharmacy-core</module>
     </modules>
-    
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://localhost:8081/content/repositories/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>

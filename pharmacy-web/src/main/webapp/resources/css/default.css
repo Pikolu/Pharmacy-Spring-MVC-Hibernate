@@ -4081,3 +4081,11 @@ input#sub_category, input#description {
     -o-text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.example-wrapper {
+    position: relative;
+    width: 980px;
+    height: 400px;
+    margin: auto auto;
+    height: 510px;
+}
