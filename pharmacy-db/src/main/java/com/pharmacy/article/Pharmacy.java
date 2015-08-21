@@ -9,19 +9,16 @@ import com.pharmacy.base.BaseUUID;
 import com.pharmacy.csv.CSVFormat;
 import com.pharmacy.evaluation.Evaluation;
 import com.pharmacy.payment.PaymentType;
-import java.io.Serializable;
+import com.pharmacy.user.User;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -54,10 +51,15 @@ public class Pharmacy extends BaseUUID {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "price_id")
     private Price price;
+    @OneToOne(fetch = FetchType.LAZY)
+    private User user;
+    
+
 
     /**
      * @return the name
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -65,6 +67,7 @@ public class Pharmacy extends BaseUUID {
     /**
      * @param name the name to set
      */
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -154,8 +157,20 @@ public class Pharmacy extends BaseUUID {
      */
     public void setPaymentTypes(Collection<PaymentType> paymentTypes) {
         this.paymentTypes = paymentTypes;
+    }    
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
     }
 
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
     
-
 }

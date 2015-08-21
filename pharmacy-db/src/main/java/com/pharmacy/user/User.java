@@ -4,6 +4,7 @@
  */
 package com.pharmacy.user;
 
+import com.pharmacy.article.GenderType;
 import com.pharmacy.base.BaseUUID;
 import com.pharmacy.wishlist.Wishlist;
 import java.util.ArrayList;
@@ -41,6 +42,12 @@ public class User extends BaseUUID implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
     private boolean acceptedGeneralTerms;
+    @Enumerated(EnumType.STRING)
+    private GenderType genderType;
+    private String email;
+    private String phoneNumber;
+    private String homePage;
+    private String fax;
 
     /**
      * @return the firstName
@@ -162,7 +169,7 @@ public class User extends BaseUUID implements UserDetails {
         Set<GrantedAuthority> setAuths = new HashSet<>();
         // Build user's authorities
 //        for (UserRole userRole : this.getAccount().getUserRole()) {
-            setAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
+        setAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
 //        }
         List<GrantedAuthority> result = new ArrayList<>(setAuths);
         return result;
@@ -196,5 +203,75 @@ public class User extends BaseUUID implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    /**
+     * @return the genderType
+     */
+    public GenderType getGenderType() {
+        return genderType;
+    }
+
+    /**
+     * @param genderType the genderType to set
+     */
+    public void setGenderType(GenderType genderType) {
+        this.genderType = genderType;
+    }
+
+    /**
+     * @return the fax
+     */
+    public String getFax() {
+        return fax;
+    }
+
+    /**
+     * @param fax the fax to set
+     */
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the phoneNumber
+     */
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * @param phoneNumber the phoneNumber to set
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * @return the homePage
+     */
+    public String getHomePage() {
+        return homePage;
+    }
+
+    /**
+     * @param homePage the homePage to set
+     */
+    public void setHomePage(String homePage) {
+        this.homePage = homePage;
     }
 }

@@ -55,15 +55,4 @@ public class Address extends BaseUUID {
         this.postCode = postCode;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append("Address {");
-        result.append(" Company: ").append(company);
-        result.append(" address: ").append(address);
-        result.append(" City: ").append(city);
-        result.append(" PostCode: ").append(postCode);
-        result.append("}");
-        return result.toString();
-    }
 }

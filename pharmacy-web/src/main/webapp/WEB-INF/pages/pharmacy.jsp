@@ -13,6 +13,6 @@
         <%@include file="includes/footer.jsp" %>
     </jsp:attribute>
     <jsp:body>
-        <%@include file="contents/indexContent.jsp" %>
+        <%@include file="contents/phamacy.jsp" %>
     </jsp:body>
 </t:genericpage>

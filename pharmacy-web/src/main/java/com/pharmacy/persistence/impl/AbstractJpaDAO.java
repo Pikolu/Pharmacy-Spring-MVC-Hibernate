@@ -1,8 +1,6 @@
 package com.pharmacy.persistence.impl;
 
-import com.pharmacy.article.Article_;
 import com.pharmacy.base.BaseUUID;
-import com.pharmacy.base.BaseUUID_;
 import com.pharmacy.exception.PersistenceException;
 import java.util.Date;
 
@@ -10,10 +8,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Propagation;
