@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Assembly-Full/Assembly-Full.iml" filepath="$PROJECT_DIR$/Assembly-Full/Assembly-Full.iml" />
       <module fileurl="file://$PROJECT_DIR$/pharmacy.iml" filepath="$PROJECT_DIR$/pharmacy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pharmacy-core/pharmacy-core.iml" filepath="$PROJECT_DIR$/pharmacy-core/pharmacy-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/pharmacy-db/pharmacy-db.iml" filepath="$PROJECT_DIR$/pharmacy-db/pharmacy-db.iml" />
       <module fileurl="file://$PROJECT_DIR$/pharmacy-web/pharmacy-web.iml" filepath="$PROJECT_DIR$/pharmacy-web/pharmacy-web.iml" />
     </modules>

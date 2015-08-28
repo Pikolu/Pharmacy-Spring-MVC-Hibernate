@@ -109,6 +109,9 @@ public class User extends BaseUUID implements UserDetails {
      * @return the address
      */
     public Address getAddress() {
+        if (address == null) {
+            address = new Address();
+        }
         return address;
     }
 
@@ -274,4 +277,9 @@ public class User extends BaseUUID implements UserDetails {
     public void setHomePage(String homePage) {
         this.homePage = homePage;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + ", newslatter=" + newslatter + ", address=" + address + ", wishlist=" + wishlist + ", account=" + account + ", acceptedGeneralTerms=" + acceptedGeneralTerms + ", genderType=" + genderType + ", email=" + email + ", phoneNumber=" + phoneNumber + ", homePage=" + homePage + ", fax=" + fax + '}';
+    }  
 }

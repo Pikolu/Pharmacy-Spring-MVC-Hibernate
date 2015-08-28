@@ -22,7 +22,7 @@ public abstract class AbstractJpaDAO<T extends BaseUUID> {
     @PersistenceContext(unitName = "PharmacyUnit")
     private EntityManager entityManager;
 
-    AbstractJpaDAO(final Class<T> clazzToSet) {
+    public AbstractJpaDAO(final Class<T> clazzToSet) {
         this.clazz = clazzToSet;
     }
 

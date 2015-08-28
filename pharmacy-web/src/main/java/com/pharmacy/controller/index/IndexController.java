@@ -6,11 +6,13 @@
 package com.pharmacy.controller.index;
 
 import com.pharmacy.article.Article;
+import com.pharmacy.article.Pharmacy;
 import com.pharmacy.article.helper.ArticleHelper;
 import com.pharmacy.controller.abstraction.AbstractController;
 import com.pharmacy.controller.abstraction.DataWithCount;
 import com.pharmacy.exception.ServiceException;
 import com.pharmacy.service.api.ArticleService;
+import com.pharmacy.service.api.PharmacyService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,6 +38,8 @@ public class IndexController extends AbstractController {
 
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private PharmacyService pharmacyService;
 
     @RequestMapping(value = "/produkte", method = RequestMethod.GET)
     public @ResponseBody
@@ -66,6 +70,8 @@ public class IndexController extends AbstractController {
     @RequestMapping(value = "/apotheke/{pharm}", method = RequestMethod.GET)
     public ModelAndView displayPharmacy(@PathVariable String pharm, HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("pharmacy");
+        Pharmacy pharmacy = pharmacyService.getPharmacyByName(pharm);
+        modelAndView.addObject("pharmacy", pharmacy);
         return modelAndView;
     }
 }

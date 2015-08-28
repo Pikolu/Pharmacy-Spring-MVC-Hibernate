@@ -31,7 +31,8 @@ import javax.persistence.OneToOne;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "findAllPharmacies", query = "SELECT p FROM Pharmacy p")
+    @NamedQuery(name = "findAllPharmacies", query = "SELECT p FROM Pharmacy p"),
+    @NamedQuery(name = "findPharmacyByName", query = "SELECT p FROM Pharmacy p WHERE p.name = :name")
 })
 public class Pharmacy extends BaseUUID {
 
@@ -172,5 +173,11 @@ public class Pharmacy extends BaseUUID {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Pharmacy{" + "name=" + name + ", evaluations=" + evaluations + ", paymentTypes=" + paymentTypes + ", shipping=" + shipping + ", csvFormat=" + csvFormat + ", logoURL=" + logoURL + ", price=" + price + ", user=" + user + '}';
+    }
+    
     
 }
