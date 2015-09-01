@@ -18,6 +18,7 @@ package com.pharmacy.service.impl;
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.persistence.api.PharmacyDao;
 import com.pharmacy.service.api.PharmacyService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,11 @@ public class PharmacyServiceImpl implements PharmacyService {
     @Override
     public Pharmacy getPharmacyByName(String name) {
         return pharmacyDao.getPharmacyByName(name);
+    }
+
+    @Override
+    public List<Pharmacy> findBestPharmacies() {
+        return pharmacyDao.findBestPharmacies();
     }
 
 }

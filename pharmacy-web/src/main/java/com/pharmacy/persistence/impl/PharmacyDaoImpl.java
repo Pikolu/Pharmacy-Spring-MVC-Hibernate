@@ -3,6 +3,7 @@ package com.pharmacy.persistence.impl;
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.persistence.api.PharmacyDao;
 import com.pharmacy.persistence.impl.AbstractJpaDAO;
+import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
@@ -44,6 +45,14 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
         } catch (NoResultException | NonUniqueResultException e) {
         }
         return pharmacy;
+    }
+
+    @Override
+    public List<Pharmacy> findBestPharmacies() {
+        TypedQuery<Pharmacy> query = getEntityManager().createNamedQuery("findBestPharmacies", Pharmacy.class);
+        query.setMaxResults(5);
+        List<Pharmacy> pharmacys = query.getResultList();
+        return pharmacys;
     }
 
 }

@@ -13,19 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.pharmacy.service.api;
+package com.pharmacy.service.impl;
 
-import com.pharmacy.article.Pharmacy;
+import com.pharmacy.evaluation.Evaluation;
+import com.pharmacy.persistence.api.EvaluationDao;
+import com.pharmacy.service.api.EvaluationService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Alexander
  */
-public interface PharmacyService {
+@Service
+public class EvaluationServiceImpl implements EvaluationService {
     
-    public Pharmacy getPharmacyByName(String name);
+    @Autowired
+    private EvaluationDao evaluationDao;
 
-    public List<Pharmacy> findBestPharmacies();
+    @Override
+    public List<Evaluation> getLastEvaluations() {
+        return evaluationDao.getLastEvaluations();
+    }
     
 }

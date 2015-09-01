@@ -53,7 +53,7 @@
                 <div id="logo">
                     <c:url value="/index.html" var="index"></c:url>
                     <a href="${index}">
-                        <img src="<c:url value="/resources/images/logo1.png" />" />
+                        <img style="margin-top: 37px;" src="<c:url value="/resources/images/logo1.png" />" />
                     </a>
                 </div>
                 <c:url value="/produkte.html" var="produkte"></c:url>

@@ -16,6 +16,7 @@
 package com.pharmacy.persistence.api;
 
 import com.pharmacy.article.Pharmacy;
+import java.util.List;
 
 /**
  *
@@ -24,4 +25,6 @@ import com.pharmacy.article.Pharmacy;
 public interface PharmacyDao {
 
     public Pharmacy getPharmacyByName(String name);
+
+    public List<Pharmacy> findBestPharmacies();
 }

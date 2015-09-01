@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="footer-wrap">
-    <div id="footer">
+<!--    <div id="footer">
         <div class="wrapper">
             <div class="column col-1">
                 <h3>Information</h3>
@@ -44,7 +44,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="wrapper">
         <c:url value="/index.html" var="index"></c:url>
         <div id="powered">Powered By <a href="${index}">Pharmacy Germany GmbH</a></div>

@@ -18,9 +18,9 @@
                         <h3 style="margin: 0px;">${pharm}</h3>
                         <span><s:message code="label.gender_${pharmacy.user.genderType}" /> ${pharmacy.user.firstName} ${pharmacy.user.lastName}</span>
                         <br />
-                        <span>${pharmacy.address.address}</span>
+                        <span>${pharmacy.user.address.address}</span>
                         <br />
-                        <span>${pharmacy.address.postCode} ${pharmacy.address.city}</span>
+                        <span>${pharmacy.user.address.postCode} ${pharmacy.user.address.city}</span>
                         <br /><br />
                         <span>Telefon: ${pharmacy.user.phoneNumber}</span>
                         <br />
@@ -38,7 +38,50 @@
             <div class="box-heading">Zahlungsarten / Versand</div>
             <div class="box-content">
                 <div class="box-product">
-                    Hier kommt der Inhalt einer Apotheke
+                    <div style="padding: 10px 10px 10px 18px">
+                        <div>
+                            <h2>Zahlungsarten</h2>
+                            <hr/>
+                            <c:forEach items="${pharmacy.paymentTypes}" var="payment">
+                                <c:if test="${payment.name() eq 'PAY_PAL'}">
+                                    <div>
+                                        Paypal
+                                    </div>
+                                </c:if>
+
+                                <c:if test="${payment.name() eq 'KREDIT_CARD'}">
+                                    <div>
+                                        Kreditkarte
+                                        <!--<img src="<c:url value="/resources/images/payment/creditcard.png" />" />-->
+                                        <!--<img src="<c:url value="/resources/images/payment/mastercard.png" />" />-->
+                                    </div>
+                                </c:if>
+
+                                <c:if test="${payment.name() eq 'DIRECT_BANKING'}">
+                                    <div>
+                                        Sofortüberweißung
+                                    </div>
+                                </c:if>
+
+                                <c:if test="${payment.name() eq 'DEBIT'}">
+                                    <div>
+                                        Lastschrift
+                                    </div>
+                                </c:if>
+
+                                <c:if test="${payment.name() eq 'DEBIT'}">
+                                    <div>
+                                        Rechnung
+                                    </div>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                        <div style="margin-top: 50px">
+                            <h2>Versandkosten</h2>
+                            <hr/>
+                             Portofrei ab ${pharmacy.shipping} €.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,7 +90,25 @@
             <div class="box-heading">Bewertungen</div>
             <div class="box-content">
                 <div class="box-product">
-                    Hier kommt der Inhalt einer Apotheke
+                             <div class="box-content box-evaluation">
+                <c:forEach items="${pharmacy.evaluations}" var="evaluation">
+                    <div class="evaluation-box" style="height: 60px; border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
+                        <span style="float: left">${evaluation.creationDate}</span>
+                        <span style="float: left">&nbsp; | &nbsp;</span>
+                        <div id="fixed_${evaluation.id}"></div>
+                        
+                        <h2 class="ellipsis">${evaluation.name}</h2>
+                        <div class="ellipsis" >${evaluation.description}</div>
+                        <script type="text/javascript">
+                            jQuery('#fixed_${evaluation.id}').raty({
+                                readOnly: true,
+                                start: 2,
+                                path: 'resources/images/raiting/'
+                            });
+                        </script>
+                    </div>
+                </c:forEach>
+            </div>
                 </div>
             </div>
         </div>

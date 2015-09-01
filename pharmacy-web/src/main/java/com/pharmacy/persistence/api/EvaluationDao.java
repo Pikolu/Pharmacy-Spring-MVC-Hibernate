@@ -13,19 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.pharmacy.service.api;
+package com.pharmacy.persistence.api;
 
-import com.pharmacy.article.Pharmacy;
+import com.pharmacy.evaluation.Evaluation;
 import java.util.List;
 
 /**
  *
  * @author Alexander
  */
-public interface PharmacyService {
-    
-    public Pharmacy getPharmacyByName(String name);
+public interface EvaluationDao {
 
-    public List<Pharmacy> findBestPharmacies();
-    
+    public List<Evaluation> getLastEvaluations();
 }

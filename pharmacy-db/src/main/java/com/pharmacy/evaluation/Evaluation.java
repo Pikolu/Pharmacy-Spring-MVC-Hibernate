@@ -7,12 +7,17 @@ package com.pharmacy.evaluation;
 
 import com.pharmacy.base.BaseUUID;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Alexandr
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findLastEvaluations", query = "SELECT e FROM Evaluation e ORDER BY e.creationDate DESC")
+})
 public class Evaluation extends BaseUUID {
     
     private float points;

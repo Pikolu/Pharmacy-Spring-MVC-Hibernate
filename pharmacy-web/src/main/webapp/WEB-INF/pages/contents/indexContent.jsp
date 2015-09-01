@@ -25,7 +25,7 @@
                                 ab
                                 <c:set var="bestPrice" value="${articleHelper.getBestDiscount(article.prices)}" />
                                 <span style="font-size: 18px; color:#E31010">${bestPrice.price} €</span>
-                                
+
                                 <!--<h:outputText style="font-size: 18px; color:#E31010" value="{article.price} €" />-->
                             </div>
                             <div>
@@ -94,50 +94,67 @@
         <div class="box" style="margin-top: 20px; float: left; width: 49%; border-bottom: none;">
             <div class="box-heading">TOP-Apotheken und Anbieter</div>
             <div class="box-content box-evaluation">
-                <c:forEach items="${pharmacies}" var="pharmacy">
-                    <div class="evaluation-box" style="height: 60px; border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
-                        <h2>
-                            <c:url value="/apotheke/${pharmacy.name}.html" var="pharmacyURL" />
-                            <a href="${pharmacyURL}">${pharmacy.name}</a>
-                        </h2>
-                        <div style="float:left">
-                            <img width="86" height="34" alt="${pharmacy.name}" src="${pharmacy.logoURL}" />    
+                <c:choose>
+                    <c:when test="${empty pharmacies}">
+                        <div style="border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
+                            Zurzeit gibt es keine Anbieter mit vorhandenen Bewertungen.
                         </div>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach items="${pharmacies}" var="pharmacy">
+                            <div class="evaluation-box" style="height: 60px; border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
+                                <h2>
+                                    <c:url value="/apotheke/${pharmacy.name}.html" var="pharmacyURL" />
+                                    <a href="${pharmacyURL}">${pharmacy.name}</a>
+                                </h2>
+                                <div style="float:left">
+                                    <img width="86" height="34" alt="${pharmacy.name}" src="${pharmacy.logoURL}" />    
+                                </div>
 
-                        <div id="fixed_${pharmacy.id}" style="margin-left: 165px"></div>
-                        <span style="margin-left: 72px">${pharmacy.evaluations.size()} Bewertungen</span>
-                        <script type="text/javascript">
-                            jQuery('#fixed_${pharmacy.id}').raty({
-                                readOnly: true,
-                                start: 2,
-                                path: 'resources/images/raiting/'
-                            });
-                        </script>
-                    </div>
-                </c:forEach>
+                                <div id="fixed_${pharmacy.id}" style="margin-left: 165px"></div>
+                                <span style="margin-left: 72px">${pharmacy.evaluations.size()} Bewertungen</span>
+                                <script type="text/javascript">
+                                    jQuery('#fixed_${pharmacy.id}').raty({
+                                        readOnly: true,
+                                        start: ${evaluation.points},
+                                        path: 'resources/images/raiting/'
+                                    });
+                                </script>
+                            </div>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+
             </div>
         </div>
 
         <div class="box" style="margin-top: 20px; margin-left: 51%; border-bottom: none;">
             <div class="box-heading">Aktuelle Bewertungen</div>
             <div class="box-content box-evaluation">
-                <c:forEach items="${evaluations}" var="evaluation">
-                    <div class="evaluation-box" style="height: 60px; border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
-                        <span style="float: left">${evaluation.creationDate}</span>
-                        <span style="float: left">&nbsp; | &nbsp;</span>
-                        <div id="fixed_${evaluation.id}"></div>
-                        
-                        <h2 class="ellipsis">${evaluation.name}</h2>
-                        <div class="ellipsis" >${evaluation.description}</div>
-                        <script type="text/javascript">
-                            jQuery('#fixed_${evaluation.id}').raty({
-                                readOnly: true,
-                                start: 2,
-                                path: 'resources/images/raiting/'
-                            });
-                        </script>
-                    </div>
-                </c:forEach>
+                <c:choose>
+                    <c:when test="${empty evaluations}">
+                        Zurzeit gibt es keine Bewertungen.
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach items="${evaluations}" var="evaluation">
+                            <div class="evaluation-box" style="height: 60px; border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
+                                <span style="float: left">${evaluation.creationDate}</span>
+                                <span style="float: left">&nbsp; | &nbsp;</span>
+                                <div id="fixed_${evaluation.id}"></div>
+
+                                <h2 class="ellipsis">${evaluation.name}</h2>
+                                <div class="ellipsis" >${evaluation.description}</div>
+                                <script type="text/javascript">
+                                    jQuery('#fixed_${evaluation.id}').raty({
+                                        readOnly: true,
+                                        start: ${evaluation.points},
+                                        path: 'resources/images/raiting/'
+                                    });
+                                </script>
+                            </div>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>

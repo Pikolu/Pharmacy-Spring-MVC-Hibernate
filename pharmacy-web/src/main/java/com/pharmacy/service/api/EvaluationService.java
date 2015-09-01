@@ -15,17 +15,15 @@
  */
 package com.pharmacy.service.api;
 
-import com.pharmacy.article.Pharmacy;
+import com.pharmacy.evaluation.Evaluation;
 import java.util.List;
 
 /**
  *
  * @author Alexander
  */
-public interface PharmacyService {
+public interface EvaluationService {
     
-    public Pharmacy getPharmacyByName(String name);
-
-    public List<Pharmacy> findBestPharmacies();
+    public List<Evaluation> getLastEvaluations();
     
 }

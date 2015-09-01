@@ -618,7 +618,7 @@ h2 {
     margin-left: 8px;
 }
 #search {
-    border: 1px solid #000;
+    border: 1px solid #303030;
     position: relative;
     float: left;
     margin: 40px 2px 0 40px;
@@ -4088,4 +4088,11 @@ input#sub_category, input#description {
     height: 400px;
     margin: auto auto;
     height: 510px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #E5E5E5; 
 }

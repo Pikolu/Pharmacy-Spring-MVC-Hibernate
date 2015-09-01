@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -32,10 +33,12 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "findAllPharmacies", query = "SELECT p FROM Pharmacy p"),
-    @NamedQuery(name = "findPharmacyByName", query = "SELECT p FROM Pharmacy p WHERE p.name = :name")
+    @NamedQuery(name = "findPharmacyByName", query = "SELECT p FROM Pharmacy p WHERE p.name = :name"),
+    @NamedQuery(name = "findBestPharmacies", query = "SELECT p FROM Pharmacy p LEFT JOIN p.evaluations e WHERE e.points > 0 ORDER BY e.points DESC")    
 })
 public class Pharmacy extends BaseUUID {
 
+    @Column(unique = true)
     private String name;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "evaluation_id")

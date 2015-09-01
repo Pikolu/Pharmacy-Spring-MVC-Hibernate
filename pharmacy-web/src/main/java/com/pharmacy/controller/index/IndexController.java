@@ -70,6 +70,7 @@ public class IndexController extends AbstractController {
     @RequestMapping(value = "/apotheke/{pharm}", method = RequestMethod.GET)
     public ModelAndView displayPharmacy(@PathVariable String pharm, HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("pharmacy");
+        pharm = "Apotheke";
         Pharmacy pharmacy = pharmacyService.getPharmacyByName(pharm);
         modelAndView.addObject("pharmacy", pharmacy);
         return modelAndView;

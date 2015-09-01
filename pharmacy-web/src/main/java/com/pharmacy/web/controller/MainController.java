@@ -2,17 +2,14 @@ package com.pharmacy.web.controller;
 
 import com.pharmacy.article.Article;
 import com.pharmacy.article.Pharmacy;
-import com.pharmacy.article.Price;
 import com.pharmacy.article.helper.ArticleHelper;
-import com.pharmacy.evaluation.Evaluation;
 import com.pharmacy.evaluation.helper.EvaluationHelper;
 import com.pharmacy.exception.ControllerException;
 import com.pharmacy.exception.ServiceException;
 import com.pharmacy.exception.type.ExceptionType;
-import com.pharmacy.payment.PaymentType;
 import com.pharmacy.service.api.ArticleService;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.pharmacy.service.api.EvaluationService;
+import com.pharmacy.service.api.PharmacyService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +33,10 @@ public class MainController {
 
     @Inject
     private ArticleService articleService;
+    @Inject 
+    private PharmacyService pharmacyService;
+    @Inject
+    private EvaluationService evaluationService;
 
     @RequestMapping(value = {"/", "/index", "/welcome**"}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
@@ -44,11 +45,11 @@ public class MainController {
             modelAndView = new ModelAndView("index");
             List<Article> articles = articleService.loadBestDiscountedArticles();
             modelAndView.addObject("articles", articles);
-            List<Pharmacy> pharmacies = getSomePharmacies();
+            List<Pharmacy> pharmacies = pharmacyService.findBestPharmacies();
             modelAndView.addObject("pharmacies", pharmacies);
             modelAndView.addObject("evaluationHelper", new EvaluationHelper());
             modelAndView.addObject("articleHelper", new ArticleHelper());
-            modelAndView.addObject("evaluations", getSomeEvaluations());
+            modelAndView.addObject("evaluations", evaluationService.getLastEvaluations());
 
         } catch (ServiceException ex) {
             ex.writeLog(LOG);
@@ -110,47 +111,10 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            System.out.println(userDetail);
-
             model.addObject("username", userDetail.getUsername());
-
         }
-
         model.setViewName("403");
         return model;
 
-    }
-
-    private List<Pharmacy> getSomePharmacies() {
-        List<Pharmacy> pharmacys = new ArrayList<>();
-        Pharmacy pharmacy;
-        Evaluation evaluation;
-        Price price;
-        for (int i = 1; i <= 5; i++) {
-            pharmacy = new Pharmacy();
-            pharmacy.setName("Apotheke " + i);
-            pharmacy.setPaymentTypes(new ArrayList<>(Arrays.asList(PaymentType.values())));
-            pharmacy.setLogoURL("http://www.shop-apotheke.com/pix/shop-apotheke-online-apotheke.png");
-            for (int j = 0; j < 10; j++) {
-                evaluation = new Evaluation();
-                evaluation.setPoints((float) (i + 0.5));
-                pharmacy.getEvaluations().add(evaluation);
-            }
-            pharmacys.add(pharmacy);
-        }
-        return pharmacys;
-    }
-
-    private List<Evaluation> getSomeEvaluations() {
-        List<Evaluation> evaluations = new ArrayList<>();
-        Evaluation evaluation;
-        for (int j = 1; j <= 5; j++) {
-            evaluation = new Evaluation();
-            evaluation.setName("Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung Bewertung akjsdhajksdha kjdak jdkajs dkajsd kajsnd kjand adjn alksjdn aksjdn kaljdn kajsnd kajnd kajsnd kajsnd kjbf lbgksdfsf nsdf s skjdf skjnfd fkj nsfkj nkjs ndfjks dnfksjfn skjdfgd" + j);
-            evaluation.setDescription("Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung Hier ist die Bewertung von der Bewertung " + j);
-            evaluation.setPoints((float) (j + 0.5));
-            evaluations.add(evaluation);
-        }
-        return evaluations;
     }
 }
