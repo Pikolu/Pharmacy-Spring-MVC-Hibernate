@@ -133,7 +133,9 @@
             <div class="box-content box-evaluation">
                 <c:choose>
                     <c:when test="${empty evaluations}">
-                        Zurzeit gibt es keine Bewertungen.
+                        <div style="border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
+                            Zurzeit gibt es keine Bewertungen.
+                        </div>
                     </c:when>
                     <c:otherwise>
                         <c:forEach items="${evaluations}" var="evaluation">
