@@ -47,6 +47,6 @@
     </div>-->
     <div class="wrapper">
         <c:url value="/index.html" var="index"></c:url>
-        <div id="powered">Powered By <a href="${index}">Pharmacy Germany GmbH</a></div>
+        <div id="powered">Copyright 2015 ©  <a href="${index}" style="text-transform: uppercase;">medizin-finder.de</a></div>
     </div>
 </div>
