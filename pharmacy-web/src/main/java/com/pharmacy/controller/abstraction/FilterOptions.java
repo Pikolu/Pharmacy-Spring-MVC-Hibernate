@@ -14,7 +14,7 @@ public class FilterOptions {
     private int firstPage = 1;
     private int currentPage = 1;
     private int lastPage = 10;
-    private int recordsPerPage = 25;
+    private int recordsPerPage = 15;
 
     /**
      * @return the firstPage

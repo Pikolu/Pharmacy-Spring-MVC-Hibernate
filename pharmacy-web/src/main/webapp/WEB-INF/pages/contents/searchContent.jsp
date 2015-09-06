@@ -40,11 +40,11 @@
 
                                             <table style="width: 100%">
                                                 <tr>
-                                                    <td style="width: 200px">
-                                                        <div style="float: left; width: 150px; height: 150px">
-                                                            <img alt="${article.name}" src="${article.imageURL}" width="150" height="150" />
+                                                    <td style="width: 100px">
+                                                        <div style="float: left; width: 100px; height: 100px">
+                                                            <img alt="${article.name}" src="${article.imageURL}" width="100" height="100" />
                                                         </div>
-                                                    </td>
+                                                    </td> 
                                                     <td style="vertical-align: baseline;">
                                                         <div style="margin-left: 25px; float: left;">
                                                             <h4 style="margin: 0px;">
@@ -54,8 +54,10 @@
                                                             <br/>
                                                         </div>
                                                     </td>
+                                                    <c:set var="bestPrice" value="${articleHelper.getBestDiscount(article.prices)}" />
                                                     <td style="width: 130px; vertical-align: baseline;">
-                                                        <div>ab ${articleHelper.getBestDiscount(article.prices).price} €</div>
+                                                        <div>ab ${bestPrice.price} €</div>
+                                                        <div style="color: #D14F4F">${bestPrice.discount} %<span> Ersparnis</span></div>
                                                     </td>
                                                     <td style="width: 130px; text-align: right; padding-right: 20px;">
                                                         <c:url value="/check/${article.articelNumber}/${article.name}" var="checkPrice" />

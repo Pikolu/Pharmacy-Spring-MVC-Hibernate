@@ -19,8 +19,10 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.apache.commons.lang.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -83,28 +85,36 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
     @Override
     public List<Article> findArticlesByParameter(String parameter, FilterOptions filterOptions) {
         LOG.trace("Enter findArticlesByParameter: parameter={}", parameter);
-        List<Article> articles = new LinkedList<>();
+
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Article> query = builder.createQuery(Article.class);
         Root<Article> root = query.from(Article.class);
 
-        Predicate predicate = builder.like(root.get(Article_.name), "%" + parameter + "%");
-        query.where(predicate);
+//        query.orderBy(builder.asc(root.get(Article_.name)));
+        Predicate[] predicates = getSearchPredicate(parameter, builder, root);
+        query.where(builder.or(predicates));
         query.select(root);
+
         TypedQuery<Article> sqlQuery = getEntityManager().createQuery(query);
         sqlQuery.setFirstResult((filterOptions.getCurrentPage() - 1) * filterOptions.getRecordsPerPage());
         sqlQuery.setMaxResults(filterOptions.getRecordsPerPage());
-        articles.addAll(sqlQuery.getResultList());
-        Predicate predicate2 = builder.like(root.get(Article_.description), "%" + parameter + "%");
-        query.where(builder.or(predicate, predicate2));
-        query.select(root);
-        sqlQuery = getEntityManager().createQuery(query);
-        sqlQuery.setFirstResult((filterOptions.getCurrentPage() - 1) * filterOptions.getRecordsPerPage());
-        sqlQuery.setMaxResults(filterOptions.getRecordsPerPage());
-        List<Article> searchedDescriptionShortArticles = sqlQuery.getResultList();
-        articles.addAll(searchedDescriptionShortArticles);
+        List<Article> articles = sqlQuery.getResultList();
+
         LOG.trace("Exit findArticlesByParameter: articles size={}", articles.size());
         return articles;
+    }
+
+    private Predicate[] getSearchPredicate(String parameter, CriteriaBuilder builder, Root<Article> root) {
+        List<Predicate> predicates = new ArrayList<>();
+        
+        Expression<String> lowerName = builder.lower(root.get(Article_.name));
+        Expression<String> lowerDescription = builder.lower(root.get(Article_.description));
+                
+        Predicate predicate = builder.like(lowerName, "%" + parameter.toLowerCase() + "%");
+        Predicate predicate2 = builder.like(lowerDescription, "%" + parameter.toLowerCase() + "%");
+        predicates.add(predicate);
+        predicates.add(predicate2);
+        return predicates.toArray(new Predicate[predicates.size()]);
     }
 
     @Override
@@ -117,11 +127,16 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
         return dataWithCount;
     }
 
-    public Long getCount(String parameter) {   
-        Query query = getEntityManager().createNamedQuery("coutArticleByParameter");
-        query.setParameter("parameter", "%" + parameter + "%");
-        long result = ((Number)(query.getSingleResult())).longValue();
-        return result;
+    public Long getCount(String parameter) {
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Long> query = builder.createQuery(Long.class);
+        Root<Article> root = query.from(Article.class);
+        query.select(builder.count(root));
+        Predicate[] predicates = getSearchPredicate(parameter, builder, root);
+
+        query.where(builder.or(predicates));
+        TypedQuery<Long> sqlQuery = getEntityManager().createQuery(query);
+        return sqlQuery.getSingleResult();
     }
 
     @Override
@@ -136,7 +151,5 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
         }
         return article;
     }
-    
-    
 
 }

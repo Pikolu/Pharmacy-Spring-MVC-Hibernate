@@ -62,8 +62,8 @@ public abstract class AbstractController {
     }
 
     private int getPageCount(Long size) {
-        int result = (int) (size / filterOptions.getRecordsPerPage());
-        return result;
+        double result = (int) Math.ceil(size * 1.0 / filterOptions.getRecordsPerPage());
+        return (int) result;
     }
 
     /**
