@@ -25,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -37,10 +38,20 @@ public class PriceCheckController extends AbstractController {
     @Autowired
     private ArticleService articleService;
 
-    @RequestMapping(value = "/check/{articelNumber}/{name}", method = RequestMethod.GET)
-    public ModelAndView loadAllPharmacyForPriceCheck(@PathVariable String articelNumber, @PathVariable String name, HttpServletRequest request, HttpSession session) {
+    @RequestMapping(value = "/preisvergleich/{articelNumber}/{name}", method = RequestMethod.GET)
+    public ModelAndView loadAllPharmacyForPriceCheck(@PathVariable String articelNumber, @PathVariable String name, @RequestParam(required = false) String page, HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("priceCheck");
         Article article = articleService.findArticleByArticelNumber(articelNumber);
+        int currentpage;
+        if (page == null) {
+            currentpage = 1;
+        } else {
+            currentpage = Integer.valueOf(page);
+        }
+        getFilterOptions().setCurrentPage(currentpage);
+        setPage(page, modelAndView, (long)article.getPrices().size());
+
+        modelAndView.addObject("article", article);
         return modelAndView;
     }
 

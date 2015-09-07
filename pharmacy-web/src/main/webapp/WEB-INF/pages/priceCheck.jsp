@@ -14,6 +14,6 @@
         <%@include file="includes/footer.jsp" %>
     </jsp:attribute>
     <jsp:body>
-        <%@include file="contents/userAgreementContent.jsp" %>
+        <%@include file="contents/priceCheck.jsp" %>
     </jsp:body>
 </t:genericpage>

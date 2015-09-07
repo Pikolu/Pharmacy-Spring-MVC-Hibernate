@@ -4,19 +4,18 @@
     Author     : Alexandr
 --%>
 
-<%@page import="java.net.URLEncoder"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div id="container">
     <div id="notification"> </div>
     <div id="content">
         <div class="box">
-            <div class="box-heading">Suchergebnisse zu ${parameter}</div>
+            <div class="box-heading">Preisvergleich ${name}</div>
             <div class="box-content">
                 <div class="box-product">
 
                     <c:choose>
-                        <c:when test="${empty articles}">
+                        <c:when test="${empty article.prices}">
                             <div style="padding: 10px;">
                                 <h2>Zu Ihrer Suche wurde leider nichts gefunden</h2>
                                 <h3>Für den Suchbegriff wurden keine Produkte gefunden.</h3>
@@ -35,7 +34,7 @@
                         <c:otherwise>
                             <table border="0" cellpadding="5" cellspacing="0" style="width: 100%">
 
-                                <c:forEach var="article" items="${articles}">
+                                <c:forEach var="price" items="${article.prices}">
                                     <tr>
                                         <td style="border-bottom: 1px solid #E5E5E5">
 
@@ -43,26 +42,26 @@
                                                 <tr>
                                                     <td style="width: 100px">
                                                         <div style="float: left; width: 100px; height: 100px">
-                                                            <img alt="${article.name}" src="${article.imageURL}" width="100" height="100" />
+                                                            <img alt="${price.pharmacy.name}" src="${price.pharmacy.logoURL}" width="100" height="100" />
                                                         </div>
                                                     </td> 
                                                     <td style="vertical-align: baseline;">
                                                         <div style="margin-left: 25px; float: left;">
                                                             <h4 style="margin: 0px;">
-                                                                <c:url var="checkPrice" value="/preisvergleich/${article.articelNumber}/${urlEncoder.encodeURL(article.name)}" />
-                                                                <a href="${checkPrice}" >${article.name}</a>
+                                                                <%--<c:url value="/produkte/${article.articelNumber}/${article.name}" var="check" />--%>
+                                                                <a href="${article.deepLink}" >${article.name}</a>
                                                             </h4>
                                                             <br/>
                                                         </div>
                                                     </td>
-                                                    <c:set var="bestPrice" value="${articleHelper.getBestDiscount(article.prices)}" />
+                                                    <%--<c:set var="bestPrice" value="${articleHelper.getBestDiscount(article.prices)}" />--%>
                                                     <td style="width: 130px; vertical-align: baseline;">
-                                                        <div>ab ${bestPrice.price} €</div>
-                                                        <div style="color: #D14F4F">${bestPrice.discount} %<span> Ersparnis</span></div>
+                                                        <!--<div>ab ${bestPrice.price} €</div>-->
+<!--                                                        <div style="color: #D14F4F">${bestPrice.discount} %<span> Ersparnis</span></div>-->
                                                     </td>
                                                     <td style="width: 130px; text-align: right; padding-right: 20px;">
-                                                        <c:url var="checkPrice" value="/preisvergleich/${article.articelNumber}/${urlEncoder.encodeURL(article.name)}" />
-                                                        <a href="${checkPrice}">Zum Preisvergleich</a>
+                                                        <%--<c:url value="/check/${article.articelNumber}/${article.name}" var="checkPrice" />--%>
+                                                        <a href="${article.deepLink}">Hier bestellen</a>
                                                     </td>
                                                 </tr>
                                             </table>

@@ -8,11 +8,13 @@ package com.pharmacy.controller.index;
 import com.pharmacy.article.Article;
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.article.helper.ArticleHelper;
+import com.pharmacy.article.helper.URLHelper;
 import com.pharmacy.controller.abstraction.AbstractController;
 import com.pharmacy.controller.abstraction.DataWithCount;
 import com.pharmacy.exception.ServiceException;
 import com.pharmacy.service.api.ArticleService;
 import com.pharmacy.service.api.PharmacyService;
+import java.net.URLEncoder;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,6 +61,7 @@ public class IndexController extends AbstractController {
             model.addObject("articles", articles.getResultList());
             model.addObject("parameter", parameter);
             model.addObject("articleHelper", new ArticleHelper());
+            model.addObject("urlEncoder", new URLHelper());
         } catch (ServiceException ex) {
             ex.writeLog(LOG);
         }
