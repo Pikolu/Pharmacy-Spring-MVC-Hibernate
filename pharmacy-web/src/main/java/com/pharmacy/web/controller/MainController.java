@@ -3,6 +3,7 @@ package com.pharmacy.web.controller;
 import com.pharmacy.article.Article;
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.article.helper.ArticleHelper;
+import com.pharmacy.article.helper.URLHelper;
 import com.pharmacy.evaluation.helper.EvaluationHelper;
 import com.pharmacy.exception.ControllerException;
 import com.pharmacy.exception.ServiceException;
@@ -11,6 +12,7 @@ import com.pharmacy.service.api.ArticleService;
 import com.pharmacy.service.api.EvaluationService;
 import com.pharmacy.service.api.PharmacyService;
 import java.util.List;
+import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -33,7 +35,7 @@ public class MainController {
 
     @Inject
     private ArticleService articleService;
-    @Inject 
+    @Inject
     private PharmacyService pharmacyService;
     @Inject
     private EvaluationService evaluationService;
@@ -50,6 +52,7 @@ public class MainController {
             modelAndView.addObject("evaluationHelper", new EvaluationHelper());
             modelAndView.addObject("articleHelper", new ArticleHelper());
             modelAndView.addObject("evaluations", evaluationService.getLastEvaluations());
+            modelAndView.addObject("urlEncoder", new URLHelper());
 
         } catch (ServiceException ex) {
             ex.writeLog(LOG);
@@ -82,8 +85,8 @@ public class MainController {
             }
         }
         if (logout != null) {
-            model.setViewName("index");
-            model.addObject("msg", "You've been logged out successfully.");
+            model.setViewName("redirect:index");
+            model.getModel();
         } else {
             model.setViewName("login");
         }
@@ -114,6 +117,16 @@ public class MainController {
             model.addObject("username", userDetail.getUsername());
         }
         model.setViewName("403");
+        return model;
+
+    }
+
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    public ModelAndView initAccount(HttpServletRequest request) {
+        Map map = request.getParameterMap();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        ModelAndView model = new ModelAndView();
+        model.setViewName("account");
         return model;
 
     }

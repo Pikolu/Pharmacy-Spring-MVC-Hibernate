@@ -106,7 +106,7 @@
                                                     </td>
                                                     <td style="width: 130px; text-align: right; padding-right: 20px;">
                                                         <%--<c:url value="/check/${article.articelNumber}/${article.name}" var="checkPrice" />--%>
-                                                        <a href="${article.deepLink}">Hier bestellen</a>
+                                                        <a class="buttonlight morebutton" href="${article.deepLink}">Hier bestellen</a>
                                                     </td>
                                                 </tr>
                                             </table>

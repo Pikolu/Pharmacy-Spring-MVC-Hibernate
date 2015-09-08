@@ -60,9 +60,9 @@
                                                         <div>ab ${bestPrice.price} €</div>
                                                         <div style="color: #D14F4F">${bestPrice.discount} %<span> Ersparnis</span></div>
                                                     </td>
-                                                    <td style="width: 130px; text-align: right; padding-right: 20px;">
+                                                    <td style="width: 155px; text-align: right; padding-right: 20px;">
                                                         <c:url var="checkPrice" value="/preisvergleich/${article.articelNumber}/${urlEncoder.encodeURL(article.name)}" />
-                                                        <a href="${checkPrice}">Zum Preisvergleich</a>
+                                                        <a class="buttonlight morebutton" href="${checkPrice}">Zum Preisvergleich</a>
                                                     </td>
                                                 </tr>
                                             </table>

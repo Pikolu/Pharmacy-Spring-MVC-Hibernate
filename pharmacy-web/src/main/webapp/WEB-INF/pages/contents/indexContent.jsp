@@ -43,6 +43,9 @@
                             -->
                             <div class="page-more">
                                 <img width="150" height="110" class="big-image" src="${article.imageURL}" />
+                                <c:url var="checkPrice" value="/preisvergleich/${article.articelNumber}/${urlEncoder.encodeURL(article.name)}" />
+                                <a class="buttonlight morebutton" style="position: relative; top: 175px; right: 186px;" href="${checkPrice}">Zum Preisvergleich</a>
+                                
                                 <div style="overflow-y: scroll; height: 400px;">
                                     <div class="details_double">
                                         <h2>${article.name}</h2>
