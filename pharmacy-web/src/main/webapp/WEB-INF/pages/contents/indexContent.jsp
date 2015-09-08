@@ -114,6 +114,7 @@
                                 <div id="fixed_${pharmacy.id}" style="margin-left: 165px"></div>
                                 <span style="margin-left: 72px">${pharmacy.evaluations.size()} Bewertungen</span>
                                 <script type="text/javascript">
+                                    console.log("#fixed_${pharmacy.id}");
                                     jQuery('#fixed_${pharmacy.id}').raty({
                                         readOnly: true,
                                         start: ${evaluation.points},

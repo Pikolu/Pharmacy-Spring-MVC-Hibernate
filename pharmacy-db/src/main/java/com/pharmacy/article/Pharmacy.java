@@ -57,6 +57,7 @@ public class Pharmacy extends BaseUUID {
     private Price price;
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
+    private int totalEvaluationPoints;
     
 
 
@@ -180,6 +181,20 @@ public class Pharmacy extends BaseUUID {
     @Override
     public String toString() {
         return "Pharmacy{" + "name=" + name + ", evaluations=" + evaluations + ", paymentTypes=" + paymentTypes + ", shipping=" + shipping + ", csvFormat=" + csvFormat + ", logoURL=" + logoURL + ", price=" + price + ", user=" + user + '}';
+    }
+
+    /**
+     * @return the totalEvaluationPoints
+     */
+    public int getTotalEvaluationPoints() {
+        return totalEvaluationPoints;
+    }
+
+    /**
+     * @param totalEvaluationPoints the totalEvaluationPoints to set
+     */
+    public void setTotalEvaluationPoints(int totalEvaluationPoints) {
+        this.totalEvaluationPoints = totalEvaluationPoints;
     }
     
     

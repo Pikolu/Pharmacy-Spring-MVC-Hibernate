@@ -14,8 +14,6 @@ import com.pharmacy.controller.abstraction.DataWithCount;
 import com.pharmacy.exception.ServiceException;
 import com.pharmacy.service.api.ArticleService;
 import com.pharmacy.service.api.PharmacyService;
-import java.net.URLEncoder;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
@@ -73,7 +71,6 @@ public class IndexController extends AbstractController {
     @RequestMapping(value = "/apotheke/{pharm}", method = RequestMethod.GET)
     public ModelAndView displayPharmacy(@PathVariable String pharm, HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("pharmacy");
-        pharm = "Apotheke";
         Pharmacy pharmacy = pharmacyService.getPharmacyByName(pharm);
         modelAndView.addObject("pharmacy", pharmacy);
         return modelAndView;

@@ -38,11 +38,13 @@
                                     <tr>
                                         <td style="border-bottom: 1px solid #E5E5E5">
 
-                                            <table style="width: 100%">
+                                            <table id="priceCheck" style="width: 100%">
                                                 <tr>
-                                                    <td style="width: 100px">
+                                                    <td class="icon" style="width: 100px">
                                                         <div style="float: left; width: 100px; height: 100px">
-                                                            <img alt="${price.pharmacy.name}" src="${price.pharmacy.logoURL}" width="100" height="100" />
+                                                            <a href="${article.deepLink}">
+                                                                <img alt="${price.pharmacy.name}" src="${price.pharmacy.logoURL}" width="100" height="100" />
+                                                            </a>
                                                         </div>
                                                     </td> 
                                                     <td style="vertical-align: baseline;">
@@ -52,6 +54,49 @@
                                                                 <a href="${article.deepLink}" >${article.name}</a>
                                                             </h4>
                                                             <br/>
+                                                            <div id="fixed_${price.pharmacy.id}"></div>
+                                                            <span style="font-size: 15px;">${price.pharmacy.evaluations.size()} Bewertungen</span>
+                                                            <script type="text/javascript">
+                                                                jQuery('#fixed_${price.pharmacy.id}').raty({
+                                                                    readOnly: true,
+                                                                    start: ${price.pharmacy.totalEvaluationPoints},
+                                                                    path: '../../resources/images/raiting/'
+                                                                });
+                                                            </script>
+                                                            <br />
+
+                                                            <c:url value="/apotheke/${price.pharmacy.name}.html" var="pharmacyURL" />
+                                                            <a href="${pharmacyURL}">Apothekenprofil</a>
+                                                            <br /><br />
+                                                            <c:forEach items="${price.pharmacy.paymentTypes}" var="payment" >
+                                                                <c:if test="${payment.name() eq 'PAY_PAL'}">
+                                                                    <img src="<c:url value="/resources/images/payment/paypal.png" />" />
+                                                                </c:if>
+
+                                                                <c:if test="${payment.name() eq 'KREDIT_CARD'}">
+                                                                    <span>
+                                                                        <img src="<c:url value="/resources/images/payment/creditcard.png" />" />
+                                                                    </span>
+                                                                </c:if>
+
+                                                                <c:if test="${payment.name() eq 'DIRECT_BANKING'}">
+                                                                    <span>
+                                                                        <img src="<c:url value="/resources/images/payment/sofortüberweisung.png" />" />
+                                                                    </span>
+                                                                </c:if>
+
+                                                                <c:if test="${payment.name() eq 'DEBIT'}">
+                                                                    <span>
+                                                                        <img src="<c:url value="/resources/images/payment/lastschrift.png" />" />
+                                                                    </span>
+                                                                </c:if>
+
+                                                                <c:if test="${payment.name() eq 'DEBIT'}">
+                                                                    <span>
+                                                                        <img src="<c:url value="/resources/images/payment/rechnung.png" />" />
+                                                                    </span>
+                                                                </c:if>
+                                                            </c:forEach>
                                                         </div>
                                                     </td>
                                                     <%--<c:set var="bestPrice" value="${articleHelper.getBestDiscount(article.prices)}" />--%>

@@ -44,34 +44,32 @@
                             <hr/>
                             <c:forEach items="${pharmacy.paymentTypes}" var="payment">
                                 <c:if test="${payment.name() eq 'PAY_PAL'}">
-                                    <div>
-                                        Paypal
+                                    <div style="margin: 5px 0 5px 0;">
+                                        <img src="<c:url value="/resources/images/payment/paypal.png" />" />
                                     </div>
                                 </c:if>
 
                                 <c:if test="${payment.name() eq 'KREDIT_CARD'}">
-                                    <div>
-                                        Kreditkarte
-                                        <!--<img src="<c:url value="/resources/images/payment/creditcard.png" />" />-->
-                                        <!--<img src="<c:url value="/resources/images/payment/mastercard.png" />" />-->
+                                    <div style="margin: 5px 0 5px 0;">
+                                        <img src="<c:url value="/resources/images/payment/creditcard.png" />" />
                                     </div>
                                 </c:if>
 
                                 <c:if test="${payment.name() eq 'DIRECT_BANKING'}">
-                                    <div>
-                                        Sofortüberweißung
+                                    <div style="margin: 5px 0 5px 0;">
+                                        <img src="<c:url value="/resources/images/payment/sofortüberweisung.png" />" />
                                     </div>
                                 </c:if>
 
                                 <c:if test="${payment.name() eq 'DEBIT'}">
-                                    <div>
-                                        Lastschrift
+                                    <div style="margin: 5px 0 5px 0;">
+                                        <img src="<c:url value="/resources/images/payment/lastschrift.png" />" />
                                     </div>
                                 </c:if>
 
                                 <c:if test="${payment.name() eq 'DEBIT'}">
-                                    <div>
-                                        Rechnung
+                                    <div style="margin: 5px 0 5px 0;">
+                                        <img src="<c:url value="/resources/images/payment/rechnung.png" />" />
                                     </div>
                                 </c:if>
                             </c:forEach>
