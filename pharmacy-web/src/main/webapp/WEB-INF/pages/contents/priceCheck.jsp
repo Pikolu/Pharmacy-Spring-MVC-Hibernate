@@ -43,7 +43,7 @@
                                                     <td class="icon" style="width: 100px">
                                                         <div style="float: left; width: 100px; height: 100px">
                                                             <a href="${article.deepLink}">
-                                                                <img alt="${price.pharmacy.name}" src="${price.pharmacy.logoURL}" width="100" height="100" />
+                                                                <img alt="${price.pharmacy.name}" src="${price.pharmacy.logoURL}" width="100" height="40" />
                                                             </a>
                                                         </div>
                                                     </td> 
@@ -100,13 +100,15 @@
                                                         </div>
                                                     </td>
                                                     <%--<c:set var="bestPrice" value="${articleHelper.getBestDiscount(article.prices)}" />--%>
-                                                    <td style="width: 130px; vertical-align: baseline;">
-                                                        <!--<div>ab ${bestPrice.price} €</div>-->
-<!--                                                        <div style="color: #D14F4F">${bestPrice.discount} %<span> Ersparnis</span></div>-->
+                                                    <td style="width: 165px; vertical-align: top;">
+                                                        <div style="font-size: 22px; text-align: right;">${price.price} €</div>
+                                                        <div style="font-size: 14px; text-align: right;">+ Versand ${price.price} €</div>
+                                                        <div style="font-size: 14px; text-align: right;">Versandkostenfrei ab ${price.pharmacy.shipping} €</div>
                                                     </td>
-                                                    <td style="width: 130px; text-align: right; padding-right: 20px;">
-                                                        <%--<c:url value="/check/${article.articelNumber}/${article.name}" var="checkPrice" />--%>
-                                                        <a class="buttonlight morebutton" href="${article.deepLink}">Hier bestellen</a>
+                                                    <td style="width: 130px; text-align: right; padding-right: 20px; vertical-align: top;">
+                                                        <div>
+                                                            <a class="buttonlight morebutton" href="${article.deepLink}">Hier bestellen</a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </table>

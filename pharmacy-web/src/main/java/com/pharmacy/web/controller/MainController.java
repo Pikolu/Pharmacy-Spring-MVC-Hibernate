@@ -11,6 +11,7 @@ import com.pharmacy.exception.type.ExceptionType;
 import com.pharmacy.service.api.ArticleService;
 import com.pharmacy.service.api.EvaluationService;
 import com.pharmacy.service.api.PharmacyService;
+import com.pharmacy.user.User;
 import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
@@ -123,8 +124,6 @@ public class MainController {
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public ModelAndView initAccount(HttpServletRequest request) {
-        Map map = request.getParameterMap();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView model = new ModelAndView();
         model.setViewName("account");
         return model;

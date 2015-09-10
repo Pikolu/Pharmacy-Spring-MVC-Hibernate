@@ -5,7 +5,7 @@
 
 <t:genericpage>
     <jsp:attribute name="title">
-        Medizin-finder.de Allgemeine Geschäftsbedingungen 
+        Preisvergleich ${name}
     </jsp:attribute>
     <jsp:attribute name="header">
         <%@include file="includes/header.jsp" %>

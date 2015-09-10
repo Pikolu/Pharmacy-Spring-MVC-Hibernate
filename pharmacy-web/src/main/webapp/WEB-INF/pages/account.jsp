@@ -4,6 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="title">
+        <c:set var="user" value="${pageContext.request.userPrincipal.principal}"/>
         ${user.firstName}, ${user.lastName} auf MEDIZIN-FINDER.DE
     </jsp:attribute>
     <jsp:attribute name="header">
@@ -13,6 +14,6 @@
         <%@include file="includes/footer.jsp" %>
     </jsp:attribute>
     <jsp:body>
-        <%@include file="contents/indexContent.jsp" %>
+        <%@include file="contents/account.jsp" %>
     </jsp:body>
 </t:genericpage>
