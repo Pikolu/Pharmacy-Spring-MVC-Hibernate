@@ -4100,3 +4100,6 @@ hr {
 #priceCheck .icon {
     vertical-align: top;
 }
+.user-data {
+    padding: 0 10px;
+}

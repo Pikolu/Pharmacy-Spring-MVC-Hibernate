@@ -14,13 +14,13 @@
         <div class="box-container">
             <p>
                 <s:message code="label.alreadyRegistration" /> 
-                <c:url value="/login.html" var="login"></c:url>
-                <a href="${login}">
-                    <s:message code="label.alreadyRegistrationLogin" />.
-                </a>
+            <c:url value="/login.html" var="login"></c:url>
+            <a href="${login}">
+                <s:message code="label.alreadyRegistrationLogin" />.
+            </a>
             </p>
-            <c:url value="/registration.html" var="registration"></c:url>
-                <form:form action="${registration}" method="post" id="register">
+            <c:url value="/account" var="account" />
+            <form:form action="${account}" method="post" id="data" modelAttribute="command">
                 <h2><s:message code="label.yourPersonData" /></h2>
                 <div class="content">
                     <table class="form">
@@ -65,7 +65,7 @@
                             <tr>
                                 <td>
                                     <span class="required">*</span> 
-                                     <s:message code="label.password" />:
+                                    <s:message code="label.password" />:
                                 </td>
                                 <td>
                                     <input class="q1" name="account.password" value="" type="password">
