@@ -121,4 +121,12 @@ public class MainController {
         return model;
 
     }
+
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    public ModelAndView initAccount(HttpServletRequest request) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("account");
+        return model;
+
+    }
 }

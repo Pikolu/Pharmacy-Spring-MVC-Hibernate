@@ -5,10 +5,7 @@
  */
 package com.pharmacy.controller.abstraction;
 
-import com.pharmacy.exception.ServiceException;
-import com.pharmacy.exception.type.ExceptionType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -16,8 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Alexandr
  */
 public abstract class AbstractController {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractController.class);
 
     private static final int PAGE_COUNT = 10;
 
@@ -86,22 +81,5 @@ public abstract class AbstractController {
      */
     public void setFilterOptions(FilterOptions filterOptions) {
         this.filterOptions = filterOptions;
-    }
-
-    /**
-     * This methode handles the given exception. The given exception will be
-     * logged and displayen in browser for user.
-     *
-     * @param exception
-     * @param logger
-     */
-    public void handleException(Exception exception, Logger logger) {
-        ServiceException serviceException;
-        if (exception instanceof ServiceException) {
-            serviceException = (ServiceException) exception;
-        } else {
-            serviceException = new ServiceException(ExceptionType.PE_0000);
-        }
-        serviceException.writeLog(logger);
     }
 }
