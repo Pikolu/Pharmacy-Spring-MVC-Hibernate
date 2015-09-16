@@ -58,6 +58,7 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
         }
         return user;
     }
+    
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)

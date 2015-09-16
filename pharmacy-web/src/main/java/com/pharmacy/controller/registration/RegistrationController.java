@@ -48,7 +48,7 @@ public class RegistrationController {
     public ModelAndView registration(@ModelAttribute("command") User user, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
         LOG.trace("Enter registration: user={}, result={}", user, result);
         try {
-            validator.validate(user, result);
+            validator.validate(user, result, false);
             if (result.hasErrors()) {
                 if (modelAndView == null) {
                     modelAndView = new ModelAndView("redirect:registration.html", "command", new User());

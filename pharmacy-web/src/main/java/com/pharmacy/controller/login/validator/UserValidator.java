@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -37,41 +39,63 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         LOG.trace("Enter validate: target={}, errors={}", target, errors);
         User user = (User) target;
-        if (!user.isAcceptedGeneralTerms()) {
-            errors.rejectValue("acceptedGeneralTerms", "message.NoacceptedGeneralTerms");
-        }
+
         if (user.getFirstName() == null || user.getFirstName().isEmpty()) {
             errors.rejectValue("firstName", "message.EmptyFirstname");
         }
         if (user.getLastName() == null || user.getLastName().isEmpty()) {
             errors.rejectValue("lastName", "message.EmptyLastname");
         }
+
+        LOG.debug("exit");
+    }
+
+    public void validate(Object target, Errors errors, boolean register) {
+
+        User user = (User) target;
+
+        validate(target, errors);
         Account account = user.getAccount();
+
         if (account.getEmail() == null || account.getEmail().isEmpty()) {
             errors.rejectValue("account.email", "message.EmptyEmail");
         } else if (!isValidEmailAddress(account.getEmail())) {
             errors.rejectValue("account.email", "message.InvalidEmail");
+        }
+        if (register) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User oldUser = (User) auth.getPrincipal();
+            if (!oldUser.getAccount().getEmail().equals(user.getAccount().getEmail())) {
+                checkEmail(account, errors);
+            }
         } else {
-            try {
-                Account existAccout = userService.findAccoutByEmail(account.getEmail());
-                if (existAccout != null) {
-                    errors.rejectValue("account.email", "message.DupplicateEmail");
-                }
-            } catch (ServiceException ex) {
-                ex.writeLog(LOG);
+            checkEmail(account, errors);
+            if (!user.isAcceptedGeneralTerms()) {
+                errors.rejectValue("acceptedGeneralTerms", "message.NoacceptedGeneralTerms");
             }
         }
+
         if (account.getPassword() == null || account.getPassword().isEmpty()) {
             errors.rejectValue("account.password", "message.EmptyPassword");
-        } else if(!isPasswordValid(account.getPassword())) {
-            
+        } else if (!isPasswordValid(account.getPassword())) {
+//            errors.rejectValue("account.password", "message.NotmatchPassword");
         } else if (account.getPasswordConfirm() == null || account.getPasswordConfirm().isEmpty()) {
             errors.rejectValue("account.passwordConfirm", "message.EmptyPasswordRepeat");
         } else if (!(account.getPassword().equals(account.getPasswordConfirm()))) {
             errors.rejectValue("account.password", "message.NotmatchPassword");
         }
 
-        LOG.debug("exit");
+    }
+
+    private void checkEmail(Account account, Errors errors) {
+        try {
+            Account existAccout = userService.findAccoutByEmail(account.getEmail());
+            if (existAccout != null) {
+                errors.rejectValue("account.email", "message.DupplicateEmail");
+            }
+        } catch (ServiceException ex) {
+            ex.writeLog(LOG);
+        }
     }
 
     private boolean isPasswordValid(String password) {
