@@ -12,27 +12,9 @@
     <div id="container">
         <div id="notification"></div>
         <div id="content">
-            <h1>Account</h1>
+            <h1>Persönliche Daten</h1>
 
-            <div id="column-left">
-                <div class="box category">
-                    <div class="box-heading">Alle Kategorien</div>
-                    <div class="box-content">
-                        <div class="box-category">
-                            <ul>
-                                <li class="cat-header">
-                                    <c:url value="/account" var="account"/>
-                                    <a class="idCatSubcat" href="${account}">Persönliche Daten</a>
-                                </li>
-                                <li class="cat-header">
-                                    <c:url value="/account" var="account"/>
-                                    <a class="idCatSubcat" href="${account}">Meine Bewertungen</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%@include file="../includes/prifileSidebar.jsp" %>
 
 
             <div class="box" style="margin-left: 250px">
