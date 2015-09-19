@@ -2821,6 +2821,11 @@ ul {
 #login .q1 {
     width: 315px;
 }
+
+#evaluationSearchForm .q1{
+    width: 315px;
+}
+
 .login-content .left .content, .login-content .right .content {
     min-height: 190px;
 }

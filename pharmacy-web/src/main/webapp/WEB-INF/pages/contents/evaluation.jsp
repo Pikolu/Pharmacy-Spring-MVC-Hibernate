@@ -22,10 +22,29 @@
                 <div class="box-content">
                     <div class="box-product">
                         <div class="user-account">
-                            Möchten Sie jetzt eine neue Bewertung verfassen? Geben Sie bitte der Apothekenname ein.
-                            <div>
-                                Apothekenname 
-                                <input type="text" name="pharmacyName"/>
+                            Möchten Sie jetzt eine neue Bewertung verfassen? Bitte geben Sie den Apothekenname ein.
+                            <div style="margin-top: 10px;">
+
+                                <c:url value="/bewertungen" var="evaluation" />
+
+                                <form:form action="${evaluation}" method="GET" id="evaluationSearchForm">
+                                    <table class="form">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            Apothekenname:
+                                        </td>
+                                        <td>
+                                             <input type="text" class="q1" name="pharmacyName"/>
+                                             
+                                        </td>
+                                        <td>
+                                            <a class="buttonlight morebutton" href="#">Suchen</a>
+                                        </td>
+                                    </tr>
+                                    </table>
+                                </form:form>
+
                             </div>
                         </div>
                     </div>

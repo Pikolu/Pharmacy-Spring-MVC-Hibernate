@@ -15,7 +15,7 @@
                     <a class="idCatSubcat" href="${account}">Persönliche Daten</a>
                     </li>
                     <li class="cat-header">
-                    <c:url value="/bewertung" var="evaluation"/>
+                    <c:url value="/bewertungen" var="evaluation"/>
                     <a class="idCatSubcat" href="${evaluation}">Meine Bewertungen</a>
                     </li>
                 </ul>
