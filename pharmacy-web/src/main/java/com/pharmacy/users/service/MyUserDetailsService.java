@@ -124,6 +124,7 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public Account findAccoutByEmail(String email) throws ServiceException {
         Account account;
         try {
@@ -134,6 +135,15 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
         }
         return account;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public User findUserById(String id) throws ServiceException {
+        User user = userDao.findUserById(id);
+        return user;
+    }
+    
+    
 
     /**
      * @return the userDao

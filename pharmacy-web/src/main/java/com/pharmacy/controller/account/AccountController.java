@@ -19,9 +19,11 @@ import com.pharmacy.controller.login.validator.UserValidator;
 import com.pharmacy.exception.ServiceException;
 import com.pharmacy.service.api.UserService;
 import com.pharmacy.user.User;
+import java.util.logging.Level;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,16 +31,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Alexander
  */
 @Controller
+@SessionAttributes("userForm")
 public class AccountController {
 
     private static final Logger LOG = LoggerFactory.getLogger(AccountController.class);
@@ -49,29 +58,36 @@ public class AccountController {
     private UserService userService;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public ModelAndView initAccount(HttpServletRequest request) {
-        ModelAndView model;
+    public String initAccount(Model model) {
+        String page = null;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.getPrincipal() instanceof User) {
-            User user = (User) auth.getPrincipal();
-            model = new ModelAndView("account", "command", user);
+            try {
+                User principal = (User) auth.getPrincipal();
+                User currentUser = userService.findUserById(principal.getId());
+                model.addAttribute("userForm", currentUser);
+                page = "account";
+            } catch (ServiceException ex) {
+                ex.writeLog(LOG);
+                page = "login";
+            } 
         } else {
-            model = new ModelAndView("login");
+            page = "login";
         }
-        return model;
+        return page;
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
-    public ModelAndView registration(@ModelAttribute("command") User user, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView registration(@ModelAttribute("userForm") @Valid User userForm, BindingResult result) {
         ModelAndView modelAndView = null;
         try {
-            validator.validate(user, result, true);
-            if (result.hasErrors()) {
-                modelAndView = new ModelAndView("account", "command", user);
+            validator.validate(userForm, result, true);
+            if (result.hasErrors() && result.getErrorCount() > 1) {
+                modelAndView = new ModelAndView("account", "command", userForm);
                 modelAndView.getModel().putAll(result.getModel());
             } else {
-                userService.save(user);
-                modelAndView = new ModelAndView("account", "command", user);
+            userService.save(userForm);
+            modelAndView = new ModelAndView("account", "command", userForm);
             }
         } catch (ServiceException e) {
             e.writeLog(LOG);

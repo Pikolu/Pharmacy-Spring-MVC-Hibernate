@@ -49,6 +49,12 @@ public class User extends BaseUUID implements UserDetails {
     private String homePage;
     private String fax;
 
+    public User() {
+        System.out.println("NEW USER");
+    }
+    
+    
+
     /**
      * @return the firstName
      */

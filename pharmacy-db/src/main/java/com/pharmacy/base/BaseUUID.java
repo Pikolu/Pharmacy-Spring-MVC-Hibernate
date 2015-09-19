@@ -36,8 +36,6 @@ public abstract class BaseUUID implements Serializable {
     private Date creationDate;
 
     public BaseUUID() {
-        this.id = UUID.randomUUID().toString();
-        creationDate = new Date();
     }
 
     /**

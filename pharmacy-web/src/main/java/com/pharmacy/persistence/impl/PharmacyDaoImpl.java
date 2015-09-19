@@ -2,7 +2,6 @@ package com.pharmacy.persistence.impl;
 
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.persistence.api.PharmacyDao;
-import com.pharmacy.persistence.impl.AbstractJpaDAO;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;

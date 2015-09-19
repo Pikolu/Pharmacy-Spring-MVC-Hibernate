@@ -34,7 +34,7 @@
                                 <!--<h:outputText style="float:left;width:40%;line-height:1em; font-size: 18px; color: #E31010" value="{article.discount} % " />-->
                                 <!--<h:outputText value="Ersparnis"/>-->
                             </div>
-                            <a class="buttonlight morebutton" href="#">Siehe mehr</a>
+                                <a class="buttonlight morebutton" href="#" style="z-index: 2000">Siehe mehr</a>
 
                             <!--
                             ***********************************************************************************************************

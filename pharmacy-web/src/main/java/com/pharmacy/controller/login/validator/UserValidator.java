@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -23,7 +24,7 @@ import org.springframework.validation.Validator;
  *
  * @author Alexandr
  */
-@Service
+@Component
 public class UserValidator implements Validator {
 
     Logger LOG = LoggerFactory.getLogger(UserValidator.class);
@@ -114,6 +115,6 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class type) {
-        return User.class.isAssignableFrom(type);
+        return User.class.equals(type);
     }
 }

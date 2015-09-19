@@ -27,4 +27,10 @@ public class UserDaoImpl extends AbstractJpaDAO<User> implements UserDao {
 
         return user;
     }
+
+    @Override
+    public User findUserById(String id) throws PersistenceException {
+        User user = super.findOne(id);
+        return user;
+    }
 }
