@@ -42,27 +42,34 @@
                                     </table>
                                 </form:form>
                             </div>
+                            <c:choose>
+                                <c:when test="${not empty pharmacies}">
+                                    <table class="form">
+                                        <tbody>
+                                            <c:forEach items="${pharmacies}" var="pharmacy" varStatus="status">
+                                                <tr style="height: 35px; border-bottom: 1px solid #E5E5E5; ${status.first ? 'border-top: 1px solid #E5E5E5;' : ''}">
+                                                    <td>
+                                                        <img width="85" height="35" src="${pharmacy.logoURL}" alt="${pharmacy.name}"/>
+                                                    </td>
+                                                    <td>
+                                                        ${pharmacy.name}
+                                                    </td>
+                                                    <td style="text-align: right">
+                                                        <c:url value="/bewerten/${pharmacy.name}" var="pharmacyURL"/>
+                                                        <a class="buttonlight morebutton" href="${pharmacyURL}">Diese Apotheken bewerten</a>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </c:when>
+                                <c:otherwise>
+                                    Es wurden keine Apotheken gefunden. Bitte führen Sie die Abfrage erneunt aus.
+                                </c:otherwise>
+                            </c:choose>
+                            <%--<c:if test="${not empty pharmacies}">--%>
 
-                            <c:if test="${not empty pharmacies}">
-                                <table class="form">
-                                    <tbody>
-                                        <c:forEach items="${pharmacies}" var="pharmacy" varStatus="status">
-                                            <tr style="height: 35px; border-bottom: 1px solid #E5E5E5; ${status.first ? 'border-top: 1px solid #E5E5E5;' : ''}">
-                                                <td>
-                                                    <img width="85" height="35" src="${pharmacy.logoURL}" alt="${pharmacy.name}"/>
-                                                </td>
-                                                <td>
-                                                    ${pharmacy.name}
-                                                </td>
-                                                <td style="text-align: right">
-                                                    <c:url value="/bewerten/${pharmacy.name}" var="pharmacyURL"/>
-                                                    <a class="buttonlight morebutton" href="${pharmacyURL}">Diese Apotheken bewerten</a>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </c:if>
+                            <%--</c:if>--%>
 
                         </div>
                     </div>
