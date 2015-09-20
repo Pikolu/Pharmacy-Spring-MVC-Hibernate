@@ -21,6 +21,8 @@ import com.pharmacy.service.api.PharmacyService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -33,16 +35,19 @@ public class PharmacyServiceImpl implements PharmacyService {
     private PharmacyDao pharmacyDao;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public Pharmacy getPharmacyByName(String name) {
         return pharmacyDao.getPharmacyByName(name);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public List<Pharmacy> findBestPharmacies() {
         return pharmacyDao.findBestPharmacies();
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public List<Pharmacy> findPharmaciesByName(String pharmacyName) {
         return pharmacyDao.findPharmaciesByName(pharmacyName);
     }

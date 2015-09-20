@@ -38,8 +38,6 @@ import javax.persistence.OneToOne;
 })
 public class Pharmacy extends BaseUUID {
 
-    @Column(unique = true)
-    private String name;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "evaluation_id")
     private List<Evaluation> evaluations;
@@ -58,24 +56,6 @@ public class Pharmacy extends BaseUUID {
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
     private int totalEvaluationPoints;
-    
-
-
-    /**
-     * @return the name
-     */
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /**
      * @return the evaluations
@@ -180,7 +160,7 @@ public class Pharmacy extends BaseUUID {
 
     @Override
     public String toString() {
-        return "Pharmacy{" + "name=" + name + ", evaluations=" + evaluations + ", paymentTypes=" + paymentTypes + ", shipping=" + shipping + ", csvFormat=" + csvFormat + ", logoURL=" + logoURL + ", price=" + price + ", user=" + user + '}';
+        return "Pharmacy{ evaluations=" + evaluations + ", paymentTypes=" + paymentTypes + ", shipping=" + shipping + ", csvFormat=" + csvFormat + ", logoURL=" + logoURL + ", price=" + price + ", user=" + user + '}';
     }
 
     /**

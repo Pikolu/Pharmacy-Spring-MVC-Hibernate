@@ -1,6 +1,5 @@
 package com.pharmacy.persistence.impl;
 
-import com.pharmacy.article.Article;
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.article.Pharmacy_;
 import com.pharmacy.persistence.api.PharmacyDao;
@@ -14,6 +13,8 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /*
  * Copyright 2015 Alexander.
@@ -42,6 +43,7 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public Pharmacy getPharmacyByName(String name) {
         Pharmacy pharmacy = null;
         TypedQuery<Pharmacy> query = getEntityManager().createNamedQuery("findPharmacyByName", Pharmacy.class);
@@ -54,6 +56,7 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public List<Pharmacy> findBestPharmacies() {
         TypedQuery<Pharmacy> query = getEntityManager().createNamedQuery("findBestPharmacies", Pharmacy.class);
         query.setMaxResults(5);
@@ -62,18 +65,18 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public List<Pharmacy> findPharmaciesByName(String pharmacyName) {
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Pharmacy> query = builder.createQuery(Pharmacy.class);
         Root<Pharmacy> root = query.from(Pharmacy.class);
         Expression<String> lowerName = builder.lower(root.get(Pharmacy_.name));
         Predicate predicate = builder.like(lowerName, "%" + pharmacyName.toLowerCase() + "%");
-        query.where(predicate);
         query.select(root);
+        query.where(predicate);
         TypedQuery<Pharmacy> sqlQuery = getEntityManager().createQuery(query);
-        return sqlQuery.getResultList();
+        List<Pharmacy> results = sqlQuery.getResultList();
+        return results;
     }
-    
-    
 
 }
