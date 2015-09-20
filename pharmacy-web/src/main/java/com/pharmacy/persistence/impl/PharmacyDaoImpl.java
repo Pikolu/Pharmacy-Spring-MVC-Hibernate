@@ -72,8 +72,8 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
         Root<Pharmacy> root = query.from(Pharmacy.class);
         Expression<String> lowerName = builder.lower(root.get(Pharmacy_.name));
         Predicate predicate = builder.like(lowerName, "%" + pharmacyName.toLowerCase() + "%");
-        query.select(root);
         query.where(predicate);
+        query.select(root);
         TypedQuery<Pharmacy> sqlQuery = getEntityManager().createQuery(query);
         List<Pharmacy> results = sqlQuery.getResultList();
         return results;
