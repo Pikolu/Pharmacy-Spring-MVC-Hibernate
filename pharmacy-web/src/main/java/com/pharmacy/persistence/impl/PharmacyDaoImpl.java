@@ -1,11 +1,18 @@
 package com.pharmacy.persistence.impl;
 
+import com.pharmacy.article.Article;
 import com.pharmacy.article.Pharmacy;
+import com.pharmacy.article.Pharmacy_;
 import com.pharmacy.persistence.api.PharmacyDao;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
 /*
@@ -53,5 +60,20 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
         List<Pharmacy> pharmacys = query.getResultList();
         return pharmacys;
     }
+
+    @Override
+    public List<Pharmacy> findPharmaciesByName(String pharmacyName) {
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Pharmacy> query = builder.createQuery(Pharmacy.class);
+        Root<Pharmacy> root = query.from(Pharmacy.class);
+        Expression<String> lowerName = builder.lower(root.get(Pharmacy_.name));
+        Predicate predicate = builder.like(lowerName, "%" + pharmacyName.toLowerCase() + "%");
+        query.where(predicate);
+        query.select(root);
+        TypedQuery<Pharmacy> sqlQuery = getEntityManager().createQuery(query);
+        return sqlQuery.getResultList();
+    }
+    
+    
 
 }

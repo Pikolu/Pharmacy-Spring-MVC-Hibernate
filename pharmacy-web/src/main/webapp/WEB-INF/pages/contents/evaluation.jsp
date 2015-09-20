@@ -14,7 +14,7 @@
         <div id="content">
             <h1>Meine Bewertungen</h1>
 
-            <%@include file="../includes/prifileSidebar.jsp" %>
+            <%@include file="../includes/profileSidebar.jsp" %>
 
 
             <div class="box" style="margin-left: 250px">
@@ -24,28 +24,46 @@
                         <div class="user-account">
                             Möchten Sie jetzt eine neue Bewertung verfassen? Bitte geben Sie den Apothekenname ein.
                             <div style="margin-top: 10px;">
-
                                 <c:url value="/bewertungen" var="evaluation" />
-
                                 <form:form action="${evaluation}" method="GET" id="evaluationSearchForm">
                                     <table class="form">
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            Apothekenname:
-                                        </td>
-                                        <td>
-                                             <input type="text" class="q1" name="pharmacyName"/>
-                                             
-                                        </td>
-                                        <td>
-                                            <a class="buttonlight morebutton" href="#">Suchen</a>
-                                        </td>
-                                    </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Apothekenname:
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="q1" name="pharmacyName" value="${not empty pharmacyName ? pharmacyName : ''}"/>
+                                                </td>
+                                                <td>
+                                                    <a class="buttonlight morebutton" onclick="$('#evaluationSearchForm').submit();" href="#">Suchen</a>
+                                                </td>
+                                            </tr>
                                     </table>
                                 </form:form>
-
                             </div>
+
+                            <c:if test="${not empty pharmacies}">
+                                <table class="form">
+                                    <tbody>
+                                        <c:forEach items="${pharmacies}" var="pharmacy" varStatus="status">
+                                            <tr style="height: 35px; border-bottom: 1px solid #E5E5E5; ${status.first ? 'border-top: 1px solid #E5E5E5;' : ''}">
+                                                <td>
+                                                    <img width="85" height="35" src="${pharmacy.logoURL}" alt="${pharmacy.name}"/>
+                                                </td>
+                                                <td>
+                                                    ${pharmacy.name}
+                                                </td>
+                                                <td style="text-align: right">
+                                                    <c:url value="/bewerten/${pharmacy.name}" var="pharmacyURL"/>
+                                                    <a class="buttonlight morebutton" href="${pharmacyURL}">Diese Apotheken bewerten</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </c:if>
+
                         </div>
                     </div>
                 </div>

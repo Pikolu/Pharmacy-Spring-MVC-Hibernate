@@ -42,4 +42,10 @@ public class PharmacyServiceImpl implements PharmacyService {
         return pharmacyDao.findBestPharmacies();
     }
 
+    @Override
+    public List<Pharmacy> findPharmaciesByName(String pharmacyName) {
+        return pharmacyDao.findPharmaciesByName(pharmacyName);
+    }
+
+    
 }

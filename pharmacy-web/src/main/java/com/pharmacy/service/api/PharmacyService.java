@@ -27,5 +27,7 @@ public interface PharmacyService {
     public Pharmacy getPharmacyByName(String name);
 
     public List<Pharmacy> findBestPharmacies();
+
+    public List<Pharmacy> findPharmaciesByName(String pharmacyName);
     
 }

@@ -4,24 +4,7 @@
     <option name="ANALYSIS_IN_BACKGROUND" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03ce0706-526d-463e-8c56-c86a42c1e022" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/AbstractJpaDAO.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/AbstractJpaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/account/AccountController.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/account/AccountController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/base/BaseUUID.java" afterPath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/base/BaseUUID.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/users/service/MyUserDetailsService.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/users/service/MyUserDetailsService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/PharmacyDaoImpl.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/PharmacyDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/user/User.java" afterPath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/user/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/api/UserDao.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/api/UserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/UserDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/service/api/UserService.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/service/api/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/account.jsp" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/account.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/indexContent.jsp" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/indexContent.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/pharmacy-db.iml" afterPath="$PROJECT_DIR$/pharmacy-db/pharmacy-db.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/pharmacy-web.iml" afterPath="$PROJECT_DIR$/pharmacy-web/pharmacy-web.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/pom.xml" afterPath="$PROJECT_DIR$/pharmacy-web/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/spring-security.xml" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/spring-security.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="03ce0706-526d-463e-8c56-c86a42c1e022" name="Default" comment="" />
     <ignored path="pharmacy.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/account/AccountController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -69,7 +52,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="56" column="20" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="28" />
-              <folding />
+              <folding>
+                <element signature="e#0#3934#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,8 +63,8 @@
       <file leaf-file-name="account.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/account.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38224852">
-              <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.6840237">
+              <caret line="34" column="80" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -98,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/webapp/resources/css/default.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4092" column="4" selection-start-line="4092" selection-start-column="4" selection-end-line="4092" selection-end-column="4" />
+              <caret line="4097" column="4" selection-start-line="4097" selection-start-column="4" selection-end-line="4097" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -330,6 +316,206 @@
       <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="webapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WEB-INF">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="webapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WEB-INF">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pages">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="webapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WEB-INF">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pages">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="contents">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="webapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/pharmacy">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pharmacy-web">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/pharmacy">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
@@ -866,12 +1052,12 @@
       <workItem from="1440963361498" duration="229000" />
       <workItem from="1442420481031" duration="3830000" />
       <workItem from="1442509915314" duration="1897000" />
-      <workItem from="1442695107424" duration="1090000" />
+      <workItem from="1442695107424" duration="1691000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8936000" />
+    <option name="totallyTimeSpent" value="9537000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -883,7 +1069,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -936,7 +1122,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/account/AccountController.java</url>
-          <line>90</line>
+          <line>84</line>
           <properties />
         </line-breakpoint>
       </breakpoints>
@@ -964,7 +1150,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="20" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#0#3934#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1004,7 +1193,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="20" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#0#3934#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1238,7 +1430,7 @@
     <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/webapp/resources/css/default.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4092" column="4" selection-start-line="4092" selection-start-column="4" selection-end-line="4092" selection-end-column="4" />
+          <caret line="4097" column="4" selection-start-line="4097" selection-start-column="4" selection-end-line="4097" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1247,14 +1439,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="20" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#0#3934#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/account/AccountController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1269,8 +1464,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/account.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38224852">
-          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.6840237">
+          <caret line="34" column="80" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
           <folding />
         </state>
       </provider>

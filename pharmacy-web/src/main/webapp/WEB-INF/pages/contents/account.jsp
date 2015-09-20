@@ -14,7 +14,7 @@
         <div id="content">
             <h1>Persönliche Daten</h1>
 
-            <%@include file="../includes/prifileSidebar.jsp" %>
+            <%@include file="../includes/profileSidebar.jsp" %>
 
 
             <div class="box" style="margin-left: 250px">
