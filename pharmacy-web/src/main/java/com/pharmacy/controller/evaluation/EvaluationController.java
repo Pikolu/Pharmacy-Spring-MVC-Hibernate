@@ -17,21 +17,22 @@ package com.pharmacy.controller.evaluation;
 
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.controller.abstraction.AbstractController;
+import com.pharmacy.evaluation.Evaluation;
 import com.pharmacy.service.api.PharmacyService;
 import com.pharmacy.user.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -70,7 +71,15 @@ public class EvaluationController extends AbstractController {
     public ModelAndView displayPharmacy(@PathVariable String pharm, HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("evaluate");
         Pharmacy pharmacy = pharmacyService.getPharmacyByName(pharm);
+        modelAndView.addObject("evaluation", new Evaluation());
         modelAndView.addObject("pharmacy", pharmacy);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/bewerten", method = RequestMethod.POST)
+    public ModelAndView registration(@ModelAttribute("evaluation") Evaluation evaluation, BindingResult result) {
+        ModelAndView modelAndView = new ModelAndView("evaluate");
         return modelAndView;
     }
 

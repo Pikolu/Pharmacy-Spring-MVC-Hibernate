@@ -1,7 +1,7 @@
 package com.pharmacy.persistence.impl;
 
 import com.pharmacy.article.Pharmacy;
-import com.pharmacy.article.Pharmacy_;
+import com.pharmacy.base.BaseUUID_;
 import com.pharmacy.persistence.api.PharmacyDao;
 import java.util.List;
 import javax.persistence.NoResultException;
@@ -51,6 +51,7 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
         try {
             pharmacy = query.getSingleResult();
         } catch (NoResultException | NonUniqueResultException e) {
+            //TODO do nothing
         }
         return pharmacy;
     }
@@ -60,8 +61,7 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
     public List<Pharmacy> findBestPharmacies() {
         TypedQuery<Pharmacy> query = getEntityManager().createNamedQuery("findBestPharmacies", Pharmacy.class);
         query.setMaxResults(5);
-        List<Pharmacy> pharmacys = query.getResultList();
-        return pharmacys;
+        return query.getResultList();
     }
 
     @Override
@@ -70,13 +70,12 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Pharmacy> query = builder.createQuery(Pharmacy.class);
         Root<Pharmacy> root = query.from(Pharmacy.class);
-        Expression<String> lowerName = builder.lower(root.get(Pharmacy_.name));
+        Expression<String> lowerName = builder.lower(root.get(BaseUUID_.name));
         Predicate predicate = builder.like(lowerName, "%" + pharmacyName.toLowerCase() + "%");
         query.where(predicate);
         query.select(root);
         TypedQuery<Pharmacy> sqlQuery = getEntityManager().createQuery(query);
-        List<Pharmacy> results = sqlQuery.getResultList();
-        return results;
+        return sqlQuery.getResultList();
     }
 
 }
