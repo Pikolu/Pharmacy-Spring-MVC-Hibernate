@@ -120,8 +120,9 @@
                                     console.log("#fixed_${pharmacy.id}");
                                     jQuery('#fixed_${pharmacy.id}').raty({
                                         readOnly: true,
-                                        start: ${evaluation.points},
-                                        path: 'resources/images/raiting/'
+                                        start: ${evaluationHelper.calculateRaiting(pharmacy.evaluations)},
+                                        path: 'resources/images/raiting/',
+                                        showHalf: true
                                     });
                                 </script>
                             </div>
@@ -146,15 +147,16 @@
                             <div class="evaluation-box" style="height: 60px; border-bottom: 1px solid #E5E5E5; padding: 5px 0px 5px 10px;">
                                 <span style="float: left">${evaluation.creationDate}</span>
                                 <span style="float: left">&nbsp; | &nbsp;</span>
-                                <div id="fixed_${evaluation.id}"></div>
+                                <div id="current_evaluation_${evaluation.id}"></div>
 
                                 <h2 class="ellipsis">${evaluation.name}</h2>
                                 <div class="ellipsis" >${evaluation.description}</div>
                                 <script type="text/javascript">
-                                    jQuery('#fixed_${evaluation.id}').raty({
+                                    jQuery('#current_evaluation_${evaluation.id}').raty({
                                         readOnly: true,
                                         start: ${evaluation.points},
-                                        path: 'resources/images/raiting/'
+                                        path: 'resources/images/raiting/',
+                                        showHalf: true
                                     });
                                 </script>
                             </div>

@@ -19,6 +19,6 @@ public interface UserDao {
 
     public User save(User user) throws PersistenceException;
 
-    public User findUserById(String id) throws PersistenceException;
+    public User findUserById(int id) throws PersistenceException;
 
 }

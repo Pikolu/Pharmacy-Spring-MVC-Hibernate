@@ -16,6 +16,9 @@ public class EvaluationHelper {
     
     public float calculateRaiting(List<Evaluation> evaluations) {
         float result = 0;
-        return result;
+        for (Evaluation evaluation : evaluations) {
+            result = result + evaluation.getPoints();
+        }
+        return result / evaluations.size();
     }
 }

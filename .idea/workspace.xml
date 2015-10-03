@@ -5,10 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03ce0706-526d-463e-8c56-c86a42c1e022" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\Workspace\Pharmacy-Spring-MVC-Hibernate\pharmacy-db\src\main\resources\hibernate.cfg.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Workspace\Pharmacy-Spring-MVC-Hibernate\pharmacy-web\src\main\resources\hibernate.cfg.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/abstraction/AbstractController.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/abstraction/AbstractController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/AbstractJpaDAO.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/AbstractJpaDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/article/Article.java" afterPath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/article/Article.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/ArticleDaoImpl.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/ArticleDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/base/BaseUUID.java" afterPath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/base/BaseUUID.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/category/Category.java" afterPath="$PROJECT_DIR$/pharmacy-db/src/main/java/com/pharmacy/category/Category.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/evaluation/EvaluationController.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/evaluation/EvaluationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/index/IndexController.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/index/IndexController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/users/service/MyUserDetailsService.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/users/service/MyUserDetailsService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/api/PharmacyDao.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/api/PharmacyDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/PharmacyDaoImpl.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/PharmacyDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/service/api/PharmacyService.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/service/api/PharmacyService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/service/impl/PharmacyServiceImpl.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/service/impl/PharmacyServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/api/UserDao.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/api/UserDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/persistence/impl/UserDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/service/api/UserService.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/service/api/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/login/validator/UserValidator.java" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/java/com/pharmacy/controller/login/validator/UserValidator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/resources/css/default.css" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/resources/css/default.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/evaluate.jsp" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/evaluate.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/pharmacy-db/src/main/resources/META-INF/persistence.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/pharmacy-db.iml" afterPath="$PROJECT_DIR$/pharmacy-db/pharmacy-db.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-db/pom.xml" afterPath="$PROJECT_DIR$/pharmacy-db/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/pom.xml" afterPath="$PROJECT_DIR$/pharmacy-web/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/spring-database.xml" afterPath="$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/spring-database.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pharmacy.iws" />
@@ -46,8 +68,8 @@
       <file leaf-file-name="evaluate.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/evaluate.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55921054">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6042654">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,7 +78,7 @@
       <file leaf-file-name="registerContent.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/registerContent.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.692307">
+            <state vertical-scroll-proportion="0.0">
               <caret line="30" column="72" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="72" />
               <folding />
             </state>
@@ -144,10 +166,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1288" />
-    <option name="y" value="43" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -172,7 +194,40 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pharmacy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pharmacy-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pharmacy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pharmacy-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.pharmacy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pharmacy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,40 +310,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.pharmacy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -299,6 +320,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,7 +331,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Pharmacy-ADM-JSF-Primefaces-EclipseLink" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="dynamic.classpath" value="false" />
@@ -831,11 +853,13 @@
       <workItem from="1442852883220" duration="70000" />
       <workItem from="1442852973046" duration="337000" />
       <workItem from="1442857627726" duration="6362000" />
+      <workItem from="1443816494885" duration="471000" />
+      <workItem from="1443857405902" duration="286000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16306000" />
+    <option name="totallyTimeSpent" value="17063000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -847,40 +871,40 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1288" y="43" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5060606" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="464" y="167" width="435" height="394" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12686567" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993174" sideWeight="0.49545455" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270869" sideWeight="0.4939394" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19255663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993174" sideWeight="0.49545455" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270869" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39761093" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270869" sideWeight="0.4939394" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -920,7 +944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="184" column="21" selection-start-line="184" selection-start-column="21" selection-end-line="184" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -928,7 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4097" column="4" selection-start-line="4097" selection-start-column="4" selection-end-line="4097" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -960,7 +982,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -968,7 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4092" column="4" selection-start-line="4092" selection-start-column="4" selection-end-line="4092" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1000,7 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4092" column="4" selection-start-line="4092" selection-start-column="4" selection-end-line="4092" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1216,7 +1235,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="184" column="21" selection-start-line="184" selection-start-column="21" selection-end-line="184" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1224,7 +1242,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1256,9 +1273,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#1208#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1266,9 +1280,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#962#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1284,13 +1296,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.344828">
           <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/registerContent.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307">
+        <state vertical-scroll-proportion="0.0">
           <caret line="30" column="72" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="72" />
           <folding />
         </state>
@@ -1298,8 +1309,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pharmacy-web/src/main/webapp/WEB-INF/pages/contents/evaluate.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55921054">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6042654">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>

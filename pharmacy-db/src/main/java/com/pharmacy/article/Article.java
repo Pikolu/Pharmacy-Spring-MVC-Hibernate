@@ -17,7 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import org.eclipse.persistence.annotations.Index;
 
 /**
  * @author Alexandr
@@ -38,7 +37,6 @@ import org.eclipse.persistence.annotations.Index;
 })
 public class Article extends BaseUUID {
 
-    @Index
     @Column(unique = true)
     private int articelNumber;
     private String categoryName;

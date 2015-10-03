@@ -45,7 +45,7 @@
         <!--<h:outputScript library="js" name="jquery.themepunch.services.min.js" />-->
 
         <!-- FONT IMPORT -->
-        <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css' />
+        <!--<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css' />-->
 
 
 

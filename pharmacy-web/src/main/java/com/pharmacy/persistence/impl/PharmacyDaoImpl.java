@@ -2,6 +2,8 @@ package com.pharmacy.persistence.impl;
 
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.base.BaseUUID_;
+import com.pharmacy.evaluation.Evaluation;
+import com.pharmacy.exception.PersistenceException;
 import com.pharmacy.persistence.api.PharmacyDao;
 import java.util.List;
 import javax.persistence.NoResultException;
@@ -13,6 +15,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Alexander
  */
 @Repository
+@Transactional
 public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements PharmacyDao {
 
     public PharmacyDaoImpl() {
@@ -78,4 +82,24 @@ public class PharmacyDaoImpl extends AbstractJpaDAO<Pharmacy> implements Pharmac
         return sqlQuery.getResultList();
     }
 
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public Pharmacy getPharmacyById(String pharmId) throws PersistenceException {
+        Pharmacy pharmacy = super.findOne(Integer.valueOf(pharmId));
+        return pharmacy;
+    }    
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void savePharmacy(Pharmacy pharmacy) throws PersistenceException {
+        super.save(pharmacy);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void saveEvaluation(String pharmId, Evaluation evaluation) throws PersistenceException {
+        Pharmacy pharmacy = findOne(Integer.valueOf(pharmId));
+        pharmacy.getEvaluations().add(evaluation);
+        super.save(pharmacy);
+    }
 }

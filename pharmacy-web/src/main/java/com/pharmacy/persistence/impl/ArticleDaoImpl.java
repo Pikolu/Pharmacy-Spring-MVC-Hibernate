@@ -6,7 +6,7 @@
 package com.pharmacy.persistence.impl;
 
 import com.pharmacy.article.Article;
-import com.pharmacy.article.Article_;
+import com.pharmacy.base.BaseUUID_;
 import com.pharmacy.controller.abstraction.DataWithCount;
 import com.pharmacy.controller.abstraction.FilterOptions;
 import com.pharmacy.exception.PersistenceException;
@@ -59,13 +59,13 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
         CriteriaQuery<Article> query = builder.createQuery(Article.class);
         Root<Article> root = query.from(Article.class);
 
-        Predicate predicate = builder.like(root.get(Article_.name), "%" + parameter + "%");
+        Predicate predicate = builder.like(root.get(BaseUUID_.name), "%" + parameter + "%");
         query.where(predicate);
         query.select(root);
         TypedQuery<Article> sqlQuery = getEntityManager().createQuery(query);
         List<Article> searchTitleArticles = sqlQuery.getResultList();
         if (searchTitleArticles.isEmpty()) {
-            Predicate predicate2 = builder.like(root.get(Article_.description), "%" + parameter + "%");
+            Predicate predicate2 = builder.like(root.get(BaseUUID_.description), "%" + parameter + "%");
             query.where(builder.or(predicate, predicate2));
             query.select(root);
             sqlQuery = getEntityManager().createQuery(query);
@@ -104,8 +104,8 @@ public class ArticleDaoImpl extends AbstractJpaDAO<Article> implements ArticleDa
     private Predicate[] getSearchPredicate(String parameter, CriteriaBuilder builder, Root<Article> root) {
         List<Predicate> predicates = new ArrayList<>();
         
-        Expression<String> lowerName = builder.lower(root.get(Article_.name));
-        Expression<String> lowerDescription = builder.lower(root.get(Article_.description));
+        Expression<String> lowerName = builder.lower(root.get(BaseUUID_.name));
+        Expression<String> lowerDescription = builder.lower(root.get(BaseUUID_.description));
                 
         Predicate predicate = builder.like(lowerName, "%" + parameter.toLowerCase() + "%");
         Predicate predicate2 = builder.like(lowerDescription, "%" + parameter.toLowerCase() + "%");

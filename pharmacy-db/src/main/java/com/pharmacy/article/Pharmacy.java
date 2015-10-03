@@ -34,19 +34,19 @@ import javax.persistence.OneToOne;
 @NamedQueries({
     @NamedQuery(name = "findAllPharmacies", query = "SELECT p FROM Pharmacy p"),
     @NamedQuery(name = "findPharmacyByName", query = "SELECT p FROM Pharmacy p WHERE p.name = :name"),
-    @NamedQuery(name = "findBestPharmacies", query = "SELECT p FROM Pharmacy p LEFT JOIN p.evaluations e WHERE e.points > 0 ORDER BY e.points DESC")    
+    @NamedQuery(name = "findBestPharmacies", query = "SELECT p FROM Pharmacy p LEFT JOIN p.evaluations e WHERE e.points > 0 GROUP BY p.id")    
 })
 public class Pharmacy extends BaseUUID {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "evaluation_id")
     private List<Evaluation> evaluations;
-    @ElementCollection(targetClass = PaymentType.class)
+    @ElementCollection(targetClass = PaymentType.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @JoinColumn(name = "paymentType_id")
     private Collection<PaymentType> paymentTypes;
     private float shipping;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "csvFormat_id")
     private List<CSVFormat> csvFormat;
     private String logoURL;
@@ -158,11 +158,6 @@ public class Pharmacy extends BaseUUID {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Pharmacy{ evaluations=" + evaluations + ", paymentTypes=" + paymentTypes + ", shipping=" + shipping + ", csvFormat=" + csvFormat + ", logoURL=" + logoURL + ", price=" + price + ", user=" + user + '}';
-    }
-
     /**
      * @return the totalEvaluationPoints
      */
@@ -176,6 +171,10 @@ public class Pharmacy extends BaseUUID {
     public void setTotalEvaluationPoints(int totalEvaluationPoints) {
         this.totalEvaluationPoints = totalEvaluationPoints;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Pharmacy{" + "evaluations=" + evaluations + ", paymentTypes=" + paymentTypes + ", shipping=" + shipping + ", csvFormat=" + csvFormat + ", logoURL=" + logoURL + ", price=" + price + ", user=" + user + ", totalEvaluationPoints=" + totalEvaluationPoints + '}';
+    }
     
 }

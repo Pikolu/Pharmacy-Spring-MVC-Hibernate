@@ -30,7 +30,7 @@ public abstract class AbstractJpaDAO<T extends BaseUUID> {
         this.clazz = clazzToSet;
     }
 
-    public T findOne(final String id) throws PersistenceException {
+    public T findOne(final int id) throws PersistenceException {
         LOG.trace("Enter findOne: id={}", id);
         T result = entityManager.find(clazz, id);
         LOG.trace("Exit findOne: result={}", result);
@@ -58,7 +58,6 @@ public abstract class AbstractJpaDAO<T extends BaseUUID> {
         LOG.trace("Enter save: entity={}", entity);
         entity.setLastUpdated(new Date());
         T result = entityManager.merge(entity);
-        entityManager.flush();
         LOG.trace("Exit save: result={}", result);
         return result;
     }
@@ -69,7 +68,7 @@ public abstract class AbstractJpaDAO<T extends BaseUUID> {
         LOG.trace("Exit delete");
     }
 
-    public void deleteById(final String entityId) throws PersistenceException {
+    public void deleteById(final int entityId) throws PersistenceException {
         LOG.trace("Enter deleteById: entityId={}", entityId);
         final T entity = findOne(entityId);
         delete(entity);

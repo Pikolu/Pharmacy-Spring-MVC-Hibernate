@@ -138,7 +138,7 @@ public class MyUserDetailsService implements UserDetailsService, UserService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public User findUserById(String id) throws ServiceException {
+    public User findUserById(int id) throws ServiceException {
         User user = userDao.findUserById(id);
         return user;
     }

@@ -20,19 +20,55 @@
                 <div class="box-content">
                     <div class="box-product">
                         <div class="user-account">
-                            <c:url value="/bewerten" var="evaluationURL" />
-                           <form:form id="evaluationForm" modelAttribute="evaluation" method="POST" action="${evaluationURL}">
-                               <div>
-
-                                   <h3><span class="required">*</span>Überschrift</h3>
-                                   <form:input cssStyle="width: 100%" path="${name}" />
-                               </div>
-                               <div>
-
-                                   <h3><span class="required">*</span>Beschreibung</h3>
-                                   <form:textarea path="${description}" cssStyle="width: 100%; resize: none; height: 200px" />
-                               </div>
-                           </form:form>
+                            <c:url value="/${pharmacy.id}/bewerten" var="evaluationURL" />
+                            <form:form id="evaluationForm" modelAttribute="evaluation" method="POST" action="${evaluationURL}">
+                                <div>
+                                    <h2><span class="required">*</span>Überschrift</h2>
+                                    <form:input cssStyle="width: 100%" path="name" />
+                                </div>
+                                <div class="evaluation-box-margin-top">
+                                    <h2><span class="required">*</span>Beschreibung</h2>
+                                    <form:textarea path="description" cssStyle="width: 100%; resize: none; height: 200px" />
+                                </div>
+                                <div class="evaluation-box-margin-top">
+                                    <h3>Bewerten Sie diesen Einkauf detailliert</h3>
+                                </div>
+                                <div class="evaluation-box-margin-top">
+                                    <h2><span class="required">*</span>Wie genau entsprach der Artikel der Beschreibung?</h2>
+                                    <form:select path="descriptionPoints">
+                                        <form:option value="0">0</form:option>
+                                        <form:option value="1">1</form:option>
+                                        <form:option value="2">2</form:option>
+                                        <form:option value="3">3</form:option>
+                                        <form:option value="4">4</form:option>
+                                        <form:option value="5">5</form:option>   
+                                    </form:select>
+                                </div>
+                                <div class="evaluation-box-margin-top">
+                                    <h2><span class="required">*</span>Wie schnell hat der Verkäufer den Artikel verschickt?</h2>
+                                    <form:select path="shippingPoints">
+                                        <form:option value="0">0</form:option>
+                                        <form:option value="1">1</form:option>
+                                        <form:option value="2">2</form:option>
+                                        <form:option value="3">3</form:option>
+                                        <form:option value="4">4</form:option>
+                                        <form:option value="5">5</form:option>   
+                                    </form:select>
+                                </div>
+                                <div class="evaluation-box-margin-top">
+                                    <h2><span class="required">*</span>Wie angemessen waren die Verpackungs- und Versandkosten?</h2>
+                                    <form:select path="shippingPricePoints">
+                                        <form:option value="0">0</form:option>
+                                        <form:option value="1">1</form:option>
+                                        <form:option value="2">2</form:option>
+                                        <form:option value="3">3</form:option>
+                                        <form:option value="4">4</form:option>
+                                        <form:option value="5">5</form:option>   
+                                    </form:select>
+                                </div>
+                                
+                                <a onclick="$('#evaluationForm').submit();" class="button" style="float: right"><span>Speichern</span></a>
+                            </form:form>
                         </div>
                     </div>
                 </div>

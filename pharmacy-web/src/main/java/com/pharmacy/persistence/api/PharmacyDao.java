@@ -16,6 +16,8 @@
 package com.pharmacy.persistence.api;
 
 import com.pharmacy.article.Pharmacy;
+import com.pharmacy.evaluation.Evaluation;
+import com.pharmacy.exception.PersistenceException;
 import java.util.List;
 
 /**
@@ -24,9 +26,15 @@ import java.util.List;
  */
 public interface PharmacyDao {
 
-    public Pharmacy getPharmacyByName(String name);
+    public Pharmacy getPharmacyByName(String name) throws PersistenceException;
 
-    public List<Pharmacy> findBestPharmacies();
+    public List<Pharmacy> findBestPharmacies() throws PersistenceException;
 
-    public List<Pharmacy> findPharmaciesByName(String pharmacyName);
+    public List<Pharmacy> findPharmaciesByName(String pharmacyName) throws PersistenceException;
+
+    public Pharmacy getPharmacyById(String pharmId) throws PersistenceException;
+
+    public void savePharmacy(Pharmacy pharmacy) throws PersistenceException;
+
+    public void saveEvaluation(String pharmId, Evaluation evaluation) throws PersistenceException;
 }

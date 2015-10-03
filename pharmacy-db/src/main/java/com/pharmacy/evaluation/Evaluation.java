@@ -21,6 +21,9 @@ import javax.persistence.NamedQuery;
 public class Evaluation extends BaseUUID {
     
     private float points;
+    private int descriptionPoints;
+    private int shippingPoints;
+    private int shippingPricePoints;
 
     /**
      * @return the points
@@ -39,6 +42,48 @@ public class Evaluation extends BaseUUID {
     @Override
     public String toString() {
         return "Evaluation{" + "points=" + points + '}';
+    }
+
+    /**
+     * @return the descriptionPoints
+     */
+    public int getDescriptionPoints() {
+        return descriptionPoints;
+    }
+
+    /**
+     * @param descriptionPoints the descriptionPoints to set
+     */
+    public void setDescriptionPoints(int descriptionPoints) {
+        this.descriptionPoints = descriptionPoints;
+    }
+
+    /**
+     * @return the shippingPoints
+     */
+    public int getShippingPoints() {
+        return shippingPoints;
+    }
+
+    /**
+     * @param shippingPoints the shippingPoints to set
+     */
+    public void setShippingPoints(int shippingPoints) {
+        this.shippingPoints = shippingPoints;
+    }
+
+    /**
+     * @return the shippingPricePoints
+     */
+    public int getShippingPricePoints() {
+        return shippingPricePoints;
+    }
+
+    /**
+     * @param shippingPricePoints the shippingPricePoints to set
+     */
+    public void setShippingPricePoints(int shippingPricePoints) {
+        this.shippingPricePoints = shippingPricePoints;
     }
     
 }

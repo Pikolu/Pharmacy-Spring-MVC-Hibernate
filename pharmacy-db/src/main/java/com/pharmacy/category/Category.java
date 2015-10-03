@@ -22,20 +22,11 @@ import java.util.List;
     @NamedQuery(name = "Category.firstCategory", query = "SELECT c FROM Category c LEFT JOIN FETCH c.children WHERE c.name = :name")})
 public class Category extends BaseUUID {
 
-    private String name;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id", nullable = true)
     @OrderColumn
     private List<Category> children = new LinkedList<>();
     private String directoryName;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public List<Category> getChildren() {
         return children;
@@ -61,8 +52,8 @@ public class Category extends BaseUUID {
 
     @Override
     public String toString() {
-        return "Category{" + "name=" + name + ", children=" + children + ", directoryName=" + directoryName + '}';
+        return "Category{" + "children=" + children + ", directoryName=" + directoryName + '}';
     }
-
+    
     
 }

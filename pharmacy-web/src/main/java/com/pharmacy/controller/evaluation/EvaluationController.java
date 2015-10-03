@@ -18,13 +18,15 @@ package com.pharmacy.controller.evaluation;
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.controller.abstraction.AbstractController;
 import com.pharmacy.evaluation.Evaluation;
+import com.pharmacy.exception.ServiceException;
 import com.pharmacy.service.api.PharmacyService;
 import com.pharmacy.user.User;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +43,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class EvaluationController extends AbstractController {
-    
-    @Autowired
+
+    @Inject
     private PharmacyService pharmacyService;
 
     @RequestMapping(value = "/bewertungen", method = RequestMethod.GET)
@@ -55,7 +57,12 @@ public class EvaluationController extends AbstractController {
         if (auth.getPrincipal() instanceof User) {
             model.setViewName("evaluation");
             if (StringUtils.isNotBlank(pharmacyName)) {
-                List<Pharmacy> pharmacies = pharmacyService.findPharmaciesByName(pharmacyName);
+                List<Pharmacy> pharmacies = null;
+                try {
+                    pharmacies = pharmacyService.findPharmaciesByName(pharmacyName);
+                } catch (ServiceException ex) {
+                    Logger.getLogger(EvaluationController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 model.addObject("pharmacyName", pharmacyName);
                 model.addObject("pharmacies", pharmacies);
             }
@@ -70,17 +77,28 @@ public class EvaluationController extends AbstractController {
     @RequestMapping(value = "/bewerten/{pharm}", method = RequestMethod.GET)
     public ModelAndView displayPharmacy(@PathVariable String pharm, HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("evaluate");
-        Pharmacy pharmacy = pharmacyService.getPharmacyByName(pharm);
+        Pharmacy pharmacy = null;
+        try {
+            pharmacy = pharmacyService.getPharmacyByName(pharm);
+        } catch (ServiceException ex) {
+            Logger.getLogger(EvaluationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modelAndView.addObject("evaluation", new Evaluation());
         modelAndView.addObject("pharmacy", pharmacy);
         return modelAndView;
     }
 
-
-    @RequestMapping(value = "/bewerten", method = RequestMethod.POST)
-    public ModelAndView registration(@ModelAttribute("evaluation") Evaluation evaluation, BindingResult result) {
-        ModelAndView modelAndView = new ModelAndView("evaluate");
+    @RequestMapping(value = "/{pharmId}/bewerten", method = RequestMethod.POST)
+    public ModelAndView registration(@ModelAttribute("evaluation") Evaluation evaluation, @PathVariable String pharmId, BindingResult result) {
+        ModelAndView modelAndView = null;
+        try {
+            modelAndView = new ModelAndView("evaluate");
+            pharmacyService.saveEvaluation(pharmId, evaluation);
+        } catch (ServiceException ex) {
+            
+        }
         return modelAndView;
+
     }
 
 }

@@ -19,6 +19,6 @@ public interface UserService {
 
     public Account findAccoutByEmail(String email) throws ServiceException;
     
-    public User findUserById(String id) throws ServiceException;
+    public User findUserById(int id) throws ServiceException;
     
 }

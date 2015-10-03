@@ -16,6 +16,8 @@
 package com.pharmacy.service.api;
 
 import com.pharmacy.article.Pharmacy;
+import com.pharmacy.evaluation.Evaluation;
+import com.pharmacy.exception.ServiceException;
 import java.util.List;
 
 /**
@@ -24,10 +26,14 @@ import java.util.List;
  */
 public interface PharmacyService {
     
-    public Pharmacy getPharmacyByName(String name);
+    public Pharmacy getPharmacyByName(String name) throws ServiceException;
 
-    public List<Pharmacy> findBestPharmacies();
+    public List<Pharmacy> findBestPharmacies() throws ServiceException;
 
-    public List<Pharmacy> findPharmaciesByName(String pharmacyName);
+    public List<Pharmacy> findPharmaciesByName(String pharmacyName) throws ServiceException;
+
+    public void saveEvaluation(String pharmId, Evaluation evaluation) throws ServiceException;
+
+    public Pharmacy getPharmacyById(String pharmId) throws ServiceException;
     
 }

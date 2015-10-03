@@ -1,22 +1,20 @@
 package com.pharmacy.base;
 
-import org.apache.commons.lang.StringUtils;
-import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.eclipse.persistence.annotations.Index;
 
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  * @author Alexandr
  */
@@ -24,46 +22,38 @@ import org.eclipse.persistence.annotations.Index;
 public abstract class BaseUUID implements Serializable {
 
     @Id
-    @Column(length = 36, name = "id")
-    private String id;
-    @Index
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String name;
-    @Index
     private String description;
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date creationDate;
 
-    public BaseUUID() {
-    }
-
     /**
      * @param id
      */
-    public void setId(String id) {
-        if (StringUtils.isBlank(this.id)) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("It is not allowed to change an existing id!");
-        }
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
      * @return id
      */
-    public String getId() {
-        if (id == null) {
-            id = UUID.randomUUID().toString();
-        }
+    public int getId() {
         return id;
     }
 
     @PrePersist
     protected void onPersist() {
-        if (StringUtils.isBlank(this.id)) {
-            this.id = UUID.randomUUID().toString();
-        }
+        creationDate = new Date();
+        lastUpdated = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        lastUpdated = new Date();
     }
 
     @Override
@@ -75,7 +65,7 @@ public abstract class BaseUUID implements Serializable {
             return false;
         }
         final BaseUUID other = (BaseUUID) obj;
-        return !((this.id == null) ? (other.id != null) : !this.id.equals(other.id));
+        return this.id == other.id;
     }
 
     /**
@@ -84,7 +74,7 @@ public abstract class BaseUUID implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 37 * hash + (this.id != null ? this.id.hashCode() : 0);
+        hash = 37 * hash + this.id;
         return hash;
     }
 
