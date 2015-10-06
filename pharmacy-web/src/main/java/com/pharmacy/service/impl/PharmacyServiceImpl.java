@@ -112,7 +112,7 @@ public class PharmacyServiceImpl implements PharmacyService {
     }
 
     /**
-     * @param pharmacyDao the pharmacyDao to set
+     * @param pharmacyDao the pharmacyDao to set 
      */
     public void setPharmacyDao(PharmacyDao pharmacyDao) {
         this.pharmacyDao = pharmacyDao;

@@ -3,12 +3,11 @@
     Created on : 24.08.2013, 21:36:52
     Author     : Alexandr
 --%>
-
+ <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html xmlns:th="http://www.thymeleaf.org">
-    <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <div id="container">
         <div id="notification"></div>
         <div id="content">
@@ -25,10 +24,12 @@
                                 <div>
                                     <h2><span class="required">*</span>Überschrift</h2>
                                     <form:input cssStyle="width: 100%" path="name" />
+                                    <form:errors path="name" cssClass="error" />
                                 </div>
                                 <div class="evaluation-box-margin-top">
                                     <h2><span class="required">*</span>Beschreibung</h2>
                                     <form:textarea path="description" cssStyle="width: 100%; resize: none; height: 200px" />
+                                     <form:errors path="description" cssClass="error" />
                                 </div>
                                 <div class="evaluation-box-margin-top">
                                     <h3>Bewerten Sie diesen Einkauf detailliert</h3>

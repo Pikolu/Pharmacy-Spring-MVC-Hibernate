@@ -15,6 +15,15 @@
  */
 package com.pharmacy.controller.contact;
 
+import com.pharmacy.controller.contact.validation.ContactValidator;
+import com.pharmacy.user.Contact;
+import org.apache.commons.lang.ArrayUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,11 +32,32 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author Alexander
  */
+@Controller
 public class ContactController {
-    
+
+    private static final Logger LOG = LoggerFactory.getLogger(ContactController.class);
+
+    @Autowired
+    private ContactValidator contactValidator;
+
     @RequestMapping(value = "/kontakt", method = RequestMethod.GET)
     private ModelAndView initContactForm() {
-        ModelAndView modelAndView = new ModelAndView("contact");
+        ModelAndView modelAndView = new ModelAndView("contact", "contact", new Contact());
         return modelAndView;
     }
+
+    @RequestMapping(value = "/kontakt", method = RequestMethod.POST)
+    private ModelAndView sendContactForm(@ModelAttribute("contact") Contact contact, BindingResult result) {
+        ModelAndView modelAndView;
+        contactValidator.validate(contact, result);
+        if (result.hasErrors()) {
+            LOG.info("Contact form has severel errors.", ArrayUtils.toString(result.getAllErrors()));
+            modelAndView = new ModelAndView("contact", "contact", contact);
+        } else {
+            LOG.info("Contact form is correct. {}", contact);
+           modelAndView = new ModelAndView("contact", "contact", new Contact());
+        }
+        return modelAndView;
+    }
+
 }

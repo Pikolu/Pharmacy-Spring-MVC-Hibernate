@@ -11,18 +11,19 @@
             <div class="column col-1">
                 <h3>Information</h3>
                 <ul>
-                    <li><a style="padding-left: 0px;" href="#">Über MEDIZIN-FINDER.DE</a></li>
+                    <!--<li><a style="padding-left: 0px;" href="#">Über MEDIZIN-FINDER.DE</a></li>-->
                     <c:url value="/help/policies/user-agreement.html" var="agreement"></c:url>
                     <li><a style="padding-left: 0px;" href="${agreement}">AGB</a></li>
-                    <li><a style="padding-left: 0px;" href="#">Impressum</a></li>
+                    <c:url value="/impressum" var="imprint"></c:url>
+                    <li><a style="padding-left: 0px;" href="${imprint}">Impressum</a></li>
                 </ul>
             </div>
             <div class="column col-2">
-                <h3>Customer Service</h3>
+                <h3>Kunden Service</h3>
                 <ul>
                     
-                    <c:url value="/kontakt" var="agreement"></c:url>
-                    <li><a style="padding-left: 0px;" href="${agreement}">Kontakt</a></li>
+                    <c:url value="/kontakt" var="contact"></c:url>
+                    <li><a style="padding-left: 0px;" href="${contact}">Kontakt</a></li>
                 </ul>
             </div>
 <!--            <div class="column col-3">
@@ -37,7 +38,8 @@
             <div class="column col-4">
                 <h3>My Account</h3>
                 <ul>
-                    <li><a style="padding-left: 0px;" href="#">Mein Medizin-Finder</a></li>
+                    <c:url value="/account" var="account"></c:url>
+                    <li><a style="padding-left: 0px;" href="${account}">Mein Medizin-Finder</a></li>
                     <!--<li><a style="padding-left: 0px;" href="#">Order History</a></li>-->
                     <!--<li><a style="padding-left: 0px;" href="#">Wish List</a></li>-->
                     <!--<li><a style="padding-left: 0px;" href="#">Newsletter</a></li>-->
@@ -46,7 +48,7 @@
         </div>
     </div>
     <div class="wrapper">
-        <c:url value="/index.html" var="index"></c:url>
+        <c:url value="/index" var="index"></c:url>
         <div id="powered">Copyright 2015 ©  <a href="${index}" style="text-transform: uppercase;">medizin-finder.de</a></div>
     </div>
 </div>

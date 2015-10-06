@@ -3667,7 +3667,7 @@ a {
     border-right: 1px solid #E5E5E5;
     float: left;
     margin-right: 0;
-    min-height: 173px;
+    min-height: 125px;
     width: 33.25% !important;
 }
 #footer .column ul {
@@ -4112,4 +4112,8 @@ hr {
 }
 .evaluation-box-margin-top {
     margin-top: 15px;
+}
+
+.impressum {
+    padding-left: 10px;
 }

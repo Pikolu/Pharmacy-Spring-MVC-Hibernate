@@ -18,6 +18,7 @@ package com.pharmacy.controller.evaluation;
 import com.pharmacy.article.Pharmacy;
 import com.pharmacy.controller.abstraction.AbstractController;
 import com.pharmacy.evaluation.Evaluation;
+import com.pharmacy.evaluation.helper.EvaluationValidator;
 import com.pharmacy.exception.ServiceException;
 import com.pharmacy.service.api.PharmacyService;
 import com.pharmacy.user.User;
@@ -46,6 +47,8 @@ public class EvaluationController extends AbstractController {
 
     @Inject
     private PharmacyService pharmacyService;
+    @Autowired
+    private EvaluationValidator evaluationValidator;
 
     @RequestMapping(value = "/bewertungen", method = RequestMethod.GET)
     public ModelAndView initEvaluations(@RequestParam(required = false) String pharmacyName) {
@@ -92,8 +95,14 @@ public class EvaluationController extends AbstractController {
     public ModelAndView registration(@ModelAttribute("evaluation") Evaluation evaluation, @PathVariable String pharmId, BindingResult result) {
         ModelAndView modelAndView = null;
         try {
-            modelAndView = new ModelAndView("evaluate");
-            pharmacyService.saveEvaluation(pharmId, evaluation);
+            evaluationValidator.validate(evaluation, result);
+            if (result.hasErrors()) {
+                modelAndView = new ModelAndView("evaluate");
+                Pharmacy pharmacy = pharmacyService.getPharmacyById(pharmId);
+                modelAndView.addObject("pharmacy", pharmacy);
+            } else {
+                pharmacyService.saveEvaluation(pharmId, evaluation);
+            }  
         } catch (ServiceException ex) {
             
         }

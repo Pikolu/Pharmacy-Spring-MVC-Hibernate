@@ -4,10 +4,9 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,11 +24,18 @@ public abstract class BaseUUID implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
+    @Column(length = 4000)
     private String description;
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdated;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date creationDate;
+
+    public BaseUUID() {
+        creationDate = new Date();
+    }
+    
+    
 
     /**
      * @param id
@@ -43,17 +49,6 @@ public abstract class BaseUUID implements Serializable {
      */
     public int getId() {
         return id;
-    }
-
-    @PrePersist
-    protected void onPersist() {
-        creationDate = new Date();
-        lastUpdated = new Date();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        lastUpdated = new Date();
     }
 
     @Override
@@ -132,5 +127,10 @@ public abstract class BaseUUID implements Serializable {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseUUID{" + "id=" + id + ", name=" + name + ", description=" + description + ", lastUpdated=" + lastUpdated + ", creationDate=" + creationDate + '}';
     }
 }

@@ -37,7 +37,7 @@
                                 <s:message code="label.header.login" />
                             </a>
                                 <s:message code="label.header.or" />
-                            <c:url value="/registration.html" var="registration"></c:url>
+                            <c:url value="/registration" var="registration"></c:url>
                             <a href="${registration}">
                                 <s:message code="label.header.registration" />
                             </a>
@@ -51,12 +51,12 @@
         <div id="header">
             <div class="header-container">
                 <div id="logo">
-                    <c:url value="/index.html" var="index"></c:url>
+                    <c:url value="/index" var="index"></c:url>
                     <a href="${index}">
                         <img style="margin-top: 37px;" src="<c:url value="/resources/images/logo1.png" />" />
                     </a>
                 </div>
-                <c:url value="/produkte.html" var="produkte"></c:url>
+                <c:url value="/produkte" var="produkte"></c:url>
                     <form:form action="${produkte}" method="GET" id="searchForm">
                     <div id="search">
                         <div class="button-search"></div>

@@ -26,7 +26,7 @@ import org.springframework.validation.Validator;
 @Component
 public class UserValidator implements Validator {
 
-    Logger LOG = LoggerFactory.getLogger(UserValidator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserValidator.class);
 
     @Autowired
     private UserService userService;

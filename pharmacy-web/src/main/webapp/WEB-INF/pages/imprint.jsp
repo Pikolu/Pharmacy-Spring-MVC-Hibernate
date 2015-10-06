@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="title">
-        Kontakt
+        Impressum | medizin-finder.de
     </jsp:attribute>
     <jsp:attribute name="header">
         <%@include file="includes/header.jsp" %>
@@ -13,6 +13,6 @@
         <%@include file="includes/footer.jsp" %>
     </jsp:attribute>
     <jsp:body>
-        <%@include file="contents/contact.jsp" %>
+        <%@include file="contents/imprint.jsp" %>
     </jsp:body>
 </t:genericpage>

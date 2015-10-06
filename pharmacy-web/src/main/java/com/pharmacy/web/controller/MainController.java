@@ -41,7 +41,7 @@ public class MainController {
     @Inject
     private EvaluationService evaluationService;
 
-    @RequestMapping(value = {"/", "/index", "/welcome**"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/index", "/welcome**", ""}, method = RequestMethod.GET)
     public ModelAndView defaultPage() {
         ModelAndView modelAndView = null;
         try {
